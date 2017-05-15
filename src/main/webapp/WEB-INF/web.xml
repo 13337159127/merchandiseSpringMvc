@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+	<!-- 配置一个过滤器 -->
+	<filter>
+		<filter-name>FirstFilter</filter-name>
+		<filter-class>com.kexin.filter.FirstFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>FirstFilter</filter-name>
+		<url-pattern>*.kexin</url-pattern>
+	</filter-mapping>
+	<servlet>
+		<servlet-name>spring</servlet-name>
+		<!-- 分发servlet -->
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<!-- 去那里寻找配置文件 -->
+			<param-name>contextConfigLocation</param-name>
+			<param-value>WEB-INF/spring-servlet.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>spring</servlet-name>
+		<!-- 拦截所有以*.kexin为扩展名的请求，会被spring 的 DispatcherServlet分发到对应controller里面 -->
+		<url-pattern>*.kexin</url-pattern>
+	</servlet-mapping>
+</web-app>

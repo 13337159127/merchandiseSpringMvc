@@ -12,13 +12,9 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-
 /**
  * Servlet Filter implementation class FirstFilter
  */
-//@Controller("/FirstFilter")
 public class FirstFilter implements Filter {
 
 	/**
@@ -31,7 +27,6 @@ public class FirstFilter implements Filter {
 	/**
 	 * @see Filter#destroy()
 	 */
-	@RequestMapping("/destroy")
 	public void destroy() {
 		System.out.println("过滤器销毁了");
 	}
@@ -39,7 +34,6 @@ public class FirstFilter implements Filter {
 	/**
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
-	@RequestMapping("/doFilter")
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		// 设置字符集编码
@@ -75,7 +69,6 @@ public class FirstFilter implements Filter {
 	/**
 	 * @see Filter#init(FilterConfig)
 	 */
-	@RequestMapping("/init")
 	public void init(FilterConfig fConfig) throws ServletException {
 		System.out.println("过滤器执行了");
 	}

@@ -9,25 +9,20 @@
 <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
 <link rel="icon" type="image/png" sizes="96x96"	href="assets/img/favicon.png">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-
 <title></title>
-
 <meta
 	content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'
 	name='viewport' />
 <meta name="viewport" content="width=device-width" />
-
-<link href="assets/css/bootstrap.min.css" rel="stylesheet" />
-<link href="assets/css/animate.min.css" rel="stylesheet" />
-<link href="assets/css/paper-dashboard.css" rel="stylesheet" />
-<link href="assets/css/demo.css" rel="stylesheet" />
-<link href="assets/css/font-awesome.min.css" rel="stylesheet">
-<link href="assets/css/css.css" rel='stylesheet' type='text/css'>
-<link href="assets/css/themify-icons.css" rel="stylesheet">
-
+<link href="http://localhost:8080/merchandisemvc/assets/css/bootstrap.min.css" rel="stylesheet" />
+<link href="http://localhost:8080/merchandisemvc/assets/css/animate.min.css" rel="stylesheet" />
+<link href="http://localhost:8080/merchandisemvc/assets/css/paper-dashboard.css" rel="stylesheet" />
+<link href="http://localhost:8080/merchandisemvc/assets/css/demo.css" rel="stylesheet" />
+<link href="http://localhost:8080/merchandisemvc/assets/css/font-awesome.min.css" rel="stylesheet">
+<link href="http://localhost:8080/merchandisemvc/assets/css/css.css" rel='stylesheet' type='text/css'>
+<link href="http://localhost:8080/merchandisemvc/assets/css/themify-icons.css" rel="stylesheet">
 </head>
 <body>
-
 	<div class="wrapper">
 		<div class="sidebar" data-background-color="white"
 			data-active-color="danger">
@@ -37,13 +32,13 @@
 				</div>
 
 				<ul class="nav">
-					<li class="active"><a href="/merchandisemvc/FondCommodity.kexin"> <i class="ti-panel"></i>
+					<li class="active"><a href="/merchandisemvc/commodity/fondCommodity.kexin"> <i class="ti-panel"></i>
 							<p>返回首页</p>
 					</a></li>
-					<li><a href="/merchandisemvc/FondClassify.kexin"> <i class="ti-map"></i>
+					<li><a href="/merchandisemvc/classify/fondClassify.kexin"> <i class="ti-map"></i>
 							<p>商品分类管理</p>
 					</a></li>
-					<li><a href="/merchandisemvc/FondUser.kexin"> <i class="ti-bell"></i>
+					<li><a href="/merchandisemvc/user/fondUser.kexin"> <i class="ti-bell"></i>
 							<p>用户名管理</p>
 					</a></li>
 				</ul>
@@ -82,7 +77,7 @@
 									<h4 class="title">修改用户信息</h4>
 								</div>
 								<div class="content table-responsive table-full-width">
-				<form action="/merchandisemvc/UpdateUserName.kexin" method="get">				
+				<form action="/merchandisemvc/user/updateUserName.kexin" method="get">				
 				<table class="table table-striped">
 				<c:forEach items="${list}" var="user"> 
                 <tr>
@@ -112,11 +107,11 @@
 		</div>
 	</div>
 </body>
-<script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>
-<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="assets/js/bootstrap-checkbox-radio.js"></script>
-<script src="assets/js/chartist.min.js"></script>
-<script src="assets/js/bootstrap-notify.js"></script>
-<script src="assets/js/paper-dashboard.js"></script>
-<script src="assets/js/demo.js"></script>
+<script src="http://localhost:8080/merchandisemvc/assets/js/jquery-1.10.2.js" type="text/javascript"></script>
+<script src="http://localhost:8080/merchandisemvc/assets/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="http://localhost:8080/merchandisemvc/assets/js/bootstrap-checkbox-radio.js"></script>
+<script src="http://localhost:8080/merchandisemvc/assets/js/chartist.min.js"></script>
+<script src="http://localhost:8080/merchandisemvc/assets/js/bootstrap-notify.js"></script>
+<script src="http://localhost:8080/merchandisemvc/assets/js/paper-dashboard.js"></script>
+<script src="http://localhost:8080/merchandisemvc/assets/js/demo.js"></script>
 </html>

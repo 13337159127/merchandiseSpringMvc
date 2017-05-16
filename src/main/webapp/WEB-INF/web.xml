@@ -13,8 +13,9 @@
 	</filter-mapping>
 	<servlet>
 		<servlet-name>spring</servlet-name>
-		<!-- 分发servlet -->
+		<!-- 分发servlet到那个方法 -->
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<!--  -->	
 		<init-param>
 			<!-- 去那里寻找配置文件 -->
 			<param-name>contextConfigLocation</param-name>

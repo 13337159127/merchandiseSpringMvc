@@ -13,11 +13,12 @@ import com.kexin.classify.service.ClassifyService;
 import com.kexin.classify.service.ClassifyServiceImpl;
 
 @Controller
+@RequestMapping("/classify")
 public class ClassifyController {
 	/**
 	 * 查询分类
 	 */
-	@RequestMapping("/FondClassify")
+	@RequestMapping("/fondClassify")
 	public String fondClassify(HttpServletRequest request) throws Exception {
 		// 设置字符集
 			request.setCharacterEncoding("UTF-8");
@@ -34,7 +35,7 @@ public class ClassifyController {
 	 * @return
 	 * @throws Exception
 	 */
-	@RequestMapping("/GetIdUpdateClassify")
+	@RequestMapping("/getIdUpdateClassify")
 	public String getIdUpdateClassify(HttpServletRequest request) throws Exception {
 		// 设置字符集
 			String categoryid = request.getParameter("categoryId");
@@ -48,44 +49,44 @@ public class ClassifyController {
 	/**
 	 * 修改商品
 	 */
-	@RequestMapping("/UpdateClassify")
+	@RequestMapping("/updateClassify")
 	public String updateClassify(HttpServletRequest request) throws Exception {
 		// 设置字符集
 			String categoryId = request.getParameter("categoryId");
 			String category = request.getParameter("category");
 			ClassifyService classifyservice = new ClassifyServiceImpl();
 			classifyservice.updateClassify(category, categoryId);
-			return "redirect:/FondClassify.kexin";
+			return "redirect:/classify/fondClassify.kexin";
 	}
 
 	/**
 	 * 添加商品
 	 */
-	@RequestMapping("/AddClassify")
+	@RequestMapping("/addClassify")
 	public String addClassify(HttpServletRequest request) throws Exception {
 		// 设置字符集
 			String category = request.getParameter("category");
 			String categoryId = request.getParameter("categoryId");
 			ClassifyService classifyservice = new ClassifyServiceImpl();
 			classifyservice.addClassify(category, categoryId);
-		    return "redirect:/FondClassify.kexin";
+		    return "redirect:/classify/fondClassify.kexin";
 	}
 
 	/**
 	 * 删除商品
 	 */
-	@RequestMapping("/DeleteClassify")
+	@RequestMapping("/deleteClassify")
 	public String deleteClassify(HttpServletRequest request) throws Exception {
 		// 设置字符集
 			String categoryId = request.getParameter("categoryId");
 			ClassifyService classifyservice = new ClassifyServiceImpl();
 			classifyservice.deleteClassify(categoryId);	 
-		    return "redirect:/FondClassify.kexin";
+		    return "redirect:/classify/fondClassify.kexin";
 	} 
 	/**
 	 * 返回新增页面
 	 */
-	@RequestMapping("/ReturnAddJsp")
+	@RequestMapping("/returnAddJsp")
 	public String returnAddJsp() throws Exception{
 	
 		return "classify/add";

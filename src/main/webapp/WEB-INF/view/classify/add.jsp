@@ -17,13 +17,13 @@
 	name='viewport' />
 <meta name="viewport" content="width=device-width" />
 
-<link href="assets/css/bootstrap.min.css" rel="stylesheet" />
-<link href="assets/css/animate.min.css" rel="stylesheet" />
-<link href="assets/css/paper-dashboard.css" rel="stylesheet" />
-<link href="assets/css/demo.css" rel="stylesheet" />
-<link href="assets/css/font-awesome.min.css" rel="stylesheet">
-<link href="assets/css/css.css" rel='stylesheet' type='text/css'>
-<link href="assets/css/themify-icons.css" rel="stylesheet">
+<link href="http://localhost:8080/merchandisemvc/assets/css/bootstrap.min.css" rel="stylesheet" />
+<link href="http://localhost:8080/merchandisemvc/assets/css/animate.min.css" rel="stylesheet" />
+<link href="http://localhost:8080/merchandisemvc/assets/css/paper-dashboard.css" rel="stylesheet" />
+<link href="http://localhost:8080/merchandisemvc/assets/css/demo.css" rel="stylesheet" />
+<link href="http://localhost:8080/merchandisemvc/assets/css/font-awesome.min.css" rel="stylesheet">
+<link href="http://localhost:8080/merchandisemvc/assets/css/css.css" rel='stylesheet' type='text/css'>
+<link href="http://localhost:8080/merchandisemvc/assets/css/themify-icons.css" rel="stylesheet">
 
 </head>
 <body>
@@ -37,13 +37,13 @@
 				</div>
 
 				<ul class="nav">
-					<li class="active"><a href="/merchandisemvc/FondCommodity.kexin"> <i class="ti-panel"></i>
+					<li class="active"><a href="/merchandisemvc/commodity/fondCommodity.kexin"> <i class="ti-panel"></i>
 							<p>返回首页</p>
 					</a></li>
-					<li><a href="/merchandisemvc/FondClassify.kexin"> <i class="ti-map"></i>
+					<li><a href="/merchandisemvc/classify/fondClassify.kexin"> <i class="ti-map"></i>
 							<p>商品分类管理</p>
 					</a></li>
-					<li><a href="/merchandisemvc/FondUser.kexin"> <i class="ti-bell"></i>
+					<li><a href="/merchandisemvc/user/fondUser.kexin"> <i class="ti-bell"></i>
 							<p>用户名管理</p>
 					</a></li>
 				</ul>
@@ -63,14 +63,14 @@
 								<p>用户名管理</p> <b class="caret"></b>
 						</a>
 						<ul class="dropdown-menu">
-								<li><a href="/merchandisemvc/FondUser.kexin">查询用户名</a></li>
+								<li><a href="/merchandisemvc/user/fondUser.kexin">查询用户名</a></li>
 							</ul></li>
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown"> <i class="ti-bell"></i>								 
 								<p>分类管理</p> <b class="caret"></b>
 						</a>
 						<ul class="dropdown-menu">
-								<li><a href="/merchandisemvc/FondClassify.kexin">查询分类</a></li>
+								<li><a href="/merchandisemvc/classify/fondClassify.kexin">查询分类</a></li>
 							</ul></li>
 					</ul>
 				</div>
@@ -86,7 +86,7 @@
 									<h4 class="title">添加分类信息</h4>
 								</div>
 								<div class="content table-responsive table-full-width">
-				<form action="/merchandisemvc/AddClassify.kexin" method="get"> 			
+				<form action="/merchandisemvc/classify/addClassify.kexin" method="get"> 			
 				<table class="table table-striped">
 				<tr>
                     <th>分类ID</th>
@@ -110,11 +110,11 @@
 		</div>
 	</div>
 </body>
-<script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>
-<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="assets/js/bootstrap-checkbox-radio.js"></script>
-<script src="assets/js/chartist.min.js"></script>
-<script src="assets/js/bootstrap-notify.js"></script>
-<script src="assets/js/paper-dashboard.js"></script>
-<script src="assets/js/demo.js"></script>
+<script src="http://localhost:8080/merchandisemvc/assets/js/jquery-1.10.2.js" type="text/javascript"></script>
+<script src="http://localhost:8080/merchandisemvc/assets/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="http://localhost:8080/merchandisemvc/assets/js/bootstrap-checkbox-radio.js"></script>
+<script src="http://localhost:8080/merchandisemvc/assets/js/chartist.min.js"></script>
+<script src="http://localhost:8080/merchandisemvc/assets/js/bootstrap-notify.js"></script>
+<script src="http://localhost:8080/merchandisemvc/assets/js/paper-dashboard.js"></script>
+<script src="http://localhost:8080/merchandisemvc/assets/js/demo.js"></script>
 </html>

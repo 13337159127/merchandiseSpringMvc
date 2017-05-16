@@ -14,11 +14,12 @@ import com.kexin.user.service.UserService;
 import com.kexin.user.service.UserServiceImpl;
 
 @Controller
+@RequestMapping("/user")
 public class UserController {
 	/**
 	 * 登录用户名的方法
 	 */
-	@RequestMapping("/RegisterUser")
+	@RequestMapping("/registerUser")
 	public String registerUser(HttpServletRequest request) throws Exception {
 			request.setCharacterEncoding("UTF-8");
 			String username = request.getParameter("username");
@@ -39,7 +40,7 @@ public class UserController {
 	/**
 	 * 添加用户名
 	 */
-	@RequestMapping("/AddUserName")
+	@RequestMapping("/addUserName")
 	public String addUserName(HttpServletRequest request) throws Exception {
 			request.setCharacterEncoding("UTF-8");
 			String userId = request.getParameter("userId");
@@ -47,13 +48,13 @@ public class UserController {
 			String passWord = request.getParameter("passWord");
 			UserService userservice = new UserServiceImpl();
 			userservice.addUserName(userId, loginName, passWord);
-		    return "redirect:/FondUser";
+		    return "redirect:/user/fondUser";
 	}
 
 	/**
 	 * 根据Id查询用户信息
 	 */
-	@RequestMapping("/GetIdFondUserName")
+	@RequestMapping("/getIdFondUserName")
 	public String getIdFondUserName(HttpServletRequest request) throws Exception {
 			request.setCharacterEncoding("UTF-8");
 			String userId = request.getParameter("userId");
@@ -66,7 +67,7 @@ public class UserController {
 	/**
 	 * 修改用户信息
 	 */
-	@RequestMapping("/UpdateUserName")
+	@RequestMapping("/updateUserName")
 	public String updateUserName(HttpServletRequest request) throws Exception {
 			request.setCharacterEncoding("UTF-8");
 			String userId = request.getParameter("userId");
@@ -74,13 +75,13 @@ public class UserController {
 			String passWord = request.getParameter("passWord");
 			UserService userservice = new UserServiceImpl();
 			userservice.updateUserName(userId, loginName, passWord);
-			return "redirect:/FondUser";
+			return "redirect:/user/fondUser";
 	}
 
 	/**
 	 * 查询用户信息
 	 */
-	@RequestMapping("/FondUser")
+	@RequestMapping("/fondUser")
 	public String fondUser(HttpServletRequest request) throws Exception {
 			request.setCharacterEncoding("UTF-8");
 			UserService userservice = new UserServiceImpl();
@@ -92,19 +93,19 @@ public class UserController {
 	/**
 	 * 删除用户
 	 */
-	@RequestMapping("/DeleteUserName")
+	@RequestMapping("/deleteUserName")
 	public String deleteUserName(HttpServletRequest request) throws Exception {
 			request.setCharacterEncoding("UTF-8");
 			String userId = request.getParameter("userId");
 			UserService userservice = new UserServiceImpl();
 			userservice.DeleteUserName(userId);
-		    return "redirect:/FondUser";
+		    return "redirect:/user/fondUser";
 	}
 
 	/**
-	 * 返回修改页面
+	 * 返回新增用户名页面
 	 */
-	@RequestMapping("ReturnAddUserJsp")
+	@RequestMapping("returnAddUserJsp")
 	public String returnAddUserJsp() throws Exception{
 
 		return "username/add";

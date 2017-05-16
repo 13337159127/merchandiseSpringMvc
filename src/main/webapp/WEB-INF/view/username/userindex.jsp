@@ -18,13 +18,13 @@
 	name='viewport' />
 <meta name="viewport" content="width=device-width" />
 
-<link href="assets/css/bootstrap.min.css" rel="stylesheet" />
-<link href="assets/css/animate.min.css" rel="stylesheet" />
-<link href="assets/css/paper-dashboard.css" rel="stylesheet" />
-<link href="assets/css/demo.css" rel="stylesheet" />
-<link href="assets/css/font-awesome.min.css" rel="stylesheet">
-<link href="assets/css/css.css" rel='stylesheet' type='text/css'>
-<link href="assets/css/themify-icons.css" rel="stylesheet">
+<link href="http://localhost:8080/merchandisemvc/assets/css/bootstrap.min.css" rel="stylesheet" />
+<link href="http://localhost:8080/merchandisemvc/assets/css/animate.min.css" rel="stylesheet" />
+<link href="http://localhost:8080/merchandisemvc/assets/css/paper-dashboard.css" rel="stylesheet" />
+<link href="http://localhost:8080/merchandisemvc/assets/css/demo.css" rel="stylesheet" />
+<link href="http://localhost:8080/merchandisemvc/assets/css/font-awesome.min.css" rel="stylesheet">
+<link href="http://localhost:8080/merchandisemvc/assets/css/css.css" rel='stylesheet' type='text/css'>
+<link href="http://localhost:8080/merchandisemvc/assets/css/themify-icons.css" rel="stylesheet">
 
 </head>
 <body>
@@ -41,10 +41,10 @@
 					<li class="active"><a href="dashboard.html"> <i class="ti-panel"></i>
 							<p>用户信息列表</p>
 					</a></li>
-					<li><a href="/merchandisemvc/ReturnAddUserJsp.kexin"> <i class="ti-user"></i>
+					<li><a href="/merchandisemvc/user/returnAddUserJsp.kexin"> <i class="ti-user"></i>
 							<p>添加用户名</p>
 					</a></li>
-					<li><a href="/merchandisemvc/FondCommodity.kexin"> <i class="ti-view-list-alt"></i>
+					<li><a href="/merchandisemvc/commodity/fondCommodity.kexin"> <i class="ti-view-list-alt"></i>
 							<p>返回首页</p>
 					</a></li>
 				</ul>
@@ -64,14 +64,14 @@
 								<p>用户名管理</p> <b class="caret"></b>
 						</a>
 							<ul class="dropdown-menu">
-								<li><a href="/merchandisemvc/FondUser.kexin">查询用户名</a></li>
+								<li><a href="/merchandisemvc/user/fondUser.kexin">查询用户名</a></li>
 							</ul></li>
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown"> <i class="ti-bell"></i>								 
 								<p>分类管理</p> <b class="caret"></b>
 						</a>
 							<ul class="dropdown-menu">
-								<li><a href="/merchandisemvc/FondClassify.kexin">查询分类</a></li>
+								<li><a href="/merchandisemvc/classify/fondClassify.kexin">查询分类</a></li>
 							</ul></li>
 					</ul>
 				</div>
@@ -93,16 +93,16 @@
 											<th>用户名Id</th>
                                             <th>用户名</th>
                                             <th>用户名密码</th>
-                                            <th>编辑商品</th>
-                                            <th>删除商品</th>
+                                            <th>编辑用户名</th>
+                                            <th>删除用户名</th>
 										</thead>
 										<c:forEach items="${list}" var="user"> 
 											<tbody>
 											  <td>${user.userId}</td>
                                               <td>${user.loginName}</td>
                                               <td>${user.passWord}</td>
-                                              <td><a href="/merchandisemvc/GetIdFondUserName.kexin?userId=${user.userId}">编辑商品</a></td>
-                                              <td><a href="/merchandisemvc/DeleteUserName.kexin?userId=${user.userId}">删除商品</a></td>
+                                              <td><a href="/merchandisemvc/user/getIdFondUserName.kexin?userId=${user.userId}">编辑用户名</a></td>
+                                              <td><a href="/merchandisemvc/user/deleteUserName.kexin?userId=${user.userId}">删除用户名</a></td>
 											</tbody>
 										</c:forEach>
 									</table>
@@ -117,12 +117,12 @@
 
 </body>
 
-<script src="username/assets/js/jquery-1.10.2.js" type="text/javascript"></script>
-<script src="username/assets/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="username/assets/js/bootstrap-checkbox-radio.js"></script>
-<script src="username/assets/js/chartist.min.js"></script>
-<script src="username/assets/js/bootstrap-notify.js"></script>
-<script src="username/assets/js/paper-dashboard.js"></script>
-<script src="username/assets/js/demo.js"></script>
+<script src="http://localhost:8080/merchandisemvc/username/assets/js/jquery-1.10.2.js" type="text/javascript"></script>
+<script src="http://localhost:8080/merchandisemvc/username/assets/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="http://localhost:8080/merchandisemvc/username/assets/js/bootstrap-checkbox-radio.js"></script>
+<script src="http://localhost:8080/merchandisemvc/username/assets/js/chartist.min.js"></script>
+<script src="http://localhost:8080/merchandisemvc/username/assets/js/bootstrap-notify.js"></script>
+<script src="http://localhost:8080/merchandisemvc/username/assets/js/paper-dashboard.js"></script>
+<script src="http://localhost:8080/merchandisemvc/username/assets/js/demo.js"></script>
 
 </html>

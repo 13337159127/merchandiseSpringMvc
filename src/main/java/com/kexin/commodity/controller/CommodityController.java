@@ -18,6 +18,7 @@ import com.kexin.user.service.UserService;
 import com.kexin.user.service.UserServiceImpl;
 
 @Controller
+@RequestMapping("/commodity")
 public class CommodityController {
 	/**
 	 * 查询商品的方法
@@ -26,7 +27,7 @@ public class CommodityController {
 	 * @return
 	 * @throws Exception
 	 */
-	@RequestMapping("/FondCommodity")
+	@RequestMapping("/fondCommodity")
 	public String fondCommodity(HttpServletRequest request) throws Exception {
 		// 设置字符集
 			request.setCharacterEncoding("UTF-8");
@@ -48,7 +49,7 @@ public class CommodityController {
 	/**
 	 * 查询分类（添加商品使用）
 	 */
-	@RequestMapping("/FondAddClassify")
+	@RequestMapping("/fondAddClassify")
 	public String fondAddClassify(HttpServletRequest request) throws Exception {
 		// 设置字符集
 			request.setCharacterEncoding("UTF-8");
@@ -60,7 +61,7 @@ public class CommodityController {
 	/**
 	 * 添加商品
 	 */
-	@RequestMapping("/AddCommodity")
+	@RequestMapping("/addCommodity")
 	public String addCommodity(HttpServletRequest request) throws Exception {
 		// 设置字符集
 			request.setCharacterEncoding("UTF-8");
@@ -82,13 +83,13 @@ public class CommodityController {
 			commodityservice.addCommodity(commodityId, commodityName, commodityPrice, commodityMuch, commodityPeriod,
 					commodityYiedly, categoryId, userId);
 		    //controller间的跳转   需要重定向
-		    return "redirect:/FondCommodity.kexin";
+		    return "redirect:/commodity/fondCommodity.kexin";
 	}
 
 	/**
 	 * 根据ID查询商品信息（编辑商品使用）
 	 */
-	@RequestMapping("/FondUpdateCommodity")
+	@RequestMapping("/fondUpdateCommodity")
 	public String fondUpdateCommodity(HttpServletRequest request) throws Exception {
 		// 设置字符集
 			request.setCharacterEncoding("UTF-8");
@@ -106,7 +107,7 @@ public class CommodityController {
 	/**
 	 * 修改商品
 	 */
-	@RequestMapping("/UpdateCommodity")
+	@RequestMapping("/updateCommodity")
 	public String updateCommodity(HttpServletRequest request) throws Exception {
 		// 设置字符集
 			request.setCharacterEncoding("UTF-8");
@@ -121,13 +122,13 @@ public class CommodityController {
 			CommodityService commodityservice = new CommodityServiceImpl();
 			commodityservice.updateCommodity(commodityId, commodityName, commodityPrice, commodityMuch, commodityPeriod,
 					commodityYiedly, categoryId);
-		   return "redirect:/FondCommodity.kexin";
+		   return "redirect:/commodity/fondCommodity.kexin";
 	}
 
 	/**
 	 * 删除商品
 	 */
-	@RequestMapping("/DeleteCommodity")
+	@RequestMapping("/deleteCommodity")
 	public String deleteCommodity(HttpServletRequest request) throws Exception {
 		// 设置字符集
 			request.setCharacterEncoding("UTF-8");
@@ -135,12 +136,12 @@ public class CommodityController {
 			// 实列化类 删除商品
 			CommodityService commodityservice = new CommodityServiceImpl();
 			commodityservice.deleteCommodity(commodityId);
-		    return "redirect:/FondCommodity.kexin";
+		    return "redirect:/commodity/fondCommodity.kexin";
 	} 
 	/**
 	 * 查询商品总数
 	 */
-	@RequestMapping("/CommoditySum")
+	@RequestMapping("/commoditySum")
 	public String commoditySum(HttpServletRequest request) throws Exception {
 		// 设置字符集
 			request.setCharacterEncoding("UTF-8");
@@ -155,7 +156,7 @@ public class CommodityController {
 	/**
 	 * 每天录入商品总数
 	 */
-	@RequestMapping("/DaySumCommodity")
+	@RequestMapping("/daySumCommodity")
 	public String daySumCommodity(HttpServletRequest request) throws Exception {
 		// 设置字符集
 			request.setCharacterEncoding("UTF-8");
@@ -167,7 +168,7 @@ public class CommodityController {
 	/**
 	 * 每个分类商品总数
 	 */
-	@RequestMapping("/ClassifySumCommodity")
+	@RequestMapping("/classifySumCommodity")
 	public String classifySumCommodity(HttpServletRequest request) throws Exception {
 		// 设置字符集
 			CommodityService commodityservice = new CommodityServiceImpl();

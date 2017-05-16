@@ -16,7 +16,6 @@ import javax.servlet.http.HttpSession;
  * Servlet Filter implementation class FirstFilter
  */
 public class FirstFilter implements Filter {
-
 	/**
 	 * Default constructor.
 	 */
@@ -48,7 +47,7 @@ public class FirstFilter implements Filter {
 		System.out.println("URL输出的地址:" + re);
 		System.out.println("输出访问用户名:" + username);
 		// 定义一个校验的地址
-		String url = "http://localhost:8080/merchandisemvc/RegisterUser.kexin";
+		String url = "http://localhost:8080/merchandisemvc/user/registerUser.kexin";
 		String requestUrl = re.toString();
 		// 如果用户名不为空 与 用户名不等于空 也可以访问后台
 		if (username != null && !"".equals(username)) {
@@ -61,7 +60,7 @@ public class FirstFilter implements Filter {
 			chain.doFilter(request, response);
 			// 否则 跳转登录页面
 		} else {
-			RequestDispatcher rw = request.getRequestDispatcher("RegisterUser.kexin");
+			RequestDispatcher rw = request.getRequestDispatcher("/user/registerUser.kexin");
 			rw.forward(req, response);
 		}
 	}
@@ -72,5 +71,4 @@ public class FirstFilter implements Filter {
 	public void init(FilterConfig fConfig) throws ServletException {
 		System.out.println("过滤器执行了");
 	}
-
 }

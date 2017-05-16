@@ -8,19 +8,16 @@
 	<link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
 	<link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-
 	<title></title>
-
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="assets/css/animate.min.css" rel="stylesheet"/>  
-    <link href="assets/css/paper-dashboard.css" rel="stylesheet"/>   
-    <link href="assets/css/demo.css" rel="stylesheet" />    
-    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
-    <link href="assets/css/css.css" rel='stylesheet' type='text/css'>
-    <link href="assets/css/themify-icons.css" rel="stylesheet">
-
+    <link href="http://localhost:8080/merchandisemvc/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="http://localhost:8080/merchandisemvc/assets/css/animate.min.css" rel="stylesheet"/>  
+    <link href="http://localhost:8080/merchandisemvc/assets/css/paper-dashboard.css" rel="stylesheet"/>   
+    <link href="http://localhost:8080/merchandisemvc/assets/css/demo.css" rel="stylesheet" />    
+    <link href="http://localhost:8080/merchandisemvc/assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="http://localhost:8080/merchandisemvc/assets/css/css.css" rel='stylesheet' type='text/css'>
+    <link href="http://localhost:8080/merchandisemvc/assets/css/themify-icons.css" rel="stylesheet">
 </head>
 <body>
 <div class="wrapper">
@@ -62,7 +59,7 @@
         </nav>
    <center> 
    <div class="content">       
-  <form action="/merchandisemvc/RegisterUser.kexin" method="get">
+  <form action="/merchandisemvc/user/registerUser.kexin" method="get">
   <div class="form-group">                                
   <input type="text" name="username" style="width: 300px; display: inline" class="form-control" placeholder="用户名">
   </div>
@@ -77,11 +74,11 @@
     </div>
 </div>
 </body>
-    <script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>
-	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
-	<script src="assets/js/bootstrap-checkbox-radio.js"></script>
-	<script src="assets/js/chartist.min.js"></script>
-    <script src="assets/js/bootstrap-notify.js"></script> 
-	<script src="assets/js/paper-dashboard.js"></script>	 
-	<script src="assets/js/demo.js"></script>
+    <script src="http://localhost:8080/merchandisemvc/assets/js/jquery-1.10.2.js" type="text/javascript"></script>
+	<script src="http://localhost:8080/merchandisemvc/assets/js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="http://localhost:8080/merchandisemvc/assets/js/bootstrap-checkbox-radio.js"></script>
+	<script src="http://localhost:8080/merchandisemvc/assets/js/chartist.min.js"></script>
+    <script src="http://localhost:8080/merchandisemvc/assets/js/bootstrap-notify.js"></script> 
+	<script src="http://localhost:8080/merchandisemvc/assets/js/paper-dashboard.js"></script>	 
+	<script src="http://localhost:8080/merchandisemvc/assets/js/demo.js"></script>
 </html>

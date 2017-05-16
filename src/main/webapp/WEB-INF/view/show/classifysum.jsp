@@ -18,13 +18,13 @@
 	name='viewport' />
 <meta name="viewport" content="width=device-width" />
 
-<link href="assets/css/bootstrap.min.css" rel="stylesheet" />
-<link href="assets/css/animate.min.css" rel="stylesheet" />
-<link href="assets/css/paper-dashboard.css" rel="stylesheet" />
-<link href="assets/css/demo.css" rel="stylesheet" />
-<link href="asses/css/font-awesome.min.css" rel="stylesheet">
-<link href="assets/css/css.css" rel='stylesheet' type='text/css'>
-<link href="assets/css/themify-icons.css" rel="stylesheet">
+<link href="http://localhost:8080/merchandisemvc/assets/css/bootstrap.min.css" rel="stylesheet" />
+<link href="http://localhost:8080/merchandisemvc/assets/css/animate.min.css" rel="stylesheet" />
+<link href="http://localhost:8080/merchandisemvc/assets/css/paper-dashboard.css" rel="stylesheet" />
+<link href="http://localhost:8080/merchandisemvc/assets/css/demo.css" rel="stylesheet" />
+<link href="http://localhost:8080/merchandisemvc/asses/css/font-awesome.min.css" rel="stylesheet">
+<link href="http://localhost:8080/merchandisemvc/assets/css/css.css" rel='stylesheet' type='text/css'>
+<link href="http://localhost:8080/merchandisemvc/assets/css/themify-icons.css" rel="stylesheet">
 
 </head>
 <body>
@@ -38,7 +38,7 @@
 				</div>
 
 				<ul class="nav">
-					<li class="active"><a href="/merchandisemvc/FondCommodity.kexin"> <i class="ti-panel"></i>
+					<li class="active"><a href="/merchandisemvc/commodity/fondCommodity.kexin"> <i class="ti-panel"></i>
 							<p>返回首页</p>
 					</a></li>
 				</ul>
@@ -101,12 +101,12 @@
 	</div>
 </body>
 
-<script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>
-<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="assets/js/bootstrap-checkbox-radio.js"></script>
-<script src="assets/js/chartist.min.js"></script>
-<script src="assets/js/bootstrap-notify.js"></script>
-<script src="assets/js/paper-dashboard.js"></script>
-<script src="assets/js/demo.js"></script>
+<script src="http://localhost:8080/merchandisemvc/assets/js/jquery-1.10.2.js" type="text/javascript"></script>
+<script src="http://localhost:8080/merchandisemvc/assets/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="http://localhost:8080/merchandisemvc/assets/js/bootstrap-checkbox-radio.js"></script>
+<script src="http://localhost:8080/merchandisemvc/assets/js/chartist.min.js"></script>
+<script src="http://localhost:8080/merchandisemvc/assets/js/bootstrap-notify.js"></script>
+<script src="http://localhost:8080/merchandisemvc/assets/js/paper-dashboard.js"></script>
+<script src="http://localhost:8080/merchandisemvc/assets/js/demo.js"></script>
 
 </html>

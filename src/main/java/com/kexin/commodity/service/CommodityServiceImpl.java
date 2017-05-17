@@ -11,10 +11,10 @@ public class CommodityServiceImpl implements CommodityService {
 	/**
 	 * 查询商品信息
 	 */
-	public List<CommodityEntity> fondCommodity(String loginname, String classify, String designation, String sort) throws Exception{
+	public List<CommodityEntity> findCommodity(String loginname, String classify, String designation, String sort) throws Exception{
 		// 实列化类
 		CommodityDao commoditydao = new CommodityDaoImpl();
-		List<CommodityEntity> list = commoditydao.fondCommodity(loginname, classify, designation, sort);
+		List<CommodityEntity> list = commoditydao.findCommodity(loginname, classify, designation, sort);
 		return list;
 	}
 
@@ -33,10 +33,10 @@ public class CommodityServiceImpl implements CommodityService {
 	/**
 	 * 根据ID查询商品信息 （修改信息使用）
 	 */
-	public List<Map<String, String>> fondUpdateCommodity(String commodityId) throws Exception{
+	public List<Map<String, String>> findUpdateCommodity(String commodityId) throws Exception{
 		// 实列化类
 		CommodityDao commoditydao = new CommodityDaoImpl();
-		List<Map<String, String>> list1 = commoditydao.fondUpdateCommodity(commodityId);
+		List<Map<String, String>> list1 = commoditydao.findUpdateCommodity(commodityId);
 		return list1;
 	}
 

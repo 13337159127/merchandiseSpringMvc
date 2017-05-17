@@ -20,7 +20,7 @@ public interface ClassifyDao {
 	/**
 	 * 查询商品的分类
 	 */
-	public List<ClassifyEntity> fondClassify() throws Exception;
+	public List<ClassifyEntity> findClassify() throws Exception;
 
 	/**
 	 * 添加商品的分类

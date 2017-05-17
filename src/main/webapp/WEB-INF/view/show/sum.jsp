@@ -16,7 +16,7 @@
             </div>
             <ul class="nav">
                 <li class="active">
-                    <a href="/merchandisemvc/commodity/fondCommodity.kexin">
+                    <a href="${ctxPath}/commodity/findCommodity.kexin">
                         <i class="ti-panel"></i>
                         <p>返回首页</p>
                     </a>
@@ -24,7 +24,6 @@
             </ul>
     	</div>
     </div>
-
     <div class="main-panel">
 		<nav class="navbar navbar-default">
             <div class="container-fluid">

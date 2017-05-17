@@ -9,7 +9,7 @@ public interface UserService {
 	/**
 	 * 按照登录查询用户名和密码
 	 */
-	public List<Map<String, String>> fontUserName(String username, String password) throws Exception;
+	public List<Map<String, String>> findUserName(String username, String password) throws Exception;
 
 	/**
 	 * 按照用户名查询用户的ID （添加商品）
@@ -19,7 +19,7 @@ public interface UserService {
 	/**
 	 * 查询用户名
 	 */
-	public List<UserEntity> fondUser() throws Exception;
+	public List<UserEntity> findUser() throws Exception;
 
 	/**
 	 * 添加用户名
@@ -29,7 +29,7 @@ public interface UserService {
 	/**
 	 * 根据Id查询用户信息用户名
 	 */
-	public List<Map<String, String>> getIdFondUser(String userId) throws Exception;
+	public List<Map<String, String>> getIdfindUser(String userId) throws Exception;
 
 	/**
 	 * 修改用户名

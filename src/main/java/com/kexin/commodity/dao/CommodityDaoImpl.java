@@ -35,7 +35,7 @@ public class CommodityDaoImpl implements CommodityDao {
 	/**
 	 * 查询商品信息
 	 */
-	public List<CommodityEntity> fondCommodity(String loginname, String classify, String designation, String sort)
+	public List<CommodityEntity> findCommodity(String loginname, String classify, String designation, String sort)
 			throws Exception {
 		// 定义一个集合list
 		List<CommodityEntity> list = new ArrayList<CommodityEntity>();
@@ -109,7 +109,7 @@ public class CommodityDaoImpl implements CommodityDao {
 	/**
 	 * 根据ID查询商品信息 （修改信息使用）
 	 */
-	public List<Map<String, String>> fondUpdateCommodity(String commodityId) throws Exception {
+	public List<Map<String, String>> findUpdateCommodity(String commodityId) throws Exception {
 		List<Map<String, String>> list1 = new ArrayList<Map<String, String>>();
 		try {
 			CommodityDao commoditydao = new CommodityDaoImpl();

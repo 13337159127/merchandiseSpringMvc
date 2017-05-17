@@ -21,10 +21,10 @@ public class ClassifyServiceImpl implements ClassifyService {
 	/**
 	 * 查询商品的分类
 	 */
-	public List<ClassifyEntity> fondClassify() throws Exception {
+	public List<ClassifyEntity> findClassify() throws Exception {
 		// 实列化类
 		ClassifyDao classifydao = new ClassifyDaoImpl();
-		List<ClassifyEntity> list = classifydao.fondClassify();
+		List<ClassifyEntity> list = classifydao.findClassify();
 		return list;
 	}
 

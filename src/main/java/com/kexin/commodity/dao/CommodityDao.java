@@ -15,7 +15,7 @@ public interface CommodityDao {
 	/**
 	 * 查询商品信息
 	 */
-	public List<CommodityEntity> fondCommodity(String loginname, String classify, String designation, String sort)
+	public List<CommodityEntity> findCommodity(String loginname, String classify, String designation, String sort)
 			throws Exception;
 
 	/**
@@ -27,7 +27,7 @@ public interface CommodityDao {
 	/**
 	 * 根据ID查询商品信息 （修改信息使用）
 	 */
-	public List<Map<String, String>> fondUpdateCommodity(String commodityId) throws Exception;
+	public List<Map<String, String>> findUpdateCommodity(String commodityId) throws Exception;
 
 	/**
 	 * 修改商品信息

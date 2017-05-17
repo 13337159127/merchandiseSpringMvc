@@ -14,13 +14,13 @@
 					<a href="#" class="simple-text"> 超市管理系统 </a>
 				</div>
 				<ul class="nav">
-					<li class="active"><a href="/merchandisemvc/commodity/fondCommodity.kexin"> <i class="ti-panel"></i>
+					<li class="active"><a href="${ctxPath}/commodity/findCommodity.kexin"> <i class="ti-panel"></i>
 							<p>返回首页</p>
 					</a></li>
-					<li><a href="/merchandisemvc/classify/fondClassify.kexin"> <i class="ti-map"></i>
+					<li><a href="${ctxPath}/classify/findClassify.kexin"> <i class="ti-map"></i>
 							<p>商品分类管理</p>
 					</a></li>
-					<li><a href="/merchandisemvc/user/fondUser.kexin"> <i class="ti-bell"></i>
+					<li><a href="${ctxPath}/user/findUser.kexin"> <i class="ti-bell"></i>
 							<p>用户名管理</p>
 					</a></li>
 				</ul>
@@ -39,14 +39,14 @@
 								<p>用户名管理</p> <b class="caret"></b>
 						</a>
 						<ul class="dropdown-menu">
-								<li><a href="/merchandisemvc/user/fondUser.kexin">查询用户名</a></li>
+								<li><a href="${ctxPath}/user/findUser.kexin">查询用户名</a></li>
 							</ul></li>
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown"> <i class="ti-bell"></i>								 
 								<p>分类管理</p> <b class="caret"></b>
 						</a>
 						<ul class="dropdown-menu">
-								<li><a href="/merchandisemvc/classify/fondClassify.kexin">查询分类</a></li>
+								<li><a href="${ctxPath}/classify/findClassify.kexin">查询分类</a></li>
 							</ul></li>
 					</ul>
 				</div>
@@ -61,7 +61,7 @@
 									<h4 class="title">修改分类信息</h4>
 								</div>
 								<div class="content table-responsive table-full-width">
-				<form action="/merchandisemvc/classify/updateClassify.kexin" method="get">				
+				<form action="${ctxPath}/classify/updateClassify.kexin" method="get">				
 				<table class="table table-striped">
 				<c:forEach items="${list}" var="category">
                 <tr>

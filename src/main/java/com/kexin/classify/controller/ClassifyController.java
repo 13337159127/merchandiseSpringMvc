@@ -18,12 +18,12 @@ public class ClassifyController {
 	/**
 	 * 查询分类
 	 */
-	@RequestMapping("/fondClassify")
-	public String fondClassify(HttpServletRequest request) throws Exception {
+	@RequestMapping("/findClassify")
+	public String findClassify(HttpServletRequest request) throws Exception {
 		// 设置字符集
 			request.setCharacterEncoding("UTF-8");
 			ClassifyService classifyservice = new ClassifyServiceImpl();
-			List<ClassifyEntity> list = classifyservice.fondClassify();
+			List<ClassifyEntity> list = classifyservice.findClassify();
 			request.setAttribute("list", list);
 		    return "classify/index";
 	}
@@ -56,7 +56,7 @@ public class ClassifyController {
 			String category = request.getParameter("category");
 			ClassifyService classifyservice = new ClassifyServiceImpl();
 			classifyservice.updateClassify(category, categoryId);
-			return "redirect:/classify/fondClassify.kexin";
+			return "redirect:/classify/findClassify.kexin";
 	}
 
 	/**
@@ -69,7 +69,7 @@ public class ClassifyController {
 			String categoryId = request.getParameter("categoryId");
 			ClassifyService classifyservice = new ClassifyServiceImpl();
 			classifyservice.addClassify(category, categoryId);
-		    return "redirect:/classify/fondClassify.kexin";
+		    return "redirect:/classify/findClassify.kexin";
 	}
 
 	/**
@@ -81,7 +81,7 @@ public class ClassifyController {
 			String categoryId = request.getParameter("categoryId");
 			ClassifyService classifyservice = new ClassifyServiceImpl();
 			classifyservice.deleteClassify(categoryId);	 
-		    return "redirect:/classify/fondClassify.kexin";
+		    return "redirect:/classify/findClassify.kexin";
 	} 
 	/**
 	 * 返回新增页面

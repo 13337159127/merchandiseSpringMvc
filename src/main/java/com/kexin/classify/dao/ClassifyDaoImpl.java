@@ -60,7 +60,7 @@ public class ClassifyDaoImpl implements ClassifyDao {
 	/**
 	 * 查询商品的分类
 	 */
-	public List<ClassifyEntity> fondClassify() throws Exception {
+	public List<ClassifyEntity> findClassify() throws Exception {
 		// 创建一个list
 		List<ClassifyEntity> list = new ArrayList<ClassifyEntity>();
 		try {

@@ -6,7 +6,6 @@
 <%@include file="/assets/jspfactory.jsp"%>
 </head>
 <body>
-
 <div class="wrapper">
 	<div class="sidebar" data-background-color="white" data-active-color="danger">
     	<div class="sidebar-wrapper">
@@ -15,28 +14,27 @@
                                         超市管理系统
                 </a>
             </div>
-
             <ul class="nav">
                 <li>
-                    <a href="/merchandisemvc/commodity/fondCommodity.kexin">
+                    <a href="${ctxPath}/commodity/findCommodity.kexin">
                         <i class="ti-user"></i>
                         <p>查询商品信息</p>
                     </a>
                 </li>
                 <li>
-                    <a href="/merchandisemvc/commodity/commoditySum.kexin">
+                    <a href="${ctxPath}/commodity/commoditySum.kexin">
                         <i class="ti-text"></i>
                         <p>用户商品总数</p>
                     </a>
                 </li>
                 <li>
-                    <a href="/merchandisemvc/commodity/daySumCommodity.kexin">
+                    <a href="${ctxPath}/commodity/daySumCommodity.kexin">
                         <i class="ti-pencil-alt2"></i>
                         <p>每天录入商品总数</p>
                     </a>
                 </li>
                 <li>
-                    <a href="/merchandisemvc/commodity/classifySumCommodity.kexin">
+                    <a href="${ctxPath}/commodity/classifySumCommodity.kexin">
                         <i class="ti-map"></i>
                         <p>每个分类商品总数</p>
                     </a>

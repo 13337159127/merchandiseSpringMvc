@@ -15,11 +15,16 @@
 		<servlet-name>spring</servlet-name>
 		<!-- 分发servlet到那个方法 -->
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-		<!--  -->	
+		<!-- 初始化加载配置文件 -->
 		<init-param>
-			<!-- 去那里寻找配置文件 -->
+			<!-- 去那里寻找springMVC的配置文件 -->
 			<param-name>contextConfigLocation</param-name>
 			<param-value>WEB-INF/springMVC-servlet.xml</param-value>
+		</init-param>
+		<init-param>
+			<!-- 去那里寻找spring（bean）的配置文件 -->
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath:spring.xml </param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>

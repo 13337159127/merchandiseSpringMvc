@@ -25,7 +25,7 @@ public class UserController {
 			String username = request.getParameter("username");
 			String password = request.getParameter("password");
 			UserService userservice = new UserServiceImpl();
-			List<Map<String, String>> list = userservice.fontUserName(username, password);
+			List<Map<String, String>> list = userservice.findUserName(username, password);
 			// 返回list的值，在servlet里面接收list的值。如果查询的值与数据库匹配，则list.size()>0，登录成功，否则登录失败
 			if (list.size() > 0) {
 				// session对象传用户名
@@ -48,18 +48,18 @@ public class UserController {
 			String passWord = request.getParameter("passWord");
 			UserService userservice = new UserServiceImpl();
 			userservice.addUserName(userId, loginName, passWord);
-		    return "redirect:/user/fondUser";
+		    return "redirect:/user/findUser.kexin";
 	}
 
 	/**
 	 * 根据Id查询用户信息
 	 */
-	@RequestMapping("/getIdFondUserName")
-	public String getIdFondUserName(HttpServletRequest request) throws Exception {
+	@RequestMapping("/getIdfindUserName")
+	public String getIdfindUserName(HttpServletRequest request) throws Exception {
 			request.setCharacterEncoding("UTF-8");
 			String userId = request.getParameter("userId");
 			UserService userservice = new UserServiceImpl();
-			List<Map<String, String>> list = userservice.getIdFondUser(userId);
+			List<Map<String, String>> list = userservice.getIdfindUser(userId);
 			request.setAttribute("list", list); 
 		    return "username/updateuser";
 	}
@@ -75,17 +75,17 @@ public class UserController {
 			String passWord = request.getParameter("passWord");
 			UserService userservice = new UserServiceImpl();
 			userservice.updateUserName(userId, loginName, passWord);
-			return "redirect:/user/fondUser";
+			return "redirect:/user/findUser.kexin";
 	}
 
 	/**
 	 * 查询用户信息
 	 */
-	@RequestMapping("/fondUser")
-	public String fondUser(HttpServletRequest request) throws Exception {
+	@RequestMapping("/findUser")
+	public String findUser(HttpServletRequest request) throws Exception {
 			request.setCharacterEncoding("UTF-8");
 			UserService userservice = new UserServiceImpl();
-			List<UserEntity> list = userservice.fondUser();
+			List<UserEntity> list = userservice.findUser();
 			request.setAttribute("list", list);
 		    return "username/userindex";
 	}
@@ -99,7 +99,7 @@ public class UserController {
 			String userId = request.getParameter("userId");
 			UserService userservice = new UserServiceImpl();
 			userservice.DeleteUserName(userId);
-		    return "redirect:/user/fondUser";
+		    return "redirect:/user/findUser.kexin";
 	}
 
 	/**

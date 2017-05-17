@@ -27,8 +27,8 @@ public class CommodityController {
 	 * @return
 	 * @throws Exception
 	 */
-	@RequestMapping("/fondCommodity")
-	public String fondCommodity(HttpServletRequest request) throws Exception {
+	@RequestMapping("/findCommodity")
+	public String findCommodity(HttpServletRequest request) throws Exception {
 		// 设置字符集
 			request.setCharacterEncoding("UTF-8");
 			String classify = request.getParameter("classify");
@@ -39,7 +39,7 @@ public class CommodityController {
 			String loginname = (String) session.getAttribute("name");
 			// 实列化类
 			CommodityService commodityservice = new CommodityServiceImpl();
-			List<CommodityEntity> list = commodityservice.fondCommodity(loginname, classify, designation, sort);
+			List<CommodityEntity> list = commodityservice.findCommodity(loginname, classify, designation, sort);
 			// 向前台传值
 			request.setAttribute("re", list);
 			//返回jsp页面
@@ -49,8 +49,8 @@ public class CommodityController {
 	/**
 	 * 查询分类（添加商品使用）
 	 */
-	@RequestMapping("/fondAddClassify")
-	public String fondAddClassify(HttpServletRequest request) throws Exception {
+	@RequestMapping("/findAddClassify")
+	public String findAddClassify(HttpServletRequest request) throws Exception {
 		// 设置字符集
 			request.setCharacterEncoding("UTF-8");
 			ClassifyService classifyservice = new ClassifyServiceImpl();
@@ -83,20 +83,20 @@ public class CommodityController {
 			commodityservice.addCommodity(commodityId, commodityName, commodityPrice, commodityMuch, commodityPeriod,
 					commodityYiedly, categoryId, userId);
 		    //controller间的跳转   需要重定向
-		    return "redirect:/commodity/fondCommodity.kexin";
+		    return "redirect:/commodity/findCommodity.kexin";
 	}
 
 	/**
 	 * 根据ID查询商品信息（编辑商品使用）
 	 */
-	@RequestMapping("/fondUpdateCommodity")
-	public String fondUpdateCommodity(HttpServletRequest request) throws Exception {
+	@RequestMapping("/findUpdateCommodity")
+	public String findUpdateCommodity(HttpServletRequest request) throws Exception {
 		// 设置字符集
 			request.setCharacterEncoding("UTF-8");
 			String commodityId = request.getParameter("commodityId");
 			// 实列化查询商品的类
 			CommodityService commodityservice = new CommodityServiceImpl();
-			List<Map<String, String>> list1 = commodityservice.fondUpdateCommodity(commodityId);
+			List<Map<String, String>> list1 = commodityservice.findUpdateCommodity(commodityId);
 			request.setAttribute("list", list1);
 			// 实列化查询分类的的类 获取分类
 			ClassifyService classifyservice = new ClassifyServiceImpl();
@@ -122,7 +122,7 @@ public class CommodityController {
 			CommodityService commodityservice = new CommodityServiceImpl();
 			commodityservice.updateCommodity(commodityId, commodityName, commodityPrice, commodityMuch, commodityPeriod,
 					commodityYiedly, categoryId);
-		   return "redirect:/commodity/fondCommodity.kexin";
+		   return "redirect:/commodity/findCommodity.kexin";
 	}
 
 	/**
@@ -136,7 +136,7 @@ public class CommodityController {
 			// 实列化类 删除商品
 			CommodityService commodityservice = new CommodityServiceImpl();
 			commodityservice.deleteCommodity(commodityId);
-		    return "redirect:/commodity/fondCommodity.kexin";
+		    return "redirect:/commodity/findCommodity.kexin";
 	} 
 	/**
 	 * 查询商品总数

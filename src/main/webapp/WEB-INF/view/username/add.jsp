@@ -15,13 +15,13 @@
 				</div>
 
 				<ul class="nav">
-					<li class="active"><a href="/merchandise/commodity/fondCommodity.kexin"> <i class="ti-panel"></i>
+					<li class="active"><a href="${ctxPath}/commodity/findCommodity.kexin"> <i class="ti-panel"></i>
 							<p>返回首页</p>
 					</a></li>
-					<li><a href="/merchandisemvc/classify/fondClassify.kexin"> <i class="ti-map"></i>
+					<li><a href="${ctxPath}/classify/findClassify.kexin"> <i class="ti-map"></i>
 							<p>商品分类管理</p>
 					</a></li>
-					<li><a href="/merchandisemvc/user/fondUser.kexin"> <i class="ti-bell"></i>
+					<li><a href="${ctxPath}/user/findUser.kexin"> <i class="ti-bell"></i>
 							<p>用户名管理</p>
 					</a></li>
 				</ul>
@@ -59,7 +59,7 @@
 									<h4 class="title">添加用户信息</h4>
 								</div>
 								<div class="content table-responsive table-full-width">
-				<form action="/merchandisemvc/user/addUserName.kexin" method="get">				
+				<form action="${ctxPath}/user/addUserName.kexin" method="get">				
 				<table class="table table-striped">
 				<tr>
                <th width="30%">用户名ID</th>

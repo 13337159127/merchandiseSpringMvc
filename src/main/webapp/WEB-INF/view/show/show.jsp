@@ -19,22 +19,22 @@
 					<li class="active"><a href="dashboard.html"> <i class="ti-panel"></i>
 							<p>商品信息列表</p>
 					</a></li>
-					<li><a href="/merchandisemvc/commodity/fondAddClassify.kexin"> <i class="ti-user"></i>
+					<li><a href="${ctxPath}/commodity/findAddClassify.kexin"> <i class="ti-user"></i>
 							<p>添加商品</p>
 					</a></li>
-					<li><a href="/merchandisemvc/commodity/commoditySum.kexin"> <i class="ti-view-list-alt"></i>
+					<li><a href="${ctxPath}/commodity/commoditySum.kexin"> <i class="ti-view-list-alt"></i>
 							<p>用户商品总数</p>
 					</a></li>
-					<li><a href="/merchandisemvc/commodity/daySumCommodity.kexin"> <i class="ti-text"></i>
+					<li><a href="${ctxPath}/commodity/daySumCommodity.kexin"> <i class="ti-text"></i>
 							<p>每天录入商品总数</p>
 					</a></li>
-					<li><a href="/merchandisemvc/commodity/classifySumCommodity.kexin"> <i class="ti-pencil-alt2"></i>
+					<li><a href="${ctxPath}/commodity/classifySumCommodity.kexin"> <i class="ti-pencil-alt2"></i>
 							<p>每个分类商品总数</p>
 					</a></li>
-					<li><a href="/merchandisemvc/classify/fondClassify.kexin"> <i class="ti-map"></i>
+					<li><a href="${ctxPath}/classify/findClassify.kexin"> <i class="ti-map"></i>
 							<p>商品分类管理</p>
 					</a></li>
-					<li><a href="/merchandisemvc/user/fondUser.kexin"> <i class="ti-bell"></i>
+					<li><a href="${ctxPath}/user/findUser.kexin"> <i class="ti-bell"></i>
 							<p>用户名管理</p>
 					</a></li>
 				</ul>
@@ -54,14 +54,14 @@
 								<p>用户名管理</p> <b class="caret"></b>
 						</a>
 							<ul class="dropdown-menu">
-								<li><a href="/merchandisemvc/FontUser.kexin">查询用户名</a></li>
+								<li><a href="${ctxPath}/findUser.kexin">查询用户名</a></li>
 							</ul></li>
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown"> <i class="ti-bell"></i>								 
 								<p>分类管理</p> <b class="caret"></b>
 						</a>
 							<ul class="dropdown-menu">
-								<li><a href="/merchandisemvc/FondClassify.kexin">查询分类</a></li>
+								<li><a href="${ctxPath}/findClassify.kexin">查询分类</a></li>
 							</ul></li>
 					  </li>
 					</ul>
@@ -145,8 +145,8 @@
 												<td>${commodity.loginName}</td>
 												<!-- 格式化时间和日期 -->
 												<td><fmt:formatDate value="${commodity.entryTime}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
-												<td><a href="/merchandisemvc/commodity/fondUpdateCommodity.kexin?commodityId=${commodity.commodityId}">修改商品</a></td>
-												<td><a href="/merchandisemvc/commodity/deleteCommodity.kexin?commodityId=${commodity.commodityId}">删除商品</a></td>
+												<td><a href="${ctxPath}/commodity/findUpdateCommodity.kexin?commodityId=${commodity.commodityId}">修改商品</a></td>
+												<td><a href="${ctxPath}/commodity/deleteCommodity.kexin?commodityId=${commodity.commodityId}">删除商品</a></td>
 											</tbody>
 										</c:forEach>
 									</table>

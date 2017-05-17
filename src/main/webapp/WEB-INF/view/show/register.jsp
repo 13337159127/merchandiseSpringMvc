@@ -44,7 +44,7 @@
         </nav>
    <center> 
    <div class="content">       
-  <form action="/merchandisemvc/user/registerUser.kexin" method="get">
+  <form action="${ctxPath}/user/registerUser.kexin" method="get">
   <div class="form-group">                                
   <input type="text" name="username" style="width: 300px; display: inline" class="form-control" placeholder="用户名">
   </div>

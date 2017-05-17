@@ -35,7 +35,7 @@ public class UserDaoImpl implements UserDao {
 	/**
 	 * 登录查询用户名和密码
 	 */
-	public List<Map<String, String>> fontUserName(String username, String password) throws Exception {
+	public List<Map<String, String>> findUserName(String username, String password) throws Exception {
 		// 定义一个集合list
 		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
 		try {
@@ -82,7 +82,7 @@ public class UserDaoImpl implements UserDao {
 	/**
 	 * 查询用户名
 	 */
-	public List<UserEntity> fondUser() throws Exception {
+	public List<UserEntity> findUser() throws Exception {
 		// 创建一个list
 		List<UserEntity> list = new ArrayList<UserEntity>();
 		try {
@@ -129,7 +129,7 @@ public class UserDaoImpl implements UserDao {
 	/**
 	 * 根据Id查询用户信息用户名
 	 */
-	public List<Map<String, String>> getIdFondUser(String userId) throws Exception {
+	public List<Map<String, String>> getIdfindUser(String userId) throws Exception {
 		// 创建一个list
 		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
 		try {

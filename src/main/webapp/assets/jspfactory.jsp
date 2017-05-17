@@ -9,20 +9,20 @@
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
     <!-- 获取项目名    赋值给变量 -->
-    <c:set var="ctxpath" value="${pageContext.request.contextPath}"></c:set>  
+    <c:set var="ctxPath" value="${pageContext.request.contextPath}"></c:set>  
     <!-- 项目名+资源路径 -->
-    <link href="${ctxpath}/assets/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="${ctxpath}/assets/css/animate.min.css" rel="stylesheet"/>  
-    <link href="${ctxpath}/assets/css/paper-dashboard.css" rel="stylesheet"/>   
-    <link href="${ctxpath}/assets/css/demo.css" rel="stylesheet"/>    
-    <link href="${ctxpath}/assets/css/font-awesome.min.css" rel="stylesheet"/>
-    <link href="${ctxpath}/assets/css/css.css" rel='stylesheet' type='text/css'/>
-    <link href="${ctxpath}/assets/css/themify-icons.css" rel="stylesheet"/>
+    <link href="${ctxPath}/assets/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="${ctxPath}/assets/css/animate.min.css" rel="stylesheet"/>  
+    <link href="${ctxPath}/assets/css/paper-dashboard.css" rel="stylesheet"/>   
+    <link href="${ctxPath}/assets/css/demo.css" rel="stylesheet"/>    
+    <link href="${ctxPath}/assets/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="${ctxPath}/assets/css/css.css" rel='stylesheet' type='text/css'/>
+    <link href="${ctxPath}/assets/css/themify-icons.css" rel="stylesheet"/>
 </head>
-    <script src="${ctxpath}/assets/js/jquery-1.10.2.js" type="text/javascript"></script>
-	<script src="${ctxpath}/assets/js/bootstrap.min.js" type="text/javascript"></script>
-	<script src="${ctxpath}/assets/js/bootstrap-checkbox-radio.js"></script>
-	<script src="${ctxpath}/assets/js/chartist.min.js"></script>
-    <script src="${ctxpath}/assets/js/bootstrap-notify.js"></script> 
-	<script src="${ctxpath}/assets/js/paper-dashboard.js"></script>	 
-	<script src="${ctxpath}/assets/js/demo.js"></script>
+    <script src="${ctxPath}/assets/js/jquery-1.10.2.js" type="text/javascript"></script>
+	<script src="${ctxPath}/assets/js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="${ctxPath}/assets/js/bootstrap-checkbox-radio.js"></script>
+	<script src="${ctxPath}/assets/js/chartist.min.js"></script>
+    <script src="${ctxPath}/assets/js/bootstrap-notify.js"></script> 
+	<script src="${ctxPath}/assets/js/paper-dashboard.js"></script>	 
+	<script src="${ctxPath}/assets/js/demo.js"></script>

@@ -11,10 +11,10 @@ public class UserServiceImpl implements UserService {
 	/**
 	 * 查询用户名和密码
 	 */
-	public List<Map<String, String>> fontUserName(String username, String password) throws Exception {
+	public List<Map<String, String>> findUserName(String username, String password) throws Exception {
 		// 实列化类 创建对象
 		UserDao userdao = new UserDaoImpl();
-		List<Map<String, String>> list = userdao.fontUserName(username, password);
+		List<Map<String, String>> list = userdao.findUserName(username, password);
 		return list;
 	}
 
@@ -31,10 +31,10 @@ public class UserServiceImpl implements UserService {
 	/**
 	 * 查询用户名
 	 */
-	public List<UserEntity> fondUser() throws Exception {
+	public List<UserEntity> findUser() throws Exception {
 		// 实列化类 创建对象
 		UserDao userdao = new UserDaoImpl();
-		List<UserEntity> list = userdao.fondUser();
+		List<UserEntity> list = userdao.findUser();
 		return list;
 	}
 
@@ -51,10 +51,10 @@ public class UserServiceImpl implements UserService {
 	/**
 	 * 根据Id查询用户信息用户名
 	 */
-	public List<Map<String, String>> getIdFondUser(String userId) throws Exception {
+	public List<Map<String, String>> getIdfindUser(String userId) throws Exception {
 		// 实列化类 创建对象
 		UserDao userdao = new UserDaoImpl();
-		List<Map<String, String>> list = userdao.getIdFondUser(userId);
+		List<Map<String, String>> list = userdao.getIdfindUser(userId);
 		return list;
 	}
 

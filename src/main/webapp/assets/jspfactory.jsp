@@ -26,20 +26,3 @@
     <script src="${ctxpath}/assets/js/bootstrap-notify.js"></script> 
 	<script src="${ctxpath}/assets/js/paper-dashboard.js"></script>	 
 	<script src="${ctxpath}/assets/js/demo.js"></script>
-    <!--  
-    <link href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="${pageContext.request.contextPath}/assets/css/animate.min.css" rel="stylesheet"/>  
-    <link href="${pageContext.request.contextPath}/assets/css/paper-dashboard.css" rel="stylesheet"/>   
-    <link href="${pageContext.request.contextPath}/assets/css/demo.css" rel="stylesheet" />    
-    <link href="${pageContext.request.contextPath}/assets/css/font-awesome.min.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/assets/css/css.css" rel='stylesheet' type='text/css'>
-    <link href="${pageContext.request.contextPath}/assets/css/themify-icons.css" rel="stylesheet">
-</head>
-    <script src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.js" type="text/javascript"></script>
-	<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js" type="text/javascript"></script>
-	<script src="${pageContext.request.contextPath}/assets/js/bootstrap-checkbox-radio.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/js/chartist.min.js"></script>
-    <script src="${pageContext.request.contextPath}/assets/js/bootstrap-notify.js"></script> 
-	<script src="${pageContext.request.contextPath}/assets/js/paper-dashboard.js"></script>	 
-	<script src="${pageContext.request.contextPath}/assets/js/demo.js"></script>
-	 -->

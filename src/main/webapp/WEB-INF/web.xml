@@ -19,7 +19,7 @@
 		<init-param>
 			<!-- 去那里寻找配置文件 -->
 			<param-name>contextConfigLocation</param-name>
-			<param-value>WEB-INF/spring-servlet.xml</param-value>
+			<param-value>WEB-INF/springMVC-servlet.xml</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>

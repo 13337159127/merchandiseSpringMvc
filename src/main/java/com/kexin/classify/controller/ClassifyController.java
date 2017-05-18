@@ -16,79 +16,109 @@ import com.kexin.classify.service.ClassifyServiceImpl;
 @RequestMapping("/classify")
 public class ClassifyController {
 	/**
-	 * 查询分类
+	 *             查询分类信息
+	 * @param request
+	 * @return 
+	 *             返回商品信息首页
+	 * @throws Exception
+	 *             抛出异常
 	 */
 	@RequestMapping("/findClassify")
 	public String findClassify(HttpServletRequest request) throws Exception {
 		// 设置字符集
-			request.setCharacterEncoding("UTF-8");
-			ClassifyService classifyservice = new ClassifyServiceImpl();
-			List<ClassifyEntity> list = classifyservice.findClassify();
-			request.setAttribute("list", list);
-		    return "classify/index";
+		request.setCharacterEncoding("UTF-8");
+		ClassifyService classifyservice = new ClassifyServiceImpl();
+		List<ClassifyEntity> list = classifyservice.findClassify();
+		request.setAttribute("list", list);
+		return "classify/index";
 	}
 
 	/**
 	 * 根据ID查询分类信息
-	 * 
 	 * @param request
-	 * @return
+	 * @return  
+	 *             返回修改分类页面
 	 * @throws Exception
+	 *             抛出异常
 	 */
 	@RequestMapping("/getIdUpdateClassify")
 	public String getIdUpdateClassify(HttpServletRequest request) throws Exception {
 		// 设置字符集
-			String categoryid = request.getParameter("categoryId");
-			// 实列化类 创建对象
-			ClassifyService classifyservice = new ClassifyServiceImpl();
-			List<Map<String, String>> list = classifyservice.getIdUpdateClassify(categoryid);
-			request.setAttribute("list", list);
-		    return "classify/update";
+		String categoryid = request.getParameter("categoryId");
+		// 实列化类 创建对象
+		ClassifyService classifyservice = new ClassifyServiceImpl();
+		List<Map<String, String>> list = classifyservice.getIdUpdateClassify(categoryid);
+		request.setAttribute("list", list);
+		return "classify/update";
 	}
 
 	/**
-	 * 修改商品
+	 * 修改商品分类
+	 * 
+	 * @param request
+	 * @return  
+	 *             返回查询分类首页
+	 * @throws Exception
+	 *             抛出异常
 	 */
 	@RequestMapping("/updateClassify")
 	public String updateClassify(HttpServletRequest request) throws Exception {
 		// 设置字符集
-			String categoryId = request.getParameter("categoryId");
-			String category = request.getParameter("category");
-			ClassifyService classifyservice = new ClassifyServiceImpl();
-			classifyservice.updateClassify(category, categoryId);
-			return "redirect:/classify/findClassify.kexin";
+		String categoryId = request.getParameter("categoryId");
+		String category = request.getParameter("category");
+		ClassifyService classifyservice = new ClassifyServiceImpl();
+		classifyservice.updateClassify(category, categoryId);
+		return "redirect:/classify/findClassify.kexin";
 	}
 
 	/**
-	 * 添加商品
+	 * 添加商品分类
+	 * 
+	 * @param request
+	 * @return 
+	 *             返回查询分类首页
+	 * @throws Exception
+	 *             抛出异常
 	 */
 	@RequestMapping("/addClassify")
 	public String addClassify(HttpServletRequest request) throws Exception {
 		// 设置字符集
-			String category = request.getParameter("category");
-			String categoryId = request.getParameter("categoryId");
-			ClassifyService classifyservice = new ClassifyServiceImpl();
-			classifyservice.addClassify(category, categoryId);
-		    return "redirect:/classify/findClassify.kexin";
+		String category = request.getParameter("category");
+		String categoryId = request.getParameter("categoryId");
+		ClassifyService classifyservice = new ClassifyServiceImpl();
+		classifyservice.addClassify(category, categoryId);
+		return "redirect:/classify/findClassify.kexin";
 	}
 
 	/**
-	 * 删除商品
+	 * 删除商品分类
+	 * 
+	 * @param request
+	 * @return 
+	 *             返回查询分类首页
+	 * @throws Exception
+	 *             抛出异常
 	 */
 	@RequestMapping("/deleteClassify")
 	public String deleteClassify(HttpServletRequest request) throws Exception {
 		// 设置字符集
-			String categoryId = request.getParameter("categoryId");
-			ClassifyService classifyservice = new ClassifyServiceImpl();
-			classifyservice.deleteClassify(categoryId);	 
-		    return "redirect:/classify/findClassify.kexin";
-	} 
+		String categoryId = request.getParameter("categoryId");
+		ClassifyService classifyservice = new ClassifyServiceImpl();
+		classifyservice.deleteClassify(categoryId);
+		return "redirect:/classify/findClassify.kexin";
+	}
+
 	/**
-	 * 返回新增页面
+	 * 返回添加分类页面
+	 * 
+	 * @return 
+	 *             返回添加分类页面
+	 * @throws Exception
+	 *             抛出异常
 	 */
 	@RequestMapping("/returnAddJsp")
-	public String returnAddJsp() throws Exception{
-	
+	public String returnAddJsp() throws Exception {
+
 		return "classify/add";
 	}
 }

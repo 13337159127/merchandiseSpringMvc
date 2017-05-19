@@ -3,11 +3,25 @@ package com.kexin.commodity.service;
 import java.util.List;
 import java.util.Map;
 
-import com.kexin.commodity.dao.CommodityDao;
-import com.kexin.commodity.dao.CommodityDaoImpl;
-import com.kexin.commodity.entity.CommodityEntity;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-public class CommodityServiceImpl implements CommodityService {
+import com.kexin.commodity.dao.CommodityDao;
+import com.kexin.commodity.entity.CommodityEntity;
+/**
+ * 实现接口的类  对dao层进行调用
+ * @author caokexin
+ * 
+ */
+@Service(value="commodityservice")
+public class CommodityServiceImpl implements CommodityService {	
+	//声明成员变量。为成员变量赋值
+	@Autowired
+	private CommodityDao commoditydao;
+	//set设值注入
+	public void setCommoditydao(CommodityDao commoditydao) {
+		this.commoditydao = commoditydao;
+	}
 	/**
 	 * 查询商品信息
 	 * 
@@ -25,9 +39,7 @@ public class CommodityServiceImpl implements CommodityService {
 	 *            抛出异常
 	 */
 	public List<CommodityEntity> findCommodity(String loginname, String classify, String designation, String sort) throws Exception{
-		// 实列化类
-		CommodityDao commoditydao = new CommodityDaoImpl();
-		List<CommodityEntity> list = commoditydao.findCommodity(loginname, classify, designation, sort);
+		List<CommodityEntity> list=commoditydao.findCommodity(loginname, classify, designation, sort);
 		return list;
 	}
 
@@ -57,8 +69,6 @@ public class CommodityServiceImpl implements CommodityService {
 	 */
 	public String addCommodity(String commodityId, String commodityName, String commodityPrice, String commodityMuch,
 			String commodityPeriod, String commodityYiedly, String categoryId, String userId) throws Exception{
-		// 实列化类
-		CommodityDao commoditydao = new CommodityDaoImpl();
 		commoditydao.addCommodity(commodityId, commodityName, commodityPrice, commodityMuch, commodityPeriod,
 				commodityYiedly, categoryId, userId);
 		return commodityId;
@@ -75,8 +85,6 @@ public class CommodityServiceImpl implements CommodityService {
 	 *            抛出异常
 	 */
 	public List<Map<String, String>> findUpdateCommodity(String commodityId) throws Exception{
-		// 实列化类
-		CommodityDao commoditydao = new CommodityDaoImpl();
 		List<Map<String, String>> list1 = commoditydao.findUpdateCommodity(commodityId);
 		return list1;
 	}
@@ -105,8 +113,6 @@ public class CommodityServiceImpl implements CommodityService {
 	 */
 	public String updateCommodity(String commodityId, String commodityName, String commodityPrice, String commodityMuch,
 			String commodityPeriod, String commodityYiedly, String categoryId) throws Exception{
-		// 实列化类
-		CommodityDao commoditydao = new CommodityDaoImpl();
 		commoditydao.updateCommodity(commodityId, commodityName, commodityPrice, commodityMuch, commodityPeriod,
 				commodityYiedly, categoryId);
 		return commodityId;
@@ -123,8 +129,6 @@ public class CommodityServiceImpl implements CommodityService {
 	 *            抛出异常
 	 */
 	public String deleteCommodity(String commodityId) throws Exception{
-		// 实列化类
-		CommodityDao commoditydao = new CommodityDaoImpl();
 		commoditydao.deleteCommodity(commodityId);
 		return commodityId;
 	}
@@ -140,8 +144,6 @@ public class CommodityServiceImpl implements CommodityService {
 	 *            抛出异常
 	 */
 	public List<Map<String, String>> commoditySum(String username) throws Exception{
-		// 实列化类
-		CommodityDao commoditydao = new CommodityDaoImpl();
 		List<Map<String, String>> list = commoditydao.commoditySum(username);
 		return list;
 	}
@@ -155,8 +157,6 @@ public class CommodityServiceImpl implements CommodityService {
 	 *             抛出异常
 	 */
 	public List<Map<String, String>> daySumCommodity() throws Exception{
-		// 实列化类
-		CommodityDao commoditydao = new CommodityDaoImpl();
 		List<Map<String, String>> list = commoditydao.daySumCommodity();
 		return list;
 	}
@@ -170,8 +170,6 @@ public class CommodityServiceImpl implements CommodityService {
 	 *             抛出异常
 	 */
 	public List<Map<String, String>> classifySumCommodity() throws Exception{
-		// 实列化类
-		CommodityDao commoditydao = new CommodityDaoImpl();
 		List<Map<String, String>> list = commoditydao.classifySumCommodity();
 		return list;
 	}

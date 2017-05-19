@@ -3,11 +3,25 @@ package com.kexin.classify.service;
 import java.util.List;
 import java.util.Map;
 
-import com.kexin.classify.dao.ClassifyDao;
-import com.kexin.classify.dao.ClassifyDaoImpl;
-import com.kexin.classify.entity.ClassifyEntity;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import com.kexin.classify.dao.ClassifyDao;
+import com.kexin.classify.entity.ClassifyEntity;
+/**
+ * 对dao层的方法进行调用，Controller类实列化本类  
+ * @author 曹可心
+ *
+ */
+@Service(value="classifyservice")
 public class ClassifyServiceImpl implements ClassifyService {
+	//声明变量  为变量赋值
+	@Autowired
+	private ClassifyDao  classifydao;
+	//set方法设值注入
+	public void setClassifydao(ClassifyDao classifydao) {
+		this.classifydao = classifydao;
+	}
 	/**
 	 * 查询商品的分类 （添加，修改商品使用）
 	 * 
@@ -18,7 +32,7 @@ public class ClassifyServiceImpl implements ClassifyService {
 	 */
 	public List<Map<String, String>> getClassify() throws Exception {
 		// 实列化类
-		ClassifyDao classifydao = new ClassifyDaoImpl();
+	//	ClassifyDao classifydao = new ClassifyDaoImpl();
 		List<Map<String, String>> list = classifydao.getClassify();
 		return list;
 	}
@@ -33,7 +47,7 @@ public class ClassifyServiceImpl implements ClassifyService {
 	 */
 	public List<ClassifyEntity> findClassify() throws Exception {
 		// 实列化类
-		ClassifyDao classifydao = new ClassifyDaoImpl();
+	//	ClassifyDao classifydao = new ClassifyDaoImpl();
 		List<ClassifyEntity> list = classifydao.findClassify();
 		return list;
 	}
@@ -52,7 +66,7 @@ public class ClassifyServiceImpl implements ClassifyService {
 	 */
 	public String addClassify(String category, String categoryId) throws Exception {
 		// 实列化类
-		ClassifyDao classifydao = new ClassifyDaoImpl();
+	//	ClassifyDao classifydao = new ClassifyDaoImpl();
 		classifydao.addClassify(category, categoryId);
 		return category;
 	}
@@ -69,7 +83,7 @@ public class ClassifyServiceImpl implements ClassifyService {
 	 */
 	public List<Map<String, String>> getIdUpdateClassify(String categoryid) throws Exception {
 		// 实列化类
-		ClassifyDao classifydao = new ClassifyDaoImpl();
+	//	ClassifyDao classifydao = new ClassifyDaoImpl();
 		List<Map<String, String>> list = classifydao.getIdUpdateClassify(categoryid);
 		return list;
 	}
@@ -88,7 +102,7 @@ public class ClassifyServiceImpl implements ClassifyService {
 	 */
 	public String updateClassify(String category, String categoryId) throws Exception {
 		// 实列化类
-		ClassifyDao classifydao = new ClassifyDaoImpl();
+	//	ClassifyDao classifydao = new ClassifyDaoImpl();
 		classifydao.updateClassify(category, categoryId);
 		return category;
 	}
@@ -105,7 +119,7 @@ public class ClassifyServiceImpl implements ClassifyService {
 	 */
 	public String deleteClassify(String categoryId) throws Exception {
 		// 实列化类
-		ClassifyDao classifydao = new ClassifyDaoImpl();
+	//	ClassifyDao classifydao = new ClassifyDaoImpl();
 		classifydao.deleteClassify(categoryId);
 		return categoryId;
 	}

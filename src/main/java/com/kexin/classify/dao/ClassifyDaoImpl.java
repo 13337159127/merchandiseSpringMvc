@@ -9,9 +9,24 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.kexin.classify.entity.ClassifyEntity;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
+import com.kexin.classify.entity.ClassifyEntity;
+/**
+ * 对数据库进行访问   实现商品分类的  增  删  改  查  
+ * @author 曹可心
+ *
+ */
+@Repository(value="classifydao")
 public class ClassifyDaoImpl implements ClassifyDao {
+	//声明变量  为变量赋值
+	@Autowired
+	private ClassifyDao  classifydao;
+	//set方法设值注入
+	public void setClassifydao(ClassifyDao classifydao) {
+		this.classifydao = classifydao;
+	}
 	/**
 	 * 会话工厂   实现方法被调用（共享）
 	 * @return
@@ -47,7 +62,7 @@ public class ClassifyDaoImpl implements ClassifyDao {
 		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
 		try {
 			// 实列化类 创建对象
-			ClassifyDao classifydao = new ClassifyDaoImpl();
+		//	ClassifyDao classifydao = new ClassifyDaoImpl();
 			Statement statement = classifydao.getStatement();
 			String sql = "select * from classify";
 			System.out.println(sql);
@@ -79,7 +94,7 @@ public class ClassifyDaoImpl implements ClassifyDao {
 		List<ClassifyEntity> list = new ArrayList<ClassifyEntity>();
 		try {
 			// 实列化类 创建对象
-			ClassifyDao classifydao = new ClassifyDaoImpl();
+		//	ClassifyDao classifydao = new ClassifyDaoImpl();
 			Statement statement = classifydao.getStatement();
 			String sql = "select * from classify";
 			System.out.println(sql);
@@ -113,7 +128,7 @@ public class ClassifyDaoImpl implements ClassifyDao {
 	public String addClassify(String category, String categoryId) throws Exception {
 		try {
 			// 实列化类 创建对象
-			ClassifyDao classifydao = new ClassifyDaoImpl();
+		//	ClassifyDao classifydao = new ClassifyDaoImpl();
 			Statement statement = classifydao.getStatement();
 			String sql = "insert into classify(categoryId,category) values('" + categoryId + "','" + category + "')";
 			System.out.println(sql);
@@ -139,7 +154,7 @@ public class ClassifyDaoImpl implements ClassifyDao {
 		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
 		try {
 			// 实列化类 创建对象
-			ClassifyDao classifydao = new ClassifyDaoImpl();
+		//	ClassifyDao classifydao = new ClassifyDaoImpl();
 			Statement statement = classifydao.getStatement();
 			String sql = "select * from classify where categoryId='" + categoryid + "'";
 			System.out.println(sql);
@@ -173,7 +188,7 @@ public class ClassifyDaoImpl implements ClassifyDao {
 	public String updateClassify(String category, String categoryId) throws Exception {
 		try {
 			// 实列化类 创建对象
-			ClassifyDao classifydao = new ClassifyDaoImpl();
+	//		ClassifyDao classifydao = new ClassifyDaoImpl();
 			Statement statement = classifydao.getStatement();
 			String sql = "update classify set category='" + category + "' where categoryId='" + categoryId + "'";
 			System.out.println(sql);
@@ -197,7 +212,7 @@ public class ClassifyDaoImpl implements ClassifyDao {
 	public String deleteClassify(String categoryId) throws Exception {
 		try {
 			// 实列化类 创建对象
-			ClassifyDao classifydao = new ClassifyDaoImpl();
+	//		ClassifyDao classifydao = new ClassifyDaoImpl();
 			Statement statement = classifydao.getStatement();
 			String sql = "delete from classify where categoryId='" + categoryId + "'";
 			System.out.println(sql);

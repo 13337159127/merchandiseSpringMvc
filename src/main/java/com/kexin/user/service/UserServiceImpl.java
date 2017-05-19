@@ -3,11 +3,25 @@ package com.kexin.user.service;
 import java.util.List;
 import java.util.Map;
 
-import com.kexin.user.dao.UserDao;
-import com.kexin.user.dao.UserDaoImpl;
-import com.kexin.user.entity.UserEntity;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import com.kexin.user.dao.UserDao;
+import com.kexin.user.entity.UserEntity;
+/**
+ * 调用dao层  处理业务操作
+ * @author caokexin
+ *
+ */
+@Service(value="userservice")
 public class UserServiceImpl implements UserService {
+	//声明变量名 为变量赋值
+	@Autowired 
+	private UserDao userdao;
+	//set方法设置注入
+	public void setUserdao(UserDao userdao) {
+		this.userdao = userdao;
+	}
 	/**
 	 * 查询用户名和密码（登录用户）
 	 * 
@@ -21,8 +35,6 @@ public class UserServiceImpl implements UserService {
 	 *            抛出异常
 	 */
 	public List<Map<String, String>> findUserName(String username, String password) throws Exception {
-		// 实列化类 创建对象
-		UserDao userdao = new UserDaoImpl();
 		List<Map<String, String>> list = userdao.findUserName(username, password);
 		return list;
 	}
@@ -38,8 +50,6 @@ public class UserServiceImpl implements UserService {
 	 *            抛出异常
 	 */
 	public String getUserId(String loginName) throws Exception {
-		// 实列化类 创建对象
-		UserDao userdao = new UserDaoImpl();
 		String userId = userdao.getUserId(loginName);
 		return userId;
 	}
@@ -53,8 +63,6 @@ public class UserServiceImpl implements UserService {
 	 *             抛出异常
 	 */
 	public List<UserEntity> findUser() throws Exception {
-		// 实列化类 创建对象
-		UserDao userdao = new UserDaoImpl();
 		List<UserEntity> list = userdao.findUser();
 		return list;
 	}
@@ -74,8 +82,6 @@ public class UserServiceImpl implements UserService {
 	 *             抛出异常
 	 */
 	public String addUserName(String userId, String loginName, String passWord) throws Exception {
-		// 实列化类 创建对象
-		UserDao userdao = new UserDaoImpl();
 		userdao.addUserName(userId, loginName, passWord);
 		return userId;
 	}
@@ -91,8 +97,6 @@ public class UserServiceImpl implements UserService {
 	 *             抛出异常
 	 */
 	public List<Map<String, String>> getIdfindUser(String userId) throws Exception {
-		// 实列化类 创建对象
-		UserDao userdao = new UserDaoImpl();
 		List<Map<String, String>> list = userdao.getIdfindUser(userId);
 		return list;
 	}
@@ -112,8 +116,6 @@ public class UserServiceImpl implements UserService {
 	 *            抛出异常
 	 */
 	public String updateUserName(String userId, String loginName, String passWord) throws Exception {
-		// 实列化类 创建对象
-		UserDao userdao = new UserDaoImpl();
 		userdao.updateUserName(userId, loginName, passWord);
 		return userId;
 	}
@@ -129,8 +131,6 @@ public class UserServiceImpl implements UserService {
 	 *            抛出异常
 	 */
 	public String DeleteUserName(String userId) throws Exception {
-		// 实列化类 创建对象
-		UserDao userdao = new UserDaoImpl();
 		userdao.DeleteUserName(userId);
 		return userId;
 	}

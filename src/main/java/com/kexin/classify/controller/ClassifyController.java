@@ -5,16 +5,23 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.kexin.classify.entity.ClassifyEntity;
 import com.kexin.classify.service.ClassifyService;
-import com.kexin.classify.service.ClassifyServiceImpl;
 
 @Controller
 @RequestMapping("/classify")
 public class ClassifyController {
+	//声明变量  为变量赋值
+	@Autowired
+	private ClassifyService classifyservice;
+	//set方法设值注入
+	public void setClassifyservice(ClassifyService classifyservice) {
+		this.classifyservice = classifyservice;
+	}
 	/**
 	 *             查询分类信息
 	 * @param request
@@ -27,7 +34,7 @@ public class ClassifyController {
 	public String findClassify(HttpServletRequest request) throws Exception {
 		// 设置字符集
 		request.setCharacterEncoding("UTF-8");
-		ClassifyService classifyservice = new ClassifyServiceImpl();
+	//	ClassifyService classifyservice = new ClassifyServiceImpl();
 		List<ClassifyEntity> list = classifyservice.findClassify();
 		request.setAttribute("list", list);
 		return "classify/index";
@@ -46,7 +53,7 @@ public class ClassifyController {
 		// 设置字符集
 		String categoryid = request.getParameter("categoryId");
 		// 实列化类 创建对象
-		ClassifyService classifyservice = new ClassifyServiceImpl();
+	//	ClassifyService classifyservice = new ClassifyServiceImpl();
 		List<Map<String, String>> list = classifyservice.getIdUpdateClassify(categoryid);
 		request.setAttribute("list", list);
 		return "classify/update";
@@ -66,7 +73,7 @@ public class ClassifyController {
 		// 设置字符集
 		String categoryId = request.getParameter("categoryId");
 		String category = request.getParameter("category");
-		ClassifyService classifyservice = new ClassifyServiceImpl();
+	//	ClassifyService classifyservice = new ClassifyServiceImpl();
 		classifyservice.updateClassify(category, categoryId);
 		return "redirect:/classify/findClassify.kexin";
 	}
@@ -85,7 +92,7 @@ public class ClassifyController {
 		// 设置字符集
 		String category = request.getParameter("category");
 		String categoryId = request.getParameter("categoryId");
-		ClassifyService classifyservice = new ClassifyServiceImpl();
+	//	ClassifyService classifyservice = new ClassifyServiceImpl();
 		classifyservice.addClassify(category, categoryId);
 		return "redirect:/classify/findClassify.kexin";
 	}
@@ -103,7 +110,7 @@ public class ClassifyController {
 	public String deleteClassify(HttpServletRequest request) throws Exception {
 		// 设置字符集
 		String categoryId = request.getParameter("categoryId");
-		ClassifyService classifyservice = new ClassifyServiceImpl();
+	//	ClassifyService classifyservice = new ClassifyServiceImpl();
 		classifyservice.deleteClassify(categoryId);
 		return "redirect:/classify/findClassify.kexin";
 	}

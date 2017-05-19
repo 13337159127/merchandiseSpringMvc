@@ -11,9 +11,24 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.kexin.commodity.entity.CommodityEntity;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
+import com.kexin.commodity.entity.CommodityEntity;
+/**
+ * 实现接口的类  对商品信息进行增，删，改，查
+ * @author caokexin
+ * 
+ */
+@Repository(value = "commoditydao")
 public class CommodityDaoImpl implements CommodityDao {
+	//声明成员变量。为成员变量赋值
+	@Autowired
+	private CommodityDao commoditydao;
+	//set设值注入
+	public void setCommoditydao(CommodityDao commoditydao) {
+		this.commoditydao = commoditydao;
+	}
 	/**
 	  * 会话工厂  实现方法被调用（共享）
 	  * @return
@@ -57,7 +72,6 @@ public class CommodityDaoImpl implements CommodityDao {
 		// 定义一个集合list
 		List<CommodityEntity> list = new ArrayList<CommodityEntity>();
 		try {
-			CommodityDao commoditydao = new CommodityDaoImpl();
 			Statement statement = commoditydao.getStatement();
 			String sql = "select commodityId,commodityName,commodityPrice,commodityMuch,commodityPeriod,commodityYiedly,category,loginName,entryTime FROM commodity,user,classify WHERE commodity.categoryId=classify.categoryId AND commodity.userId=user.userId and loginName='"
 					+ loginname + "'";
@@ -130,7 +144,6 @@ public class CommodityDaoImpl implements CommodityDao {
 		// 获取系统日期和时间
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		try {
-			CommodityDao commoditydao = new CommodityDaoImpl();
 			Statement statement = commoditydao.getStatement();
 			String sql = "insert into commodity(commodityId,commodityName,commodityPrice,commodityMuch,commodityPeriod,commodityYiedly,categoryId,userId,entryTime) values('"
 					+ commodityId + "','" + commodityName + "','" + commodityPrice + "','" + commodityMuch + "','"
@@ -156,7 +169,6 @@ public class CommodityDaoImpl implements CommodityDao {
 	public List<Map<String, String>> findUpdateCommodity(String commodityId) throws Exception {
 		List<Map<String, String>> list1 = new ArrayList<Map<String, String>>();
 		try {
-			CommodityDao commoditydao = new CommodityDaoImpl();
 			Statement statement = commoditydao.getStatement();
 			String sql = "select * from commodity where commodityId='" + commodityId + "'";
 			System.out.println(sql);
@@ -210,7 +222,6 @@ public class CommodityDaoImpl implements CommodityDao {
 	public String updateCommodity(String commodityId, String commodityName, String commodityPrice, String commodityMuch,
 			String commodityPeriod, String commodityYiedly, String categoryId) throws Exception {
 		try {
-			CommodityDao commoditydao = new CommodityDaoImpl();
 			Statement statement = commoditydao.getStatement();
 			String sql = "update commodity set commodityName='" + commodityName + "',commodityPrice='" + commodityPrice
 					+ "',commodityMuch='" + commodityMuch + "',commodityPeriod='" + commodityPeriod
@@ -236,7 +247,6 @@ public class CommodityDaoImpl implements CommodityDao {
 	 */
 	public String deleteCommodity(String commodityId) throws Exception {
 		try {
-			CommodityDao commoditydao = new CommodityDaoImpl();
 			Statement statement = commoditydao.getStatement();
 			String sql = "delete from commodity where commodityId='" + commodityId + "'";
 			System.out.println(sql);
@@ -260,7 +270,6 @@ public class CommodityDaoImpl implements CommodityDao {
 	public List<Map<String, String>> commoditySum(String username) throws Exception {
 		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
 		try {
-			CommodityDao commoditydao = new CommodityDaoImpl();
 			Statement statement = commoditydao.getStatement();
 			String sql = "select count(*) as sum from commodity,user where commodity.userId=user.userId and loginName='"
 					+ username + "'";
@@ -289,7 +298,6 @@ public class CommodityDaoImpl implements CommodityDao {
 	public List<Map<String, String>> daySumCommodity() throws Exception {
 		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
 		try {
-			CommodityDao commoditydao = new CommodityDaoImpl();
 			Statement statement = commoditydao.getStatement();
 			String sql = "select DATE_FORMAT(entryTime,'%Y-%m-%d') as date,count(*) as num from commodity GROUP BY  DATE_FORMAT(entryTime,'%Y-%m-%d')";
 			System.out.println(sql);
@@ -319,7 +327,6 @@ public class CommodityDaoImpl implements CommodityDao {
 	public List<Map<String, String>> classifySumCommodity() throws Exception {
 		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
 		try {
-			CommodityDao commoditydao = new CommodityDaoImpl();
 			Statement statement = commoditydao.getStatement();
 			String sql = "select category as sort,COUNT(*) as sum from commodity,classify WHERE commodity.categoryId=classify.categoryId GROUP BY category;";
 			System.out.println(sql);

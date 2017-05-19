@@ -31,8 +31,6 @@ public class ClassifyServiceImpl implements ClassifyService {
 	 *             抛出异常
 	 */
 	public List<Map<String, String>> getClassify() throws Exception {
-		// 实列化类
-	//	ClassifyDao classifydao = new ClassifyDaoImpl();
 		List<Map<String, String>> list = classifydao.getClassify();
 		return list;
 	}
@@ -46,8 +44,6 @@ public class ClassifyServiceImpl implements ClassifyService {
 	 *             抛出异常
 	 */
 	public List<ClassifyEntity> findClassify() throws Exception {
-		// 实列化类
-	//	ClassifyDao classifydao = new ClassifyDaoImpl();
 		List<ClassifyEntity> list = classifydao.findClassify();
 		return list;
 	}
@@ -65,8 +61,6 @@ public class ClassifyServiceImpl implements ClassifyService {
 	 *            抛出异常
 	 */
 	public String addClassify(String category, String categoryId) throws Exception {
-		// 实列化类
-	//	ClassifyDao classifydao = new ClassifyDaoImpl();
 		classifydao.addClassify(category, categoryId);
 		return category;
 	}
@@ -82,8 +76,6 @@ public class ClassifyServiceImpl implements ClassifyService {
 	 *            抛出异常
 	 */
 	public List<Map<String, String>> getIdUpdateClassify(String categoryid) throws Exception {
-		// 实列化类
-	//	ClassifyDao classifydao = new ClassifyDaoImpl();
 		List<Map<String, String>> list = classifydao.getIdUpdateClassify(categoryid);
 		return list;
 	}
@@ -101,8 +93,6 @@ public class ClassifyServiceImpl implements ClassifyService {
 	 *            抛出异常
 	 */
 	public String updateClassify(String category, String categoryId) throws Exception {
-		// 实列化类
-	//	ClassifyDao classifydao = new ClassifyDaoImpl();
 		classifydao.updateClassify(category, categoryId);
 		return category;
 	}
@@ -118,8 +108,6 @@ public class ClassifyServiceImpl implements ClassifyService {
 	 *            抛出异常
 	 */
 	public String deleteClassify(String categoryId) throws Exception {
-		// 实列化类
-	//	ClassifyDao classifydao = new ClassifyDaoImpl();
 		classifydao.deleteClassify(categoryId);
 		return categoryId;
 	}

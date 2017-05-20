@@ -13,15 +13,11 @@ import com.kexin.commodity.entity.CommodityEntity;
  * @author caokexin
  * 
  */
-@Service(value="commodityservice")
+@Service(value="commodityService")
 public class CommodityServiceImpl implements CommodityService {	
-	//声明成员变量。为成员变量赋值
+	//声明成员变量。@Autowired为成员变量赋值
 	@Autowired
-	private CommodityDao commoditydao;
-	//set设值注入
-	public void setCommoditydao(CommodityDao commoditydao) {
-		this.commoditydao = commoditydao;
-	}
+	private CommodityDao commodityDao;
 	/**
 	 * 查询商品信息
 	 * 
@@ -39,7 +35,7 @@ public class CommodityServiceImpl implements CommodityService {
 	 *            抛出异常
 	 */
 	public List<CommodityEntity> findCommodity(String loginname, String classify, String designation, String sort) throws Exception{
-		List<CommodityEntity> list=commoditydao.findCommodity(loginname, classify, designation, sort);
+		List<CommodityEntity> list=commodityDao.findCommodity(loginname, classify, designation, sort);
 		return list;
 	}
 
@@ -69,7 +65,7 @@ public class CommodityServiceImpl implements CommodityService {
 	 */
 	public String addCommodity(String commodityId, String commodityName, String commodityPrice, String commodityMuch,
 			String commodityPeriod, String commodityYiedly, String categoryId, String userId) throws Exception{
-		commoditydao.addCommodity(commodityId, commodityName, commodityPrice, commodityMuch, commodityPeriod,
+		commodityDao.addCommodity(commodityId, commodityName, commodityPrice, commodityMuch, commodityPeriod,
 				commodityYiedly, categoryId, userId);
 		return commodityId;
 	}
@@ -85,7 +81,7 @@ public class CommodityServiceImpl implements CommodityService {
 	 *            抛出异常
 	 */
 	public List<Map<String, String>> findUpdateCommodity(String commodityId) throws Exception{
-		List<Map<String, String>> list1 = commoditydao.findUpdateCommodity(commodityId);
+		List<Map<String, String>> list1 = commodityDao.findUpdateCommodity(commodityId);
 		return list1;
 	}
 
@@ -113,7 +109,7 @@ public class CommodityServiceImpl implements CommodityService {
 	 */
 	public String updateCommodity(String commodityId, String commodityName, String commodityPrice, String commodityMuch,
 			String commodityPeriod, String commodityYiedly, String categoryId) throws Exception{
-		commoditydao.updateCommodity(commodityId, commodityName, commodityPrice, commodityMuch, commodityPeriod,
+		commodityDao.updateCommodity(commodityId, commodityName, commodityPrice, commodityMuch, commodityPeriod,
 				commodityYiedly, categoryId);
 		return commodityId;
 	}
@@ -129,7 +125,7 @@ public class CommodityServiceImpl implements CommodityService {
 	 *            抛出异常
 	 */
 	public String deleteCommodity(String commodityId) throws Exception{
-		commoditydao.deleteCommodity(commodityId);
+		commodityDao.deleteCommodity(commodityId);
 		return commodityId;
 	}
 
@@ -144,7 +140,7 @@ public class CommodityServiceImpl implements CommodityService {
 	 *            抛出异常
 	 */
 	public List<Map<String, String>> commoditySum(String username) throws Exception{
-		List<Map<String, String>> list = commoditydao.commoditySum(username);
+		List<Map<String, String>> list = commodityDao.commoditySum(username);
 		return list;
 	}
 
@@ -157,7 +153,7 @@ public class CommodityServiceImpl implements CommodityService {
 	 *             抛出异常
 	 */
 	public List<Map<String, String>> daySumCommodity() throws Exception{
-		List<Map<String, String>> list = commoditydao.daySumCommodity();
+		List<Map<String, String>> list = commodityDao.daySumCommodity();
 		return list;
 	}
 
@@ -170,7 +166,7 @@ public class CommodityServiceImpl implements CommodityService {
 	 *             抛出异常
 	 */
 	public List<Map<String, String>> classifySumCommodity() throws Exception{
-		List<Map<String, String>> list = commoditydao.classifySumCommodity();
+		List<Map<String, String>> list = commodityDao.classifySumCommodity();
 		return list;
 	}
 }

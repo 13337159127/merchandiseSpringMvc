@@ -15,13 +15,9 @@ import com.kexin.classify.service.ClassifyService;
 @Controller
 @RequestMapping("/classify")
 public class ClassifyController {
-	//声明变量  为变量赋值
+	//声明变量  @Autowired为变量赋值
 	@Autowired
-	private ClassifyService classifyservice;
-	//set方法设值注入
-	public void setClassifyservice(ClassifyService classifyservice) {
-		this.classifyservice = classifyservice;
-	}
+	private ClassifyService classifyService;
 	/**
 	 *             查询分类信息
 	 * @param request
@@ -34,7 +30,7 @@ public class ClassifyController {
 	public String findClassify(HttpServletRequest request) throws Exception {
 		// 设置字符集
 		request.setCharacterEncoding("UTF-8");
-		List<ClassifyEntity> list = classifyservice.findClassify();
+		List<ClassifyEntity> list = classifyService.findClassify();
 		request.setAttribute("list", list);
 		return "classify/index";
 	}
@@ -51,7 +47,7 @@ public class ClassifyController {
 	public String getIdUpdateClassify(HttpServletRequest request) throws Exception {
 		// 设置字符集
 		String categoryid = request.getParameter("categoryId");
-		List<Map<String, String>> list = classifyservice.getIdUpdateClassify(categoryid);
+		List<Map<String, String>> list = classifyService.getIdUpdateClassify(categoryid);
 		request.setAttribute("list", list);
 		return "classify/update";
 	}
@@ -70,7 +66,7 @@ public class ClassifyController {
 		// 设置字符集
 		String categoryId = request.getParameter("categoryId");
 		String category = request.getParameter("category");
-		classifyservice.updateClassify(category, categoryId);
+		classifyService.updateClassify(category, categoryId);
 		return "redirect:/classify/findClassify.kexin";
 	}
 
@@ -88,7 +84,7 @@ public class ClassifyController {
 		// 设置字符集
 		String category = request.getParameter("category");
 		String categoryId = request.getParameter("categoryId");
-		classifyservice.addClassify(category, categoryId);
+		classifyService.addClassify(category, categoryId);
 		return "redirect:/classify/findClassify.kexin";
 	}
 
@@ -105,7 +101,7 @@ public class ClassifyController {
 	public String deleteClassify(HttpServletRequest request) throws Exception {
 		// 设置字符集
 		String categoryId = request.getParameter("categoryId");
-		classifyservice.deleteClassify(categoryId);
+		classifyService.deleteClassify(categoryId);
 		return "redirect:/classify/findClassify.kexin";
 	}
 

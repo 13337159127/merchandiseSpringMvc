@@ -18,15 +18,11 @@ import com.kexin.classify.entity.ClassifyEntity;
  * @author caokexin
  *
  */
-@Repository(value="classifydao")
+@Repository(value="classifyDao")
 public class ClassifyDaoImpl implements ClassifyDao {
-	//声明变量  为变量赋值
+	//声明变量  @Autowired为变量赋值
 	@Autowired
-	private ClassifyDao  classifydao;
-	//set方法设值注入
-	public void setClassifydao(ClassifyDao classifydao) {
-		this.classifydao = classifydao;
-	}
+	private ClassifyDao  classifyDao;
 	/**
 	 * 会话工厂   实现方法被调用（共享）
 	 * @return
@@ -61,7 +57,7 @@ public class ClassifyDaoImpl implements ClassifyDao {
 		// 创建一个list
 		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
 		try {
-			Statement statement = classifydao.getStatement();
+			Statement statement = classifyDao.getStatement();
 			String sql = "select * from classify";
 			System.out.println(sql);
 			ResultSet re = statement.executeQuery(sql);
@@ -91,7 +87,7 @@ public class ClassifyDaoImpl implements ClassifyDao {
 		// 创建一个list
 		List<ClassifyEntity> list = new ArrayList<ClassifyEntity>();
 		try {
-			Statement statement = classifydao.getStatement();
+			Statement statement = classifyDao.getStatement();
 			String sql = "select * from classify";
 			System.out.println(sql);
 			ResultSet re = statement.executeQuery(sql);
@@ -123,7 +119,7 @@ public class ClassifyDaoImpl implements ClassifyDao {
 	 */
 	public String addClassify(String category, String categoryId) throws Exception {
 		try {
-			Statement statement = classifydao.getStatement();
+			Statement statement = classifyDao.getStatement();
 			String sql = "insert into classify(categoryId,category) values('" + categoryId + "','" + category + "')";
 			System.out.println(sql);
 			statement.executeUpdate(sql);
@@ -147,7 +143,7 @@ public class ClassifyDaoImpl implements ClassifyDao {
 		// 创建一个list
 		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
 		try {
-			Statement statement = classifydao.getStatement();
+			Statement statement = classifyDao.getStatement();
 			String sql = "select * from classify where categoryId='" + categoryid + "'";
 			System.out.println(sql);
 			ResultSet re = statement.executeQuery(sql);
@@ -179,7 +175,7 @@ public class ClassifyDaoImpl implements ClassifyDao {
 	 */
 	public String updateClassify(String category, String categoryId) throws Exception {
 		try {
-			Statement statement = classifydao.getStatement();
+			Statement statement = classifyDao.getStatement();
 			String sql = "update classify set category='" + category + "' where categoryId='" + categoryId + "'";
 			System.out.println(sql);
 			statement.executeUpdate(sql);
@@ -201,7 +197,7 @@ public class ClassifyDaoImpl implements ClassifyDao {
 	 */
 	public String deleteClassify(String categoryId) throws Exception {
 		try {
-			Statement statement = classifydao.getStatement();
+			Statement statement = classifyDao.getStatement();
 			String sql = "delete from classify where categoryId='" + categoryId + "'";
 			System.out.println(sql);
 			statement.executeUpdate(sql);

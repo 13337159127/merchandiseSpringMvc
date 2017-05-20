@@ -18,15 +18,11 @@ import com.kexin.user.entity.UserEntity;
  * @author caokexin
  *
  */
-@Repository(value = "userdao")
+@Repository(value = "userDao")
 public class UserDaoImpl implements UserDao {
-	//声明变量名 为变量赋值
+	//声明变量名  @Autowired为变量赋值
 	@Autowired 
-	private UserDao userdao;
-	//set方法设置注入
-	public void setUserdao(UserDao userdao) {
-		this.userdao = userdao;
-	}
+	private UserDao userDao;
 	/**
 	 * 会话工厂  方法被调用（共享）
 	 * @return
@@ -65,7 +61,7 @@ public class UserDaoImpl implements UserDao {
 		// 定义一个集合list
 		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
 		try {
-			Statement statement = userdao.getStatement();
+			Statement statement = userDao.getStatement();
 			String sql = "select * from user where loginName='" + username + "' and passWord='" + password + "'";
 			System.out.println(sql);
 			ResultSet re = statement.executeQuery(sql);
@@ -96,7 +92,7 @@ public class UserDaoImpl implements UserDao {
 	 */
 	public String getUserId(String loginName) throws Exception {
 		try {
-			Statement statement = userdao.getStatement();
+			Statement statement = userDao.getStatement();
 			String sql = "select userId from user where loginName='" + loginName + "'";
 			System.out.println(sql);
 			ResultSet re = statement.executeQuery(sql);
@@ -122,7 +118,7 @@ public class UserDaoImpl implements UserDao {
 		// 创建一个list
 		List<UserEntity> list = new ArrayList<UserEntity>();
 		try {
-			Statement statement = userdao.getStatement();
+			Statement statement = userDao.getStatement();
 			String sql = "select * from user";
 			System.out.println(sql);
 			ResultSet re = statement.executeQuery(sql);
@@ -158,7 +154,7 @@ public class UserDaoImpl implements UserDao {
 	 */
 	public String addUserName(String userId, String loginName, String passWord) throws Exception {
 		try {
-			Statement statement = userdao.getStatement();
+			Statement statement = userDao.getStatement();
 			String sql = "insert into user(userId,loginName,passWord) values('" + userId + "','" + loginName + "','"
 					+ passWord + "')";
 			System.out.println(sql);
@@ -183,7 +179,7 @@ public class UserDaoImpl implements UserDao {
 		// 创建一个list
 		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
 		try {
-			Statement statement = userdao.getStatement();
+			Statement statement = userDao.getStatement();
 			String sql = "select * from user where userId='" + userId + "'";
 			System.out.println(sql);
 			ResultSet re = statement.executeQuery(sql);
@@ -218,7 +214,7 @@ public class UserDaoImpl implements UserDao {
 	 */
 	public String updateUserName(String userId, String loginName, String passWord) throws Exception {
 		try {
-			Statement statement = userdao.getStatement();
+			Statement statement = userDao.getStatement();
 			String sql = "update user set loginName='" + loginName + "',passWord='" + passWord + "' where userId='"
 					+ userId + "'";
 			System.out.println(sql);
@@ -241,7 +237,7 @@ public class UserDaoImpl implements UserDao {
 	 */
 	public String DeleteUserName(String userId) throws Exception {
 		try {
-			Statement statement = userdao.getStatement();
+			Statement statement = userDao.getStatement();
 			String sql = "delete from user where userId='" + userId + "'";
 			System.out.println(sql);
 			statement.executeUpdate(sql);

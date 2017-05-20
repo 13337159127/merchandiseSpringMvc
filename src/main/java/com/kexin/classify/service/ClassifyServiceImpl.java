@@ -10,18 +10,14 @@ import com.kexin.classify.dao.ClassifyDao;
 import com.kexin.classify.entity.ClassifyEntity;
 /**
  * 对dao层的方法进行调用，Controller类实列化本类  
- * @author 曹可心
+ * @author caokexin
  *
  */
-@Service(value="classifyservice")
+@Service(value="classifyService")
 public class ClassifyServiceImpl implements ClassifyService {
 	//声明变量  为变量赋值
 	@Autowired
-	private ClassifyDao  classifydao;
-	//set方法设值注入
-	public void setClassifydao(ClassifyDao classifydao) {
-		this.classifydao = classifydao;
-	}
+	private ClassifyDao  classifyDao;
 	/**
 	 * 查询商品的分类 （添加，修改商品使用）
 	 * 
@@ -31,7 +27,7 @@ public class ClassifyServiceImpl implements ClassifyService {
 	 *             抛出异常
 	 */
 	public List<Map<String, String>> getClassify() throws Exception {
-		List<Map<String, String>> list = classifydao.getClassify();
+		List<Map<String, String>> list = classifyDao.getClassify();
 		return list;
 	}
 
@@ -44,7 +40,7 @@ public class ClassifyServiceImpl implements ClassifyService {
 	 *             抛出异常
 	 */
 	public List<ClassifyEntity> findClassify() throws Exception {
-		List<ClassifyEntity> list = classifydao.findClassify();
+		List<ClassifyEntity> list = classifyDao.findClassify();
 		return list;
 	}
 
@@ -61,7 +57,7 @@ public class ClassifyServiceImpl implements ClassifyService {
 	 *            抛出异常
 	 */
 	public String addClassify(String category, String categoryId) throws Exception {
-		classifydao.addClassify(category, categoryId);
+		classifyDao.addClassify(category, categoryId);
 		return category;
 	}
 
@@ -76,7 +72,7 @@ public class ClassifyServiceImpl implements ClassifyService {
 	 *            抛出异常
 	 */
 	public List<Map<String, String>> getIdUpdateClassify(String categoryid) throws Exception {
-		List<Map<String, String>> list = classifydao.getIdUpdateClassify(categoryid);
+		List<Map<String, String>> list = classifyDao.getIdUpdateClassify(categoryid);
 		return list;
 	}
 
@@ -93,7 +89,7 @@ public class ClassifyServiceImpl implements ClassifyService {
 	 *            抛出异常
 	 */
 	public String updateClassify(String category, String categoryId) throws Exception {
-		classifydao.updateClassify(category, categoryId);
+		classifyDao.updateClassify(category, categoryId);
 		return category;
 	}
 
@@ -108,7 +104,7 @@ public class ClassifyServiceImpl implements ClassifyService {
 	 *            抛出异常
 	 */
 	public String deleteClassify(String categoryId) throws Exception {
-		classifydao.deleteClassify(categoryId);
+		classifyDao.deleteClassify(categoryId);
 		return categoryId;
 	}
 }

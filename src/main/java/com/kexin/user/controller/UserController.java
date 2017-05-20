@@ -18,11 +18,7 @@ import com.kexin.user.service.UserService;
 public class UserController {
 	//声明变量  为变量赋值
 	@Autowired 
-	private UserService userservice;
-	//set设值注入方式
-	 public void setUserservice(UserService userservice) {
-			this.userservice = userservice;
-		}
+	private UserService userService;
 	/**
 	 * 查询用户信息（用户登录）
 	 * 
@@ -37,7 +33,7 @@ public class UserController {
 		request.setCharacterEncoding("UTF-8");
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		List<Map<String, String>> list = userservice.findUserName(username, password);
+		List<Map<String, String>> list = userService.findUserName(username, password);
 		// 返回list的值，在servlet里面接收list的值。如果查询的值与数据库匹配，则list.size()>0，登录成功，否则登录失败
 		if (list.size() > 0) {
 			// session对象传用户名
@@ -63,7 +59,7 @@ public class UserController {
 		String userId = request.getParameter("userId");
 		String loginName = request.getParameter("loginName");
 		String passWord = request.getParameter("passWord");
-		userservice.addUserName(userId, loginName, passWord);
+		userService.addUserName(userId, loginName, passWord);
 		return "redirect:/user/findUser.kexin";
 	}
 
@@ -79,7 +75,7 @@ public class UserController {
 	public String getIdfindUserName(HttpServletRequest request) throws Exception {
 		request.setCharacterEncoding("UTF-8");
 		String userId = request.getParameter("userId");
-		List<Map<String, String>> list = userservice.getIdfindUser(userId);
+		List<Map<String, String>> list = userService.getIdfindUser(userId);
 		request.setAttribute("list", list);
 		return "username/updateuser";
 	}
@@ -98,7 +94,7 @@ public class UserController {
 		String userId = request.getParameter("userId");
 		String loginName = request.getParameter("loginName");
 		String passWord = request.getParameter("passWord");
-		userservice.updateUserName(userId, loginName, passWord);
+		userService.updateUserName(userId, loginName, passWord);
 		return "redirect:/user/findUser.kexin";
 	}
 
@@ -113,7 +109,7 @@ public class UserController {
 	@RequestMapping("/findUser")
 	public String findUser(HttpServletRequest request) throws Exception {
 		request.setCharacterEncoding("UTF-8");
-		List<UserEntity> list = userservice.findUser();
+		List<UserEntity> list = userService.findUser();
 		request.setAttribute("list", list);
 		return "username/userindex";
 	}
@@ -130,7 +126,7 @@ public class UserController {
 	public String deleteUserName(HttpServletRequest request) throws Exception {
 		request.setCharacterEncoding("UTF-8");
 		String userId = request.getParameter("userId");
-		userservice.DeleteUserName(userId);
+		userService.DeleteUserName(userId);
 		return "redirect:/user/findUser.kexin";
 	}
 

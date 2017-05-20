@@ -13,15 +13,11 @@ import com.kexin.user.entity.UserEntity;
  * @author caokexin
  *
  */
-@Service(value="userservice")
+@Service(value="userService")
 public class UserServiceImpl implements UserService {
 	//声明变量名 为变量赋值
 	@Autowired 
-	private UserDao userdao;
-	//set方法设置注入
-	public void setUserdao(UserDao userdao) {
-		this.userdao = userdao;
-	}
+	private UserDao userDao;
 	/**
 	 * 查询用户名和密码（登录用户）
 	 * 
@@ -35,7 +31,7 @@ public class UserServiceImpl implements UserService {
 	 *            抛出异常
 	 */
 	public List<Map<String, String>> findUserName(String username, String password) throws Exception {
-		List<Map<String, String>> list = userdao.findUserName(username, password);
+		List<Map<String, String>> list = userDao.findUserName(username, password);
 		return list;
 	}
 
@@ -50,7 +46,7 @@ public class UserServiceImpl implements UserService {
 	 *            抛出异常
 	 */
 	public String getUserId(String loginName) throws Exception {
-		String userId = userdao.getUserId(loginName);
+		String userId = userDao.getUserId(loginName);
 		return userId;
 	}
 
@@ -63,7 +59,7 @@ public class UserServiceImpl implements UserService {
 	 *             抛出异常
 	 */
 	public List<UserEntity> findUser() throws Exception {
-		List<UserEntity> list = userdao.findUser();
+		List<UserEntity> list = userDao.findUser();
 		return list;
 	}
 
@@ -82,7 +78,7 @@ public class UserServiceImpl implements UserService {
 	 *             抛出异常
 	 */
 	public String addUserName(String userId, String loginName, String passWord) throws Exception {
-		userdao.addUserName(userId, loginName, passWord);
+		userDao.addUserName(userId, loginName, passWord);
 		return userId;
 	}
 
@@ -97,7 +93,7 @@ public class UserServiceImpl implements UserService {
 	 *             抛出异常
 	 */
 	public List<Map<String, String>> getIdfindUser(String userId) throws Exception {
-		List<Map<String, String>> list = userdao.getIdfindUser(userId);
+		List<Map<String, String>> list = userDao.getIdfindUser(userId);
 		return list;
 	}
 
@@ -116,7 +112,7 @@ public class UserServiceImpl implements UserService {
 	 *            抛出异常
 	 */
 	public String updateUserName(String userId, String loginName, String passWord) throws Exception {
-		userdao.updateUserName(userId, loginName, passWord);
+		userDao.updateUserName(userId, loginName, passWord);
 		return userId;
 	}
 
@@ -131,7 +127,7 @@ public class UserServiceImpl implements UserService {
 	 *            抛出异常
 	 */
 	public String DeleteUserName(String userId) throws Exception {
-		userdao.DeleteUserName(userId);
+		userDao.DeleteUserName(userId);
 		return userId;
 	}
 }

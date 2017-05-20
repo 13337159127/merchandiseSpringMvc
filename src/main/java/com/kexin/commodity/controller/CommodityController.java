@@ -22,24 +22,13 @@ import com.kexin.user.service.UserService;
 @Controller
 @RequestMapping("/commodity")
 public class CommodityController {
-	//声明成员变量。为成员变量赋值
+	//声明成员变量。@Autowired为成员变量赋值
 	@Autowired 
-	private CommodityService commodityservice;
+	private CommodityService commodityService;
 	@Autowired
-	private ClassifyService classifyservice;
+	private ClassifyService classifyService;
 	@Autowired 
-	private UserService userservice;
-	//set设值注入方式
-	public void setUserservice(UserService userservice) {
-	    this.userservice = userservice;
-	}
-    //set设值注入
-	public void setCommodityservice(CommodityService commodityservice) {
-		this.commodityservice = commodityservice;
-	}
-	public void setClassifyservice(ClassifyService classifyservice) {
-		this.classifyservice = classifyservice;
-	}
+	private UserService userService;
 	/**
 	 * 查询商品信息
 	 * 
@@ -60,7 +49,7 @@ public class CommodityController {
 		HttpSession session = request.getSession();
 		String loginname = (String) session.getAttribute("name");
 		// 实列化类
-		List<CommodityEntity> list = commodityservice.findCommodity(loginname, classify, designation, sort);
+		List<CommodityEntity> list = commodityService.findCommodity(loginname, classify, designation, sort);
 		// 向前台传值
 		request.setAttribute("re", list);
 		// 返回jsp页面
@@ -79,7 +68,7 @@ public class CommodityController {
 	public String findAddClassify(HttpServletRequest request) throws Exception {
 		// 设置字符集
 		request.setCharacterEncoding("UTF-8");
-		List<Map<String, String>> list = classifyservice.getClassify();
+		List<Map<String, String>> list = classifyService.getClassify();
 		request.setAttribute("re", list);
 		return "show/add";
 	}
@@ -107,9 +96,9 @@ public class CommodityController {
 		HttpSession session = request.getSession();
 		String loginName = (String) session.getAttribute("name");
 		// 返回用户ID
-		String userId = userservice.getUserId(loginName);
+		String userId = userService.getUserId(loginName);
 		// 实列化类 创建对象 添加商品
-		commodityservice.addCommodity(commodityId, commodityName, commodityPrice, commodityMuch, commodityPeriod,
+		commodityService.addCommodity(commodityId, commodityName, commodityPrice, commodityMuch, commodityPeriod,
 				commodityYiedly, categoryId, userId);
 		// controller间的跳转 需要重定向
 		return "redirect:/commodity/findCommodity.kexin";
@@ -129,10 +118,10 @@ public class CommodityController {
 		request.setCharacterEncoding("UTF-8");
 		String commodityId = request.getParameter("commodityId");
 		// 根据ID查询商品的信息
-		List<Map<String, String>> list1 = commodityservice.findUpdateCommodity(commodityId);
+		List<Map<String, String>> list1 = commodityService.findUpdateCommodity(commodityId);
 		request.setAttribute("list", list1);
 		// 实列化查询分类的的类 获取分类
-		List<Map<String, String>> list = classifyservice.getClassify();
+		List<Map<String, String>> list = classifyService.getClassify();
 		request.setAttribute("re", list);
 		return "show/update";
 	}
@@ -156,7 +145,7 @@ public class CommodityController {
 		String commodityPeriod = request.getParameter("commodityPeriod");
 		String commodityYiedly = request.getParameter("commodityYiedly");
 		String categoryId = request.getParameter("categoryId");
-		commodityservice.updateCommodity(commodityId, commodityName, commodityPrice, commodityMuch, commodityPeriod,
+		commodityService.updateCommodity(commodityId, commodityName, commodityPrice, commodityMuch, commodityPeriod,
 				commodityYiedly, categoryId);
 		return "redirect:/commodity/findCommodity.kexin";
 	}
@@ -174,7 +163,7 @@ public class CommodityController {
 		// 设置字符集
 		request.setCharacterEncoding("UTF-8");
 		String commodityId = request.getParameter("commodityId");
-		commodityservice.deleteCommodity(commodityId);
+		commodityService.deleteCommodity(commodityId);
 		return "redirect:/commodity/findCommodity.kexin";
 	}
 
@@ -192,7 +181,7 @@ public class CommodityController {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
 		String username = (String) session.getAttribute("name");
-		List<Map<String, String>> list = commodityservice.commoditySum(username);
+		List<Map<String, String>> list = commodityService.commoditySum(username);
 		request.setAttribute("list", list);
 		return "show/sum";
 	}
@@ -209,7 +198,7 @@ public class CommodityController {
 	public String daySumCommodity(HttpServletRequest request) throws Exception {
 		// 设置字符集
 		request.setCharacterEncoding("UTF-8");
-		List<Map<String, String>> list = commodityservice.daySumCommodity();
+		List<Map<String, String>> list = commodityService.daySumCommodity();
 		request.setAttribute("list", list);
 		return "show/daysum";
 	}
@@ -225,7 +214,7 @@ public class CommodityController {
 	@RequestMapping("/classifySumCommodity")
 	public String classifySumCommodity(HttpServletRequest request) throws Exception {
 		// 设置字符集
-		List<Map<String, String>> list = commodityservice.classifySumCommodity();
+		List<Map<String, String>> list = commodityService.classifySumCommodity();
 		request.setAttribute("list", list);
 		return "show/classifysum";
 	}

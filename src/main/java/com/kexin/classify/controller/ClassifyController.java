@@ -51,7 +51,6 @@ public class ClassifyController {
 	public String getIdUpdateClassify(HttpServletRequest request) throws Exception {
 		// 设置字符集
 		String categoryid = request.getParameter("categoryId");
-		// 实列化类 创建对象
 		List<Map<String, String>> list = classifyservice.getIdUpdateClassify(categoryid);
 		request.setAttribute("list", list);
 		return "classify/update";

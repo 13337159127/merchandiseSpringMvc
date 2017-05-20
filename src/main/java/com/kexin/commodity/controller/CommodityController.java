@@ -13,9 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.kexin.classify.service.ClassifyService;
 import com.kexin.commodity.entity.CommodityEntity;
 import com.kexin.commodity.service.CommodityService;
-import com.kexin.commodity.service.CommodityServiceImpl;
 import com.kexin.user.service.UserService;
-import com.kexin.user.service.UserServiceImpl;
 /**
  * controller类，调用业务层方法，返回相应页面
  * @author caokexin
@@ -25,9 +23,16 @@ import com.kexin.user.service.UserServiceImpl;
 @RequestMapping("/commodity")
 public class CommodityController {
 	//声明成员变量。为成员变量赋值
-	@Autowired
+	@Autowired 
 	private CommodityService commodityservice;
+	@Autowired
 	private ClassifyService classifyservice;
+	@Autowired 
+	private UserService userservice;
+	//set设值注入方式
+	public void setUserservice(UserService userservice) {
+	    this.userservice = userservice;
+	}
     //set设值注入
 	public void setCommodityservice(CommodityService commodityservice) {
 		this.commodityservice = commodityservice;
@@ -101,8 +106,7 @@ public class CommodityController {
 		// 接收用户名
 		HttpSession session = request.getSession();
 		String loginName = (String) session.getAttribute("name");
-		// 实列化类 创建对象 返回用户ID
-		UserService userservice = new UserServiceImpl();
+		// 返回用户ID
 		String userId = userservice.getUserId(loginName);
 		// 实列化类 创建对象 添加商品
 		commodityservice.addCommodity(commodityId, commodityName, commodityPrice, commodityMuch, commodityPeriod,
@@ -124,8 +128,7 @@ public class CommodityController {
 		// 设置字符集
 		request.setCharacterEncoding("UTF-8");
 		String commodityId = request.getParameter("commodityId");
-		// 实列化查询商品的类
-		CommodityService commodityservice = new CommodityServiceImpl();
+		// 根据ID查询商品的信息
 		List<Map<String, String>> list1 = commodityservice.findUpdateCommodity(commodityId);
 		request.setAttribute("list", list1);
 		// 实列化查询分类的的类 获取分类

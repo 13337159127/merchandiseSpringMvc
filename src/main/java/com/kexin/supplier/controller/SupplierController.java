@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kexin.supplier.entity.SupplierEntity;
 import com.kexin.supplier.service.SupplierService;
@@ -51,10 +52,9 @@ public class SupplierController {
 	 *             抛出异常
 	 */
 	@RequestMapping("/getIdFindSupplier")
-	public String getIdFindSupplier(HttpServletRequest request) throws Exception {
+	public String getIdFindSupplier(@RequestParam String supplierID, HttpServletRequest request) throws Exception {
 		// 设置字符集
 		request.setCharacterEncoding("UTF-8");
-		String supplierID = request.getParameter("supplierID");
 		List<Map<String, String>> list = supplierService.getIdFindSupplier(supplierID);
 		request.setAttribute("list", list);
 		return "supplier/updatesupplier";
@@ -63,20 +63,25 @@ public class SupplierController {
 	/**
 	 * 修改供货商信息
 	 * 
+	 * @param supplierID
+	 *            供货商ID
+	 * @param supplierName
+	 *            供货商姓名
+	 * @param supplierAddress
+	 *            供货商地址
+	 * @param supplierPhone
+	 *            供货商电话
 	 * @param request
-	 *            接收参数
-	 * @return 返回首页
+	 *            设置字符集
+	 * @return 返回修改页面
 	 * @throws Exception
 	 *             抛出异常
 	 */
 	@RequestMapping("/updateSupplier")
-	public String updateSupplier(HttpServletRequest request) throws Exception {
+	public String updateSupplier(@RequestParam String supplierID, String supplierName, String supplierAddress,
+			String supplierPhone, HttpServletRequest request) throws Exception {
 		// 设置字符集
 		request.setCharacterEncoding("UTF-8");
-		String supplierID = request.getParameter("supplierID");
-		String supplierName = request.getParameter("supplierName");
-		String supplierAddress = request.getParameter("supplierAddress");
-		String supplierPhone = request.getParameter("supplierPhone");
 		supplierService.updateSupplier(supplierID, supplierName, supplierAddress, supplierPhone);
 		return "redirect:/supplier/findSupplier.kexin";
 	}
@@ -96,20 +101,25 @@ public class SupplierController {
 	/**
 	 * 添加供货商信息
 	 * 
+	 * @param supplierID
+	 *            供货商ID
+	 * @param supplierName
+	 *            供货商姓名
+	 * @param supplierAddress
+	 *            供货商地址
+	 * @param supplierPhone
+	 *            供货商电话
 	 * @param request
-	 *            接收参数
-	 * @return 返回添加jsp页面
+	 *            设置字符集
+	 * @return 返回展示页面
 	 * @throws Exception
 	 *             抛出异常
 	 */
 	@RequestMapping("/addSupplier")
-	public String addSupplier(HttpServletRequest request) throws Exception {
+	public String addSupplier(@RequestParam String supplierID, String supplierName, String supplierAddress,
+			String supplierPhone, HttpServletRequest request) throws Exception {
 		// 设置字符集
 		request.setCharacterEncoding("UTF-8");
-		String supplierID = request.getParameter("supplierID");
-		String supplierName = request.getParameter("supplierName");
-		String supplierAddress = request.getParameter("supplierAddress");
-		String supplierPhone = request.getParameter("supplierPhone");
 		supplierService.addSupplier(supplierID, supplierName, supplierAddress, supplierPhone);
 		return "redirect:/supplier/findSupplier.kexin";
 	}
@@ -123,10 +133,9 @@ public class SupplierController {
 	 *             抛出异常
 	 */
 	@RequestMapping("/deleteSupplier")
-	public String deleteSupplier(HttpServletRequest request) throws Exception {
+	public String deleteSupplier(@RequestParam String supplierID, HttpServletRequest request) throws Exception {
 		// 设置字符集
 		request.setCharacterEncoding("UTF-8");
-		String supplierID = request.getParameter("supplierID");
 		supplierService.deleteSupplier(supplierID);
 		return "redirect:/supplier/findSupplier.kexin";
 	}

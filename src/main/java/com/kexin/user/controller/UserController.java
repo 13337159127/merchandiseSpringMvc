@@ -16,23 +16,22 @@ import com.kexin.user.service.UserService;
 @Controller
 @RequestMapping("/user")
 public class UserController {
-	//声明变量  为变量赋值
-	@Autowired 
+	// 声明变量 为变量赋值
+	@Autowired
 	private UserService userService;
+
 	/**
 	 * 查询用户信息（用户登录）
 	 * 
 	 * @param request
-	 * @return  
-	 *             如果查询的值与数据库匹配，则list.size()>0，登录成功，返回成功页面，否则登录失败，返回首页
+	 * @return 如果查询的值与数据库匹配，则list.size()>0，登录成功，返回成功页面，否则登录失败，返回首页
 	 * @throws Exception
 	 *             抛出异常
 	 */
 	@RequestMapping("/registerUser")
-	public String registerUser(HttpServletRequest request) throws Exception {
+	public String registerUser(String username, String password, HttpServletRequest request)
+			throws Exception {
 		request.setCharacterEncoding("UTF-8");
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
 		List<Map<String, String>> list = userService.findUserName(username, password);
 		// 返回list的值，在servlet里面接收list的值。如果查询的值与数据库匹配，则list.size()>0，登录成功，否则登录失败
 		if (list.size() > 0) {
@@ -46,66 +45,61 @@ public class UserController {
 	}
 
 	/**
-	  * 添加用户信息
-	  * @param request
-	  * @return
-	  *       返回用户信息首页
-	  * @throws Exception
-	  *       抛出异常
-	  */
+	 * 添加用户信息
+	 * 
+	 * @param request
+	 * @return 返回用户信息首页
+	 * @throws Exception
+	 *             抛出异常
+	 */
 	@RequestMapping("/addUserName")
-	public String addUserName(HttpServletRequest request) throws Exception {
+	public String addUserName(String userId, String loginName, String passWord, HttpServletRequest request)
+			throws Exception {
 		request.setCharacterEncoding("UTF-8");
-		String userId = request.getParameter("userId");
-		String loginName = request.getParameter("loginName");
-		String passWord = request.getParameter("passWord");
 		userService.addUserName(userId, loginName, passWord);
 		return "redirect:/user/findUser.kexin";
 	}
 
-	 /**
-	  * 根据ID查询用户信息
-	  * @param request
-	  * @return
-	  *    返回修改用户信息页面
-	  * @throws Exception
-	  *    抛出异常
-	  */
+	/**
+	 * 根据ID查询用户信息
+	 * 
+	 * @param request
+	 * @return 返回修改用户信息页面
+	 * @throws Exception
+	 *             抛出异常
+	 */
 	@RequestMapping("/getIdfindUserName")
-	public String getIdfindUserName(HttpServletRequest request) throws Exception {
+	public String getIdfindUserName(String userId, HttpServletRequest request) throws Exception {
 		request.setCharacterEncoding("UTF-8");
-		String userId = request.getParameter("userId");
 		List<Map<String, String>> list = userService.getIdfindUser(userId);
 		request.setAttribute("list", list);
 		return "username/updateuser";
 	}
 
-	 /**
-	  * 修改用户信息
-	  * @param request
-	  * @return
-	  *    返回用户信息首页
-	  * @throws Exception
-	  *    抛出异常
-	  */
+	/**
+	 * 修改用户信息
+	 * 
+	 * @param request
+	 * @return 返回用户信息首页
+	 * @throws Exception
+	 *             抛出异常
+	 */
 	@RequestMapping("/updateUserName")
-	public String updateUserName(HttpServletRequest request) throws Exception {
+	public String updateUserName(String userId, String loginName, String passWord, HttpServletRequest request)
+			throws Exception {
 		request.setCharacterEncoding("UTF-8");
-		String userId = request.getParameter("userId");
-		String loginName = request.getParameter("loginName");
-		String passWord = request.getParameter("passWord");
 		userService.updateUserName(userId, loginName, passWord);
 		return "redirect:/user/findUser.kexin";
 	}
 
-	 /**
-	  * 查询用户信息
-	  * @param request
-	  * @return
-	  *      返回用户信息首页
-	  * @throws Exception 
-	  *      抛出异常
-	  */
+	/**
+	 * 查询用户信息
+	 * 
+	 * @param request
+	 * @return 返回用户信息首页
+	 * @throws Exception
+	 *             抛出异常
+	 */
 	@RequestMapping("/findUser")
 	public String findUser(HttpServletRequest request) throws Exception {
 		request.setCharacterEncoding("UTF-8");
@@ -114,29 +108,28 @@ public class UserController {
 		return "username/userindex";
 	}
 
-	 /**
-	  * 根据ID删除用户
-	  * @param request
-	  * @return
-	  *    返回用户信息首页
-	  * @throws Exception
-	  *    抛出异常
-	  */
+	/**
+	 * 根据ID删除用户
+	 * 
+	 * @param request
+	 * @return 返回用户信息首页
+	 * @throws Exception
+	 *             抛出异常
+	 */
 	@RequestMapping("/deleteUserName")
-	public String deleteUserName(HttpServletRequest request) throws Exception {
+	public String deleteUserName(String userId, HttpServletRequest request) throws Exception {
 		request.setCharacterEncoding("UTF-8");
-		String userId = request.getParameter("userId");
 		userService.DeleteUserName(userId);
 		return "redirect:/user/findUser.kexin";
 	}
 
-	 /**
-	  * 用户新增页面方法
-	  * @return
-	  *       返回新增用户信息页面
-	  * @throws Exception 
-	  *       抛出异常
-	  */
+	/**
+	 * 用户新增页面方法
+	 * 
+	 * @return 返回新增用户信息页面
+	 * @throws Exception
+	 *             抛出异常
+	 */
 	@RequestMapping("returnAddUserJsp")
 	public String returnAddUserJsp() throws Exception {
 

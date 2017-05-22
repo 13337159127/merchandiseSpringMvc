@@ -15,30 +15,39 @@
                 </a>
             </div>
             <ul class="nav">
-                <li>
+                <li class="active">
                     <a href="${ctxPath}/commodity/findCommodity.kexin">
                         <i class="ti-user"></i>
                         <p>查询商品信息</p>
                     </a>
                 </li>
-                <li>
+                <li class="active">
                     <a href="${ctxPath}/commodity/commoditySum.kexin">
                         <i class="ti-text"></i>
                         <p>用户商品总数</p>
                     </a>
                 </li>
-                <li>
+                <li class="active">
                     <a href="${ctxPath}/commodity/daySumCommodity.kexin">
                         <i class="ti-pencil-alt2"></i>
                         <p>每天录入商品总数</p>
                     </a>
                 </li>
-                <li>
+                <li class="active">
                     <a href="${ctxPath}/commodity/classifySumCommodity.kexin">
                         <i class="ti-map"></i>
                         <p>每个分类商品总数</p>
                     </a>
                 </li>
+                <li class="active"><a href="${ctxPath}/classify/findClassify.kexin"> <i class="ti-map"></i>
+							<p>商品分类管理</p>
+					</a></li>
+					<li class="active"><a href="${ctxPath}/user/findUser.kexin"> <i class="ti-bell"></i>
+							<p>用户名管理</p>
+					</a></li>
+					<li class="active"><a href="${ctxPath}/supplier/findSupplier.kexin"> <i class="ti-map"></i>
+							<p>供货商管理</p>
+					</a></li>
             </ul>
     	</div>
     </div>

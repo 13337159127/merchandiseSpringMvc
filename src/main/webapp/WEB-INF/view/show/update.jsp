@@ -26,12 +26,6 @@
 					<li><a href="${ctxPath}/commodity/classifySumCommodity.kexin"> <i class="ti-pencil-alt2"></i>
 							<p>每个分类商品总数</p>
 					</a></li>
-					<li><a href="${ctxPath}/classify/findClassify.kexin"> <i class="ti-map"></i>
-							<p>商品分类管理</p>
-					</a></li>
-					<li><a href="${ctxPath}/user/findUser.kexin"> <i class="ti-bell"></i>
-							<p>用户名管理</p>
-					</a></li>
 				</ul>
 			</div>
 		</div>

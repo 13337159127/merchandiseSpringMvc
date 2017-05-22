@@ -11,15 +11,11 @@
 		<div class="sidebar" data-background-color="white"
 			data-active-color="danger">
 			<div class="sidebar-wrapper">
-				<div class="logo">
-					<a href="#" class="simple-text"> 超市管理系统 </a>
+				 <div class="logo">
+					<a href="#" class="simple-text">超市管理系统</a>
 				</div>
-
 				<ul class="nav">
-					<li class="active"><a href="dashboard.html"> <i class="ti-panel"></i>
-							<p>商品信息列表</p>
-					</a></li>
-					<li><a href="${ctxPath}/commodity/findAddClassify.kexin"> <i class="ti-user"></i>
+					<li class="active"><a href="${ctxPath}/commodity/findAddClassify.kexin"> <i class="ti-user"></i>
 							<p>添加商品</p>
 					</a></li>
 					<li><a href="${ctxPath}/commodity/commoditySum.kexin"> <i class="ti-view-list-alt"></i>
@@ -35,7 +31,10 @@
 							<p>商品分类管理</p>
 					</a></li>
 					<li><a href="${ctxPath}/user/findUser.kexin"> <i class="ti-bell"></i>
-							<p>用户名管理</p>
+							<p>用户名管理</p>
+					</a></li>
+					<li><a href="${ctxPath}/supplier/findSupplier.kexin"> <i class="ti-map"></i>
+							<p>供货商管理</p>
 					</a></li>
 				</ul>
 			</div>
@@ -45,7 +44,7 @@
 			<nav class="navbar navbar-default">
 			<div class="container-fluid">
 				<div class="navbar-header">
-					<a class="navbar-brand" href="#">商品信息</a>
+					<a class="navbar-brand" href="#">商品信息列表</a>
 				</div>
 				<div class="collapse navbar-collapse">
 					<ul class="nav navbar-nav navbar-right">

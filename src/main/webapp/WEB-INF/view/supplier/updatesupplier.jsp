@@ -17,14 +17,11 @@
 					<li class="active"><a href="${ctxPath}/commodity/findCommodity.kexin"> <i class="ti-panel"></i>
 							<p>返回首页</p>
 					</a></li>
-					<li><a href="${ctxPath}/commodity/commoditySum.kexin"> <i class="ti-view-list-alt"></i>
-							<p>用户商品总数</p>
+					<li><a href="${ctxPath}/classify/findClassify.kexin"> <i class="ti-map"></i>
+							<p>商品分类管理</p>
 					</a></li>
-					<li><a href="${ctxPath}/commodity/daySumCommodity.kexin"> <i class="ti-text"></i>
-							<p>每天录入商品总数</p>
-					</a></li>
-					<li><a href="${ctxPath}/commodity/classifySumCommodity.kexin"> <i class="ti-pencil-alt2"></i>
-							<p>每个分类商品总数</p>
+					<li><a href="${ctxPath}/user/findUser.kexin"> <i class="ti-bell"></i>
+							<p>用户名管理</p>
 					</a></li>
 				</ul>
 			</div>
@@ -33,7 +30,7 @@
 			<nav class="navbar navbar-default">
 			<div class="container-fluid">
 				<div class="navbar-header">
-					<a class="navbar-brand" href="#">添加商品信息</a>
+					<a class="navbar-brand" href="#">供货商信息</a>
 				</div>
 				<div class="collapse navbar-collapse">
 					<ul class="nav navbar-nav navbar-right">
@@ -41,7 +38,7 @@
 							data-toggle="dropdown"> <i class="ti-panel"></i>
 								<p>用户名管理</p> <b class="caret"></b>
 						</a>
-					    </li>
+						</li>
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown"> <i class="ti-bell"></i>								 
 								<p>分类管理</p> <b class="caret"></b>
@@ -57,53 +54,32 @@
 						<div class="col-md-12">
 							<div class="card">
 								<div class="header">
-									<h4 class="title">添加商品信息</h4>
+									<h4 class="title">修改供货商信息</h4>
 								</div>
 								<div class="content table-responsive table-full-width">
-				<form action="${ctxPath}/commodity/addCommodity.kexin" method="get">				
+				<form action="${ctxPath}/supplier/updateSupplier.kexin" method="get">				
 				<table class="table table-striped">
-				<tr>
-					<th width="30%">商品id</th>
-					<td width="70%"><input type="text" name="commodityId" value="">
-				</tr>
-				<tr>
-					<th width="30%">商品名称</th>
-					<td width="70%"><input type="text" name="commodityName"
-						value="">
-				</tr>
-				<tr>
-					<th width="30%">商品价格</th>
-					<td width="70%"><input type="text" name="commodityPrice"
-						value="">
-				</tr>
-				<tr>
-					<th width="30%">商品数量</th>
-					<td width="70%"><input type="text" name="commodityMuch"
-						value="">
-				</tr>
-				<tr>
-					<th width="30%">商品保质期</th>
-					<td width="70%"><input type="text" name="commodityPeriod"
-						value="">
-				</tr>
-				<tr>
-					<th width="30%">商品生产地</th>
-					<td width="70%"><input type="text" name="commodityYiedly"
-						value="">
-				</tr>
-				<tr>
-					<th width="30%">商品分类</th>
-					<td width="70%">			 
-					<select name="categoryId">
-					<c:forEach items="${re}" var="commodity" > 
-					<option value="${commodity.categoryId}">${commodity.category}</option>
-					</c:forEach> 
-					</select> 			 
-					</td> 
-				</tr> 
+				<c:forEach items="${list}" var="supplier"> 
+                <tr>
+                <th width="30%">供货商ID</th>
+                <td width="70%"><input type="text" name="supplierID" value="${supplier.supplierID}"></td>
+                </tr>
+                <tr>
+                 <th width="30%">供货商姓名</th>
+                 <td width="70%"><input type="text" name="supplierName" value="${supplier.supplierName}"></td>
+                </tr>
+                <tr>
+                <th width="30%">供货商地址</th>
+                <td width="70%"><input type="text" name="supplierAddress" value="${supplier.supplierAddress}"></td>
+                </tr>
+                <tr>
+                <th width="30%">供货商电话</th>
+                <td width="70%"><input type="text" name="supplierPhone" value="${supplier.supplierPhone}"></td>
+                </tr>
+                </c:forEach>
 				</table>
 				<div class="text-center">
-					<button type="submit" class="btn btn-info btn-fill btn-wd">添加</button>
+					<button type="submit" class="btn btn-info btn-fill btn-wd">修改</button>
 				</div>
 				</form>
 				</div>

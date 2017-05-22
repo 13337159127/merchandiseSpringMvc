@@ -68,10 +68,10 @@ public class UserController {
 	 * @throws Exception
 	 *             抛出异常
 	 */
-	@RequestMapping("/getIdfindUserName")
-	public String getIdfindUserName(String userId, HttpServletRequest request) throws Exception {
+	@RequestMapping("/getUserbyId")
+	public String getUserbyId(String userId, HttpServletRequest request) throws Exception {
 		request.setCharacterEncoding("UTF-8");
-		List<Map<String, String>> list = userService.getIdfindUser(userId);
+		List<Map<String, String>> list = userService.getUserbyId(userId);
 		request.setAttribute("list", list);
 		return "username/updateuser";
 	}

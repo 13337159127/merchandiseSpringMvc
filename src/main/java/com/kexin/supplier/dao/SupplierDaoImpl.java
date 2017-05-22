@@ -89,7 +89,7 @@ public class SupplierDaoImpl implements SupplierDao {
 	 * @throws Exception
 	 *             抛出异常
 	 */
-	public List<Map<String, String>> getIdFindSupplier(String supplierID) throws Exception {
+	public List<Map<String, String>> getSupplierbyId(String supplierID) throws Exception {
 		// 定义一个集合list
 		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
 		try {

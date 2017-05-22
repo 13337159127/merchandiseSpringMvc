@@ -74,7 +74,7 @@
 											  <td>${user.userId}</td>
                                               <td>${user.loginName}</td>
                                               <td>${user.passWord}</td>
-                                              <td><a href="${ctxPath}/user/getIdfindUserName.kexin?userId=${user.userId}">编辑用户名</a></td>
+                                              <td><a href="${ctxPath}/user/getUserbyId.kexin?userId=${user.userId}">编辑用户名</a></td>
                                               <td><a href="${ctxPath}/user/deleteUserName.kexin?userId=${user.userId}">删除用户名</a></td>
 											</tbody>
 										</c:forEach>

@@ -15,7 +15,7 @@
 					<a href="#" class="simple-text">超市管理系统</a>
 				</div>
 				<ul class="nav">
-					<li class="active"><a href="${ctxPath}/commodity/findAddClassify.kexin"> <i class="ti-user"></i>
+					<li class="active"><a href="${ctxPath}/commodity/selectClassify.kexin"> <i class="ti-user"></i>
 							<p>添加商品</p>
 					</a></li>
 					<li><a href="${ctxPath}/commodity/commoditySum.kexin"> <i class="ti-view-list-alt"></i>
@@ -144,7 +144,7 @@
 												<td>${commodity.loginName}</td>
 												<!-- 格式化时间和日期 -->
 												<td><fmt:formatDate value="${commodity.entryTime}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
-												<td><a href="${ctxPath}/commodity/findUpdateCommodity.kexin?commodityId=${commodity.commodityId}">修改商品</a></td>
+												<td><a href="${ctxPath}/commodity/getCommoditybyId.kexin?commodityId=${commodity.commodityId}">修改商品</a></td>
 												<td><a href="${ctxPath}/commodity/deleteCommodity.kexin?commodityId=${commodity.commodityId}">删除商品</a></td>
 											</tbody>
 										</c:forEach>

@@ -17,7 +17,7 @@
 					<li class="active"><a href="dashboard.html"> <i class="ti-panel"></i>
 							<p>分类信息列表</p>
 					</a></li>
-					<li><a href="${ctxPath}/classify/returnAddJsp.kexin"> <i class="ti-user"></i>
+					<li><a href="${ctxPath}/classify/returnAddClassifyJsp.kexin"> <i class="ti-user"></i>
 							<p>添加分类</p>
 					</a></li>
 					<li><a href="${ctxPath}/commodity/findCommodity.kexin"> <i class="ti-view-list-alt"></i>
@@ -73,7 +73,7 @@
 											<tbody>
 											   <td>${category.categoryId}</td>
                                                <td>${category.category}</td>
-                                               <td><a href="${ctxPath}/classify/getIdUpdateClassify.kexin?categoryId=${category.categoryId}">修改分类</a></td>
+                                               <td><a href="${ctxPath}/classify/getClassifybyId.kexin?categoryId=${category.categoryId}">修改分类</a></td>
                                                <td><a href="${ctxPath}/classify/deleteClassify.kexin?categoryId=${category.categoryId}">删除分类</a></td>
 											</tbody>
 										</c:forEach>

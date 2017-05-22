@@ -45,9 +45,9 @@ public class ClassifyController {
 	 * @throws Exception
 	 *             抛出异常
 	 */
-	@RequestMapping("/getIdUpdateClassify")
-	public String getIdUpdateClassify(@RequestParam(value="categoryId") String categoryid, HttpServletRequest request) throws Exception {
-		List<Map<String, String>> list = classifyService.getIdUpdateClassify(categoryid);
+	@RequestMapping("/getClassifybyId")
+	public String getClassifybyId(@RequestParam(value="categoryId") String categoryid, HttpServletRequest request) throws Exception {
+		List<Map<String, String>> list = classifyService.getClassifybyId(categoryid);
 		request.setAttribute("list", list);
 		return "classify/update";
 	}
@@ -101,8 +101,8 @@ public class ClassifyController {
 	 * @throws Exception
 	 *             抛出异常
 	 */
-	@RequestMapping("/returnAddJsp")
-	public String returnAddJsp() throws Exception {
+	@RequestMapping("/returnAddClassifyJsp")
+	public String returnAddClassifyJsp() throws Exception {
 
 		return "classify/add";
 	}

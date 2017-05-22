@@ -62,7 +62,7 @@ public interface CommodityService {
 	 * @throws Exception
 	 *            抛出异常
 	 */
-	public List<Map<String, String>> findUpdateCommodity(String commodityId) throws Exception;
+	public List<Map<String, String>> getCommoditybyId(String commodityId) throws Exception;
 
 	/**
 	 * 修改商信息

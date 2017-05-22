@@ -92,8 +92,8 @@ public class UserServiceImpl implements UserService {
 	 * @throws Exception
 	 *             抛出异常
 	 */
-	public List<Map<String, String>> getIdfindUser(String userId) throws Exception {
-		List<Map<String, String>> list = userDao.getIdfindUser(userId);
+	public List<Map<String, String>> getUserbyId(String userId) throws Exception {
+		List<Map<String, String>> list = userDao.getUserbyId(userId);
 		return list;
 	}
 

@@ -53,7 +53,7 @@ public class ClassifyDaoImpl implements ClassifyDao {
 	 * @throws Exception
 	 *             抛出异常
 	 */
-	public List<Map<String, String>> getClassify() throws Exception {
+	public List<Map<String, String>> selectClassify() throws Exception {
 		// 创建一个list
 		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
 		try {
@@ -139,7 +139,7 @@ public class ClassifyDaoImpl implements ClassifyDao {
 	 * @throws Exception
 	 *            抛出异常
 	 */
-	public List<Map<String, String>> getIdUpdateClassify(String categoryid) throws Exception {
+	public List<Map<String, String>> getClassifybyId(String categoryid) throws Exception {
 		// 创建一个list
 		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
 		try {

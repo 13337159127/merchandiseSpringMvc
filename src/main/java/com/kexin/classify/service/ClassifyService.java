@@ -14,7 +14,7 @@ public interface ClassifyService {
 	 * @throws Exception
 	 *             抛出异常
 	 */
-	public List<Map<String, String>> getClassify() throws Exception;
+	public List<Map<String, String>> selectClassify() throws Exception;
 
 	/**
 	 * 查询商品分类
@@ -50,7 +50,7 @@ public interface ClassifyService {
 	 * @throws Exception
 	 *            抛出异常
 	 */
-	public List<Map<String, String>> getIdUpdateClassify(String categoryid) throws Exception;
+	public List<Map<String, String>> getClassifybyId(String categoryid) throws Exception;
 
 	/**
 	 * 修改商品的分类

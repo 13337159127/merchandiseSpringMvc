@@ -162,7 +162,7 @@ public class CommodityDaoImpl implements CommodityDao {
 	 * @throws Exception
 	 *            抛出异常
 	 */
-	public List<Map<String, String>> findUpdateCommodity(String commodityId) throws Exception {
+	public List<Map<String, String>> getCommoditybyId(String commodityId) throws Exception {
 		List<Map<String, String>> list1 = new ArrayList<Map<String, String>>();
 		try {
 			Statement statement = commodityDao.getStatement();

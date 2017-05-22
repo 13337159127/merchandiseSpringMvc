@@ -80,8 +80,8 @@ public class CommodityServiceImpl implements CommodityService {
 	 * @throws Exception
 	 *            抛出异常
 	 */
-	public List<Map<String, String>> findUpdateCommodity(String commodityId) throws Exception{
-		List<Map<String, String>> list1 = commodityDao.findUpdateCommodity(commodityId);
+	public List<Map<String, String>> getCommoditybyId(String commodityId) throws Exception{
+		List<Map<String, String>> list1 = commodityDao.getCommoditybyId(commodityId);
 		return list1;
 	}
 

@@ -175,7 +175,7 @@ public class UserDaoImpl implements UserDao {
 	 * @throws Exception
 	 *             抛出异常
 	 */
-	public List<Map<String, String>> getIdfindUser(String userId) throws Exception {
+	public List<Map<String, String>> getUserbyId(String userId) throws Exception {
 		// 创建一个list
 		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
 		try {

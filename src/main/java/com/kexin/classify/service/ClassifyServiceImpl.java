@@ -26,8 +26,8 @@ public class ClassifyServiceImpl implements ClassifyService {
 	 * @throws Exception
 	 *             抛出异常
 	 */
-	public List<Map<String, String>> getClassify() throws Exception {
-		List<Map<String, String>> list = classifyDao.getClassify();
+	public List<Map<String, String>> selectClassify() throws Exception {
+		List<Map<String, String>> list = classifyDao.selectClassify();
 		return list;
 	}
 
@@ -71,8 +71,8 @@ public class ClassifyServiceImpl implements ClassifyService {
 	 * @throws Exception
 	 *            抛出异常
 	 */
-	public List<Map<String, String>> getIdUpdateClassify(String categoryid) throws Exception {
-		List<Map<String, String>> list = classifyDao.getIdUpdateClassify(categoryid);
+	public List<Map<String, String>> getClassifybyId(String categoryid) throws Exception {
+		List<Map<String, String>> list = classifyDao.getClassifybyId(categoryid);
 		return list;
 	}
 

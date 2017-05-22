@@ -22,7 +22,7 @@ public interface SupplierService {
 	 * @throws Exception
 	 *             抛出异常
 	 */
-	public List<Map<String,String>> getIdFindSupplier(String supplierID) throws Exception;
+	public List<Map<String,String>> getSupplierbyId(String supplierID) throws Exception;
 	
 	/**
 	 * 修改供货商信息

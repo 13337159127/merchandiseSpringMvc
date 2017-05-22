@@ -64,11 +64,11 @@ public class CommodityController {
 	 * @throws Exception
 	 *             抛出异常
 	 */
-	@RequestMapping("/findAddClassify")
-	public String findAddClassify(HttpServletRequest request) throws Exception {
+	@RequestMapping("/selectClassify")
+	public String selectClassify(HttpServletRequest request) throws Exception {
 		// 设置字符集
 		request.setCharacterEncoding("UTF-8");
-		List<Map<String, String>> list = classifyService.getClassify();
+		List<Map<String, String>> list = classifyService.selectClassify();
 		request.setAttribute("re", list);
 		return "show/add";
 	}
@@ -106,15 +106,15 @@ public class CommodityController {
 	 * @throws Exception
 	 *             抛出异常
 	 */
-	@RequestMapping("/findUpdateCommodity")
-	public String findUpdateCommodity(String commodityId, HttpServletRequest request) throws Exception {
+	@RequestMapping("/getCommoditybyId")
+	public String getCommoditybyId(String commodityId, HttpServletRequest request) throws Exception {
 		// 设置字符集
 		request.setCharacterEncoding("UTF-8");
 		// 根据ID查询商品的信息
-		List<Map<String, String>> list1 = commodityService.findUpdateCommodity(commodityId);
+		List<Map<String, String>> list1 = commodityService.getCommoditybyId(commodityId);
 		request.setAttribute("list", list1);
 		// 实列化查询分类的的类 获取分类
-		List<Map<String, String>> list = classifyService.getClassify();
+		List<Map<String, String>> list = classifyService.selectClassify();
 		request.setAttribute("re", list);
 		return "show/update";
 	}

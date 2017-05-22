@@ -34,8 +34,8 @@ public class SupplierServiceImpl implements SupplierService {
 	 * @throws Exception
 	 *             抛出异常
 	 */
-	public List<Map<String, String>> getIdFindSupplier(String supplierID) throws Exception {
-		List<Map<String, String>> list = supplierDao.getIdFindSupplier(supplierID);
+	public List<Map<String, String>> getSupplierbyId(String supplierID) throws Exception {
+		List<Map<String, String>> list = supplierDao.getSupplierbyId(supplierID);
 		return list;
 	}
 

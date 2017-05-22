@@ -51,11 +51,11 @@ public class SupplierController {
 	 * @throws Exception
 	 *             抛出异常
 	 */
-	@RequestMapping("/getIdFindSupplier")
-	public String getIdFindSupplier(@RequestParam String supplierID, HttpServletRequest request) throws Exception {
+	@RequestMapping("/getSupplierbyId")
+	public String getSupplierbyId(@RequestParam String supplierID, HttpServletRequest request) throws Exception {
 		// 设置字符集
 		request.setCharacterEncoding("UTF-8");
-		List<Map<String, String>> list = supplierService.getIdFindSupplier(supplierID);
+		List<Map<String, String>> list = supplierService.getSupplierbyId(supplierID);
 		request.setAttribute("list", list);
 		return "supplier/updatesupplier";
 	}

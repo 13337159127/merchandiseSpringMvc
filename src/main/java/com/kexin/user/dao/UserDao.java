@@ -78,7 +78,7 @@ public interface UserDao {
 	 * @throws Exception
 	 *             抛出异常
 	 */
-	public List<Map<String, String>> getIdfindUser(String userId) throws Exception;
+	public List<Map<String, String>> getUserbyId(String userId) throws Exception;
 
 	/**
 	 * 修改用户信息

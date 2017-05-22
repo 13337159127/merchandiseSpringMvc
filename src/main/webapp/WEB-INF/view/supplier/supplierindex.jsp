@@ -76,7 +76,7 @@
                                               <td>${supplier.supplierName}</td>
                                               <td>${supplier.supplierAddress}</td>
                                               <td>${supplier.supplierPhone}</td>
-                                              <td><a href="${ctxPath}/supplier/getIdFindSupplier.kexin?supplierID=${supplier.supplierID}">编辑供货商</a></td>
+                                              <td><a href="${ctxPath}/supplier/getSupplierbyId.kexin?supplierID=${supplier.supplierID}">编辑供货商</a></td>
                                               <td><a href="${ctxPath}/supplier/deleteSupplier.kexin?supplierID=${supplier.supplierID}">删除供货商</a></td>
 											</tbody>
 										</c:forEach>

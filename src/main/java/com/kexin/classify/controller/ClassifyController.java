@@ -3,8 +3,6 @@ package com.kexin.classify.controller;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,9 +28,7 @@ public class ClassifyController {
 	 *             抛出异常
 	 */
 	@RequestMapping("/findClassify")
-	public ModelAndView findClassify(HttpServletRequest request) throws Exception {
-		// 设置字符集
-		request.setCharacterEncoding("UTF-8");
+	public ModelAndView findClassify() throws Exception {
 		List<ClassifyEntity> list = classifyService.findClassify();
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("list", list);
@@ -49,8 +45,7 @@ public class ClassifyController {
 	 *             抛出异常
 	 */
 	@RequestMapping("/getClassifybyId")
-	public ModelAndView getClassifybyId(@RequestParam(value = "categoryId") String categoryid,
-			HttpServletRequest request) throws Exception {
+	public ModelAndView getClassifybyId(@RequestParam(value = "categoryId") String categoryid) throws Exception {
 		List<Map<String, String>> list = classifyService.getClassifybyId(categoryid);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("list", list);
@@ -67,8 +62,7 @@ public class ClassifyController {
 	 *             抛出异常
 	 */
 	@RequestMapping("/updateClassify")
-	public ModelAndView updateClassify(String categoryId, String category, HttpServletRequest request)
-			throws Exception {
+	public ModelAndView updateClassify(String categoryId, String category) throws Exception {
 		classifyService.updateClassify(category, categoryId);
 		return new ModelAndView("redirect:/classify/findClassify.kexin");
 	}
@@ -82,7 +76,7 @@ public class ClassifyController {
 	 *             抛出异常
 	 */
 	@RequestMapping("/addClassify")
-	public ModelAndView addClassify(String category, String categoryId, HttpServletRequest request) throws Exception {
+	public ModelAndView addClassify(String category, String categoryId) throws Exception {
 		classifyService.addClassify(category, categoryId);
 		return new ModelAndView("redirect:/classify/findClassify.kexin");
 	}
@@ -96,7 +90,7 @@ public class ClassifyController {
 	 *             抛出异常
 	 */
 	@RequestMapping("/deleteClassify")
-	public ModelAndView deleteClassify(String categoryId, HttpServletRequest request) throws Exception {
+	public ModelAndView deleteClassify(String categoryId) throws Exception {
 		classifyService.deleteClassify(categoryId);
 		return new ModelAndView("redirect:/classify/findClassify.kexin");
 	}

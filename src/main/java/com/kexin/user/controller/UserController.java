@@ -3,7 +3,6 @@ package com.kexin.user.controller;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,15 +29,13 @@ public class UserController {
 	 *             抛出异常
 	 */
 	@RequestMapping("/registerUser")
-	public ModelAndView registerUser(String username, String password, HttpServletRequest request)
+	public ModelAndView registerUser(String username, String password,HttpSession session)
 			throws Exception {
-		request.setCharacterEncoding("UTF-8");
 		List<Map<String, String>> list = userService.findUserName(username, password);
 		ModelAndView mv = new ModelAndView();
 		// 返回list的值，在servlet里面接收list的值。如果查询的值与数据库匹配，则list.size()>0，登录成功，否则登录失败
 		if (list.size() > 0) {
 			// session对象传用户名
-			HttpSession session = request.getSession();
 			session.setAttribute("name", username);
 			mv.setViewName("show/success");
 			return mv;
@@ -57,9 +54,8 @@ public class UserController {
 	 *             抛出异常
 	 */
 	@RequestMapping("/addUserName")
-	public ModelAndView addUserName(String userId, String loginName, String passWord, HttpServletRequest request)
+	public ModelAndView addUserName(String userId, String loginName, String passWord)
 			throws Exception {
-		request.setCharacterEncoding("UTF-8");
 		userService.addUserName(userId, loginName, passWord);
 		return new ModelAndView("redirect:/user/findUser.kexin");
 	}
@@ -73,8 +69,7 @@ public class UserController {
 	 *             抛出异常
 	 */
 	@RequestMapping("/getUserbyId")
-	public ModelAndView getUserbyId(String userId, HttpServletRequest request) throws Exception {
-		request.setCharacterEncoding("UTF-8");
+	public ModelAndView getUserbyId(String userId) throws Exception {
 		List<Map<String, String>> list = userService.getUserbyId(userId);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("list", list);
@@ -91,9 +86,8 @@ public class UserController {
 	 *             抛出异常
 	 */
 	@RequestMapping("/updateUserName")
-	public  ModelAndView updateUserName(String userId, String loginName, String passWord, HttpServletRequest request)
+	public  ModelAndView updateUserName(String userId, String loginName, String passWord)
 			throws Exception {
-		request.setCharacterEncoding("UTF-8");
 		userService.updateUserName(userId, loginName, passWord);
 		return new ModelAndView("redirect:/user/findUser.kexin");
 	}
@@ -107,8 +101,7 @@ public class UserController {
 	 *             抛出异常
 	 */
 	@RequestMapping("/findUser")
-	public ModelAndView findUser(HttpServletRequest request) throws Exception {
-		request.setCharacterEncoding("UTF-8");
+	public ModelAndView findUser() throws Exception {
 		List<UserEntity> list = userService.findUser();
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("list", list);
@@ -125,8 +118,7 @@ public class UserController {
 	 *             抛出异常
 	 */
 	@RequestMapping("/deleteUserName")
-	public ModelAndView deleteUserName(String userId, HttpServletRequest request) throws Exception {
-		request.setCharacterEncoding("UTF-8");
+	public ModelAndView deleteUserName(String userId) throws Exception {
 		userService.DeleteUserName(userId);
 		return new ModelAndView("redirect:/user/findUser.kexin");
 	}

@@ -3,8 +3,6 @@ package com.kexin.supplier.controller;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,9 +35,7 @@ public class SupplierController {
 	 *             抛出异常
 	 */
 	@RequestMapping("/findSupplier")
-	public ModelAndView findSupplier(HttpServletRequest request) throws Exception {
-		// 设置字符集
-		request.setCharacterEncoding("UTF-8");
+	public ModelAndView findSupplier() throws Exception {
 		List<SupplierEntity> list = supplierService.findSupplier();
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("list", list);
@@ -55,9 +51,7 @@ public class SupplierController {
 	 *             抛出异常
 	 */
 	@RequestMapping("/getSupplierbyId")
-	public ModelAndView getSupplierbyId(@RequestParam String supplierID, HttpServletRequest request) throws Exception {
-		// 设置字符集
-		request.setCharacterEncoding("UTF-8");
+	public ModelAndView getSupplierbyId(String supplierID) throws Exception {
 		List<Map<String, String>> list = supplierService.getSupplierbyId(supplierID);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("list", list);
@@ -84,9 +78,7 @@ public class SupplierController {
 	 */
 	@RequestMapping("/updateSupplier")
 	public ModelAndView updateSupplier(@RequestParam String supplierID, String supplierName, String supplierAddress,
-			String supplierPhone, HttpServletRequest request) throws Exception {
-		// 设置字符集
-		request.setCharacterEncoding("UTF-8");
+			String supplierPhone) throws Exception {
 		supplierService.updateSupplier(supplierID, supplierName, supplierAddress, supplierPhone);
 		return new ModelAndView("redirect:/supplier/findSupplier.kexin");
 	}
@@ -123,9 +115,7 @@ public class SupplierController {
 	 */
 	@RequestMapping("/addSupplier")
 	public ModelAndView addSupplier(@RequestParam String supplierID, String supplierName, String supplierAddress,
-			String supplierPhone, HttpServletRequest request) throws Exception {
-		// 设置字符集
-		request.setCharacterEncoding("UTF-8");
+			String supplierPhone) throws Exception {
 		supplierService.addSupplier(supplierID, supplierName, supplierAddress, supplierPhone);
 		return new ModelAndView("redirect:/supplier/findSupplier.kexin");
 	}
@@ -139,9 +129,7 @@ public class SupplierController {
 	 *             抛出异常
 	 */
 	@RequestMapping("/deleteSupplier")
-	public ModelAndView deleteSupplier(@RequestParam String supplierID, HttpServletRequest request) throws Exception {
-		// 设置字符集
-		request.setCharacterEncoding("UTF-8");
+	public ModelAndView deleteSupplier(@RequestParam String supplierID) throws Exception {
 		supplierService.deleteSupplier(supplierID);
 		return new ModelAndView("redirect:/supplier/findSupplier.kexin");
 	}

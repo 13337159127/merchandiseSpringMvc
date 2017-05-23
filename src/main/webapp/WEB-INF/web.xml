@@ -11,6 +11,19 @@
 		<filter-name>FirstFilter</filter-name>
 		<url-pattern>*.kexin</url-pattern>
 	</filter-mapping>
+	<!-- 配置请求过滤器，编码格式设为UTF-8，避免中文乱码-->
+	<filter>
+		<filter-name>encode</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>encode</filter-name>
+		<url-pattern>*.kexin</url-pattern>
+	</filter-mapping>
 	<servlet>
 		<servlet-name>spring</servlet-name>
 		<!-- 分发servlet到那个方法 -->

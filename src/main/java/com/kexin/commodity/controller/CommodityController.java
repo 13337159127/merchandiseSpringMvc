@@ -3,7 +3,6 @@ package com.kexin.commodity.controller;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,12 +41,9 @@ public class CommodityController {
 	 *             抛出异常
 	 */
 	@RequestMapping("/findCommodity")
-	public ModelAndView findCommodity(String classify, String sort, String designation, HttpServletRequest request)
+	public ModelAndView findCommodity(String classify, String sort, String designation, HttpSession session)
 			throws Exception {
-		// 设置字符集
-		request.setCharacterEncoding("UTF-8");
 		// session接收用户名
-		HttpSession session = request.getSession();
 		String loginname = (String) session.getAttribute("name");
 		// 变量名调用方法
 		List<CommodityEntity> list = commodityService.findCommodity(loginname, classify, designation, sort);
@@ -68,9 +64,7 @@ public class CommodityController {
 	 *             抛出异常
 	 */
 	@RequestMapping("/selectClassify")
-	public ModelAndView selectClassify(HttpServletRequest request) throws Exception {
-		// 设置字符集
-		request.setCharacterEncoding("UTF-8");
+	public ModelAndView selectClassify() throws Exception {
 		List<Map<String, String>> list = classifyService.selectClassify();
 		ModelAndView mv = new ModelAndView();
 		// 封装要显示到视图的数据
@@ -91,13 +85,10 @@ public class CommodityController {
 	@RequestMapping("/addCommodity")
 	public ModelAndView addCommodity(String commodityId, String commodityName, String commodityPrice,
 			String commodityMuch, String commodityPeriod, String commodityYiedly, String categoryId,
-			HttpServletRequest request) throws Exception {
-		// 设置字符集
-		request.setCharacterEncoding("UTF-8");
-		HttpSession session = request.getSession();
-		String loginName = (String) session.getAttribute("name");
-		// 返回用户ID
-		String userId = userService.getUserId(loginName);
+			HttpSession session) throws Exception {
+		 String loginName = (String) session.getAttribute("name");
+		 // 返回用户ID
+		 String userId = userService.getUserId(loginName);
 		// 实列化类 创建对象 添加商品
 		commodityService.addCommodity(commodityId, commodityName, commodityPrice, commodityMuch, commodityPeriod,
 				commodityYiedly, categoryId, userId);
@@ -114,15 +105,13 @@ public class CommodityController {
 	 *             抛出异常
 	 */
 	@RequestMapping("/getCommoditybyId")
-	public ModelAndView getCommoditybyId(String commodityId, HttpServletRequest request) throws Exception {
-		// 设置字符集
-		request.setCharacterEncoding("UTF-8");
+	public ModelAndView getCommoditybyId(String commodityId) throws Exception {
 		// 根据ID查询商品的信息
 		List<Map<String, String>> list1 = commodityService.getCommoditybyId(commodityId);
-		request.setAttribute("list", list1);
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("list", list1);
 		// 实列化查询分类的的类 获取分类
 		List<Map<String, String>> list = classifyService.selectClassify();
-		ModelAndView mv = new ModelAndView();
 		// 封装要显示到视图的数据
 		mv.addObject("re", list);
 		// 视图名
@@ -140,10 +129,7 @@ public class CommodityController {
 	 */
 	@RequestMapping("/updateCommodity")
 	public ModelAndView updateCommodity(String commodityId, String commodityName, String commodityPrice,
-			String commodityMuch, String commodityPeriod, String commodityYiedly, String categoryId,
-			HttpServletRequest request) throws Exception {
-		// 设置字符集
-		request.setCharacterEncoding("UTF-8");
+			String commodityMuch, String commodityPeriod, String commodityYiedly, String categoryId) throws Exception {
 		commodityService.updateCommodity(commodityId, commodityName, commodityPrice, commodityMuch, commodityPeriod,
 				commodityYiedly, categoryId);
 		return new ModelAndView("redirect:/commodity/findCommodity.kexin");
@@ -158,9 +144,7 @@ public class CommodityController {
 	 *             抛出
 	 */
 	@RequestMapping("/deleteCommodity")
-	public ModelAndView deleteCommodity(String commodityId, HttpServletRequest request) throws Exception {
-		// 设置字符集
-		request.setCharacterEncoding("UTF-8");
+	public ModelAndView deleteCommodity(String commodityId) throws Exception {
 		commodityService.deleteCommodity(commodityId);
 		return new ModelAndView("redirect:/commodity/findCommodity.kexin");
 	}
@@ -174,10 +158,7 @@ public class CommodityController {
 	 *             抛出异常
 	 */
 	@RequestMapping("/commoditySum")
-	public ModelAndView commoditySum(HttpServletRequest request) throws Exception {
-		// 设置字符集
-		request.setCharacterEncoding("UTF-8");
-		HttpSession session = request.getSession();
+	public ModelAndView commoditySum(HttpSession session) throws Exception {
 		String username = (String) session.getAttribute("name");
 		List<Map<String, String>> list = commodityService.commoditySum(username);
 		ModelAndView mv = new ModelAndView();
@@ -195,9 +176,7 @@ public class CommodityController {
 	 *             抛出异常
 	 */
 	@RequestMapping("/daySumCommodity")
-	public ModelAndView daySumCommodity(HttpServletRequest request) throws Exception {
-		// 设置字符集
-		request.setCharacterEncoding("UTF-8");
+	public ModelAndView daySumCommodity() throws Exception {
 		List<Map<String, String>> list = commodityService.daySumCommodity();
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("list", list);
@@ -214,8 +193,7 @@ public class CommodityController {
 	 *             抛出异常
 	 */
 	@RequestMapping("/classifySumCommodity")
-	public ModelAndView classifySumCommodity(HttpServletRequest request) throws Exception {
-		// 设置字符集
+	public ModelAndView classifySumCommodity() throws Exception {
 		List<Map<String, String>> list = commodityService.classifySumCommodity();
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("list", list);

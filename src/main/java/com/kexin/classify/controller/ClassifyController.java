@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.kexin.classify.entity.ClassifyEntity;
 import com.kexin.classify.service.ClassifyService;
@@ -29,12 +30,14 @@ public class ClassifyController {
 	 *             抛出异常
 	 */
 	@RequestMapping("/findClassify")
-	public String findClassify(HttpServletRequest request) throws Exception {
+	public ModelAndView findClassify(HttpServletRequest request) throws Exception {
 		// 设置字符集
 		request.setCharacterEncoding("UTF-8");
 		List<ClassifyEntity> list = classifyService.findClassify();
-		request.setAttribute("list", list);
-		return "classify/index";
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("list", list);
+		mv.setViewName("classify/index");
+		return mv;
 	}
 
 	/**
@@ -46,10 +49,13 @@ public class ClassifyController {
 	 *             抛出异常
 	 */
 	@RequestMapping("/getClassifybyId")
-	public String getClassifybyId(@RequestParam(value="categoryId") String categoryid, HttpServletRequest request) throws Exception {
+	public ModelAndView getClassifybyId(@RequestParam(value = "categoryId") String categoryid,
+			HttpServletRequest request) throws Exception {
 		List<Map<String, String>> list = classifyService.getClassifybyId(categoryid);
-		request.setAttribute("list", list);
-		return "classify/update";
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("list", list);
+		mv.setViewName("classify/update");
+		return mv;
 	}
 
 	/**
@@ -61,9 +67,10 @@ public class ClassifyController {
 	 *             抛出异常
 	 */
 	@RequestMapping("/updateClassify")
-	public String updateClassify(String categoryId, String category, HttpServletRequest request) throws Exception {
+	public ModelAndView updateClassify(String categoryId, String category, HttpServletRequest request)
+			throws Exception {
 		classifyService.updateClassify(category, categoryId);
-		return "redirect:/classify/findClassify.kexin";
+		return new ModelAndView("redirect:/classify/findClassify.kexin");
 	}
 
 	/**
@@ -75,9 +82,9 @@ public class ClassifyController {
 	 *             抛出异常
 	 */
 	@RequestMapping("/addClassify")
-	public String addClassify(String category, String categoryId, HttpServletRequest request) throws Exception {
+	public ModelAndView addClassify(String category, String categoryId, HttpServletRequest request) throws Exception {
 		classifyService.addClassify(category, categoryId);
-		return "redirect:/classify/findClassify.kexin";
+		return new ModelAndView("redirect:/classify/findClassify.kexin");
 	}
 
 	/**
@@ -89,9 +96,9 @@ public class ClassifyController {
 	 *             抛出异常
 	 */
 	@RequestMapping("/deleteClassify")
-	public String deleteClassify(String categoryId, HttpServletRequest request) throws Exception {
+	public ModelAndView deleteClassify(String categoryId, HttpServletRequest request) throws Exception {
 		classifyService.deleteClassify(categoryId);
-		return "redirect:/classify/findClassify.kexin";
+		return new ModelAndView("redirect:/classify/findClassify.kexin");
 	}
 
 	/**
@@ -102,8 +109,9 @@ public class ClassifyController {
 	 *             抛出异常
 	 */
 	@RequestMapping("/returnAddClassifyJsp")
-	public String returnAddClassifyJsp() throws Exception {
-
-		return "classify/add";
+	public ModelAndView returnAddClassifyJsp() throws Exception {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("classify/add");
+		return mv;
 	}
 }

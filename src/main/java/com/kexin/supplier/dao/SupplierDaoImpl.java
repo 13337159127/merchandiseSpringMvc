@@ -9,7 +9,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.kexin.supplier.entity.SupplierEntity;
@@ -22,9 +21,6 @@ import com.kexin.supplier.entity.SupplierEntity;
  */
 @Repository(value = "supplierDao")
 public class SupplierDaoImpl implements SupplierDao {
-	// 声明变量 @Autowired为变量赋值
-	@Autowired
-	private SupplierDao supplierDao;
 
 	/**
 	 * 会话工厂 实现方法被调用（共享）
@@ -58,7 +54,7 @@ public class SupplierDaoImpl implements SupplierDao {
 		// 定义一个集合list
 		List<SupplierEntity> list = new ArrayList<SupplierEntity>();
 		try {
-			Statement statement = supplierDao.getStatement();
+			Statement statement =  getStatement();
 			String sql = "select * from supplier";
 			System.out.println(sql);
 			ResultSet re = statement.executeQuery(sql);
@@ -93,7 +89,7 @@ public class SupplierDaoImpl implements SupplierDao {
 		// 定义一个集合list
 		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
 		try {
-			Statement statement = supplierDao.getStatement();
+			Statement statement =  getStatement();
 			String sql = "select * from supplier where supplierId='" + supplierID + "'";
 			ResultSet re = statement.executeQuery(sql);
 			System.out.println(sql);
@@ -132,7 +128,7 @@ public class SupplierDaoImpl implements SupplierDao {
 	public String updateSupplier(String supplierID, String supplierName, String supplierAddress, String supplierPhone)
 			throws Exception {
 		try {
-			Statement statement = supplierDao.getStatement();
+			Statement statement =  getStatement();
 			String sql = "update supplier set supplierName='" + supplierName + "',supplierAddress='" + supplierAddress
 					+ "',supplierPhone='" + supplierPhone + "' where supplierID='" + supplierID + "'";
 			statement.executeUpdate(sql);
@@ -161,7 +157,7 @@ public class SupplierDaoImpl implements SupplierDao {
 	public String addSupplier(String supplierID, String supplierName, String supplierAddress, String supplierPhone)
 			throws Exception {
 		try {
-			Statement statement = supplierDao.getStatement();
+			Statement statement =  getStatement();
 			String sql = "insert into supplier(supplierID,supplierName,supplierAddress,supplierPhone) values('"
 					+ supplierID + "','" + supplierName + "','" + supplierAddress + "','" + supplierPhone + "')";
 			System.out.println(sql);
@@ -183,7 +179,7 @@ public class SupplierDaoImpl implements SupplierDao {
 	 */
 	public String deleteSupplier(String supplierID) throws Exception {
 		try {
-			Statement statement = supplierDao.getStatement();
+			Statement statement =  getStatement();
 			String sql = "delete from supplier where supplierID='" + supplierID + "'";
 			System.out.println(sql);
 			statement.executeUpdate(sql);

@@ -11,28 +11,27 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.kexin.commodity.entity.CommodityEntity;
+
 /**
- * 实现接口的类  对商品信息进行增，删，改，查
+ * 实现接口的类 对商品信息进行增，删，改，查
+ * 
  * @author caokexin
  * 
  */
-@Repository(value = "commodityDao")
+@Repository("commodityDao")
 public class CommodityDaoImpl implements CommodityDao {
-	//声明成员变量。@Autowired为成员变量赋值
-	@Autowired
-	private CommodityDao commodityDao;
+
 	/**
-	  * 会话工厂  实现方法被调用（共享）
-	  * @return
-	  *           返回公共的方法
-	  * @throws Exception
-	  *           抛出异常
-	  */           
-	public Statement getStatement() throws Exception{
+	 * 会话工厂 实现方法被调用（共享）
+	 * 
+	 * @return 返回公共的方法
+	 * @throws Exception
+	 *             抛出异常
+	 */
+	public Statement getStatement() throws Exception {
 		// 定义变量
 		Statement statement = null;
 		try {
@@ -42,7 +41,7 @@ public class CommodityDaoImpl implements CommodityDao {
 			Connection conn = DriverManager.getConnection(url);
 			statement = conn.createStatement();
 		} catch (Exception e) {
-			 throw new Exception(e);
+			throw new Exception(e);
 		}
 		return statement;
 	}
@@ -58,17 +57,16 @@ public class CommodityDaoImpl implements CommodityDao {
 	 *            根据商品名称查询
 	 * @param sort
 	 *            根据商品ID，数量，价格排序
-	 * @return 
-	 *            返回根据 用户名，分类查询属性，名称查询属性，排序属性查询商品信息
+	 * @return 返回根据 用户名，分类查询属性，名称查询属性，排序属性查询商品信息
 	 * @throws Exception
-	 *            抛出异常
+	 *             抛出异常
 	 */
 	public List<CommodityEntity> findCommodity(String loginname, String classify, String designation, String sort)
 			throws Exception {
 		// 定义一个集合list
 		List<CommodityEntity> list = new ArrayList<CommodityEntity>();
 		try {
-			Statement statement = commodityDao.getStatement();
+			Statement statement = getStatement();
 			String sql = "select commodityId,commodityName,commodityPrice,commodityMuch,commodityPeriod,commodityYiedly,category,loginName,entryTime FROM commodity,user,classify WHERE commodity.categoryId=classify.categoryId AND commodity.userId=user.userId and loginName='"
 					+ loginname + "'";
 			if (classify != null && !"".equals(classify)) {
@@ -130,17 +128,16 @@ public class CommodityDaoImpl implements CommodityDao {
 	 *            商品分类ID
 	 * @param userId
 	 *            商品用户名ID
-	 * @return 
-	 *           返回添加商品的ID,名称，数量，价格保质期，生产地，分类，用户名
+	 * @return 返回添加商品的ID,名称，数量，价格保质期，生产地，分类，用户名
 	 * @throws Exception
-	 *            抛出异常
+	 *             抛出异常
 	 */
 	public String addCommodity(String commodityId, String commodityName, String commodityPrice, String commodityMuch,
 			String commodityPeriod, String commodityYiedly, String categoryId, String userId) throws Exception {
 		// 获取系统日期和时间
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		try {
-			Statement statement = commodityDao.getStatement();
+			Statement statement = getStatement();
 			String sql = "insert into commodity(commodityId,commodityName,commodityPrice,commodityMuch,commodityPeriod,commodityYiedly,categoryId,userId,entryTime) values('"
 					+ commodityId + "','" + commodityName + "','" + commodityPrice + "','" + commodityMuch + "','"
 					+ commodityPeriod + "','" + commodityYiedly + "','" + categoryId + "','" + userId + "','"
@@ -152,20 +149,20 @@ public class CommodityDaoImpl implements CommodityDao {
 		}
 		return commodityId;
 	}
+
 	/**
 	 * 根据ID查询商品信息（修改商品信息使用）
 	 * 
 	 * @param commodityId
 	 *            商品ID
-	 * @return 
-	 *            返回根据ID查询的商品信息
+	 * @return 返回根据ID查询的商品信息
 	 * @throws Exception
-	 *            抛出异常
+	 *             抛出异常
 	 */
 	public List<Map<String, String>> getCommoditybyId(String commodityId) throws Exception {
 		List<Map<String, String>> list1 = new ArrayList<Map<String, String>>();
 		try {
-			Statement statement = commodityDao.getStatement();
+			Statement statement = getStatement();
 			String sql = "select * from commodity where commodityId='" + commodityId + "'";
 			System.out.println(sql);
 			ResultSet re = statement.executeQuery(sql);
@@ -210,15 +207,14 @@ public class CommodityDaoImpl implements CommodityDao {
 	 *            商品生产地
 	 * @param categoryId
 	 *            商品分类
-	 * @return 
-	 *            返回修改商品的ID,名称，数量，价格保质期，生产地，分类
+	 * @return 返回修改商品的ID,名称，数量，价格保质期，生产地，分类
 	 * @throws Exception
-	 *            抛出异常
+	 *             抛出异常
 	 */
 	public String updateCommodity(String commodityId, String commodityName, String commodityPrice, String commodityMuch,
 			String commodityPeriod, String commodityYiedly, String categoryId) throws Exception {
 		try {
-			Statement statement = commodityDao.getStatement();
+			Statement statement = getStatement();
 			String sql = "update commodity set commodityName='" + commodityName + "',commodityPrice='" + commodityPrice
 					+ "',commodityMuch='" + commodityMuch + "',commodityPeriod='" + commodityPeriod
 					+ "',commodityYiedly='" + commodityYiedly + "',categoryId='" + categoryId + "' where commodityId='"
@@ -236,14 +232,13 @@ public class CommodityDaoImpl implements CommodityDao {
 	 * 
 	 * @param commodityId
 	 *            商品ID
-	 * @return 
-	 *            返回根据商品ID删除商品的信息
+	 * @return 返回根据商品ID删除商品的信息
 	 * @throws Exception
-	 *            抛出异常
+	 *             抛出异常
 	 */
 	public String deleteCommodity(String commodityId) throws Exception {
 		try {
-			Statement statement = commodityDao.getStatement();
+			Statement statement =  getStatement();
 			String sql = "delete from commodity where commodityId='" + commodityId + "'";
 			System.out.println(sql);
 			statement.executeUpdate(sql);
@@ -258,15 +253,14 @@ public class CommodityDaoImpl implements CommodityDao {
 	 * 
 	 * @param username
 	 *            用户名
-	 * @return 
-	 *            返回根据用户名查询商品的总数 
+	 * @return 返回根据用户名查询商品的总数
 	 * @throws Exception
-	 *            抛出异常
+	 *             抛出异常
 	 */
 	public List<Map<String, String>> commoditySum(String username) throws Exception {
 		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
 		try {
-			Statement statement = commodityDao.getStatement();
+			Statement statement = getStatement();
 			String sql = "select count(*) as sum from commodity,user where commodity.userId=user.userId and loginName='"
 					+ username + "'";
 			System.out.println(sql);
@@ -286,15 +280,14 @@ public class CommodityDaoImpl implements CommodityDao {
 	/**
 	 * 每天录入商品总数
 	 * 
-	 * @return 
-	 *             返回每天录入商品的总数
+	 * @return 返回每天录入商品的总数
 	 * @throws Exception
 	 *             抛出异常
 	 */
 	public List<Map<String, String>> daySumCommodity() throws Exception {
 		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
 		try {
-			Statement statement = commodityDao.getStatement();
+			Statement statement = getStatement();
 			String sql = "select DATE_FORMAT(entryTime,'%Y-%m-%d') as date,count(*) as num from commodity GROUP BY  DATE_FORMAT(entryTime,'%Y-%m-%d')";
 			System.out.println(sql);
 			ResultSet re = statement.executeQuery(sql);
@@ -315,15 +308,14 @@ public class CommodityDaoImpl implements CommodityDao {
 	/**
 	 * 每个分类商品总数
 	 * 
-	 * @return 
-	 *             返回每个分类的商品总数 
+	 * @return 返回每个分类的商品总数
 	 * @throws Exception
 	 *             抛出异常
 	 */
 	public List<Map<String, String>> classifySumCommodity() throws Exception {
 		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
 		try {
-			Statement statement = commodityDao.getStatement();
+			Statement statement = getStatement();
 			String sql = "select category as sort,COUNT(*) as sum from commodity,classify WHERE commodity.categoryId=classify.categoryId GROUP BY category;";
 			System.out.println(sql);
 			ResultSet re = statement.executeQuery(sql);

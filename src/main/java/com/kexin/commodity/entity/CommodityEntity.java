@@ -27,77 +27,61 @@ public class CommodityEntity {
 	private String loginName;
 	// 创建时间
 	private Date entryTime;
-
+	
 	public String getCommodityId() {
 		return commodityId;
 	}
-
 	public void setCommodityId(String commodityId) {
 		this.commodityId = commodityId;
 	}
-
 	public String getCommodityName() {
 		return commodityName;
 	}
-
 	public void setCommodityName(String commodityName) {
 		this.commodityName = commodityName;
 	}
-
 	public String getCommodityPrice() {
 		return commodityPrice;
 	}
-
 	public void setCommodityPrice(String commodityPrice) {
 		this.commodityPrice = commodityPrice;
 	}
-
 	public String getCommodityMuch() {
 		return commodityMuch;
 	}
-
 	public void setCommodityMuch(String commodityMuch) {
 		this.commodityMuch = commodityMuch;
 	}
-
 	public String getCommodityPeriod() {
 		return commodityPeriod;
 	}
-
 	public void setCommodityPeriod(String commodityPeriod) {
 		this.commodityPeriod = commodityPeriod;
 	}
-
 	public String getCommodityYiedly() {
 		return commodityYiedly;
 	}
-
 	public void setCommodityYiedly(String commodityYiedly) {
 		this.commodityYiedly = commodityYiedly;
 	}
-
 	public String getCategory() {
 		return category;
 	}
-
 	public void setCategory(String category) {
 		this.category = category;
 	}
-
-	public String getloginName() {
+	public String getLoginName() {
 		return loginName;
 	}
-
-	public void setloginName(String loginName) {
+	public void setLoginName(String loginName) {
 		this.loginName = loginName;
 	}
-
 	public Date getEntryTime() {
 		return entryTime;
 	}
-
 	public void setEntryTime(Date entryTime) {
 		this.entryTime = entryTime;
 	}
 
+	
 }

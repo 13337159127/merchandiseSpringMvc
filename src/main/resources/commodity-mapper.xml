@@ -23,10 +23,10 @@
 		select * from commodity where commodityId=#{commodityId}
 	</select>
 	<!-- 添加商品信息 -->
-	<insert id="addCommodity" parameterType="java.util.Map">
+	<insert id="addCommodity" parameterType="com.kexin.commodity.entity.CommodityEntity">
 		insert into
 		commodity(commodityId,commodityName,commodityPrice,commodityMuch,commodityPeriod,commodityYiedly,categoryId,userId,entryTime)
-		values(#{commodityId},#{commodityName},#{commodityPrice},#{commodityMuch},#{commodityPeriod},#{commodityYiedly},#{categoryId},#{userId},#{addTime})
+		values(#{commodityId},#{commodityName},#{commodityPrice},#{commodityMuch},#{commodityPeriod},#{commodityYiedly},#{category},#{loginName},#{entryTime})
 	</insert>
 	<!-- 修改商品信息 -->
 	<update id="updateCommodity" parameterType="String">

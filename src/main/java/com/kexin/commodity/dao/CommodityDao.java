@@ -6,6 +6,8 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Param;
 import org.mybatis.spring.annotation.MapperScan;
 
+import com.kexin.commodity.entity.CommodityEntity;
+
 @MapperScan
 public interface CommodityDao {
 
@@ -50,7 +52,7 @@ public interface CommodityDao {
 	 * @throws Exception
 	 *             抛出异常
 	 */
-	public void addCommodity(Map map) throws Exception;
+	public void addCommodity(CommodityEntity commodityEntity) throws Exception;
 
 	/**
 	 * 根据ID查询商品信息（修改商品信息使用）

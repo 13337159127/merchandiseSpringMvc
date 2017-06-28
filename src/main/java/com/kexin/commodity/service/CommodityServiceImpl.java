@@ -1,7 +1,6 @@
 package com.kexin.commodity.service;
 
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -9,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kexin.commodity.dao.CommodityDao;
+import com.kexin.commodity.entity.CommodityEntity;
 
 /**
  * 实现接口的类 对dao层进行调用
@@ -66,19 +66,19 @@ public class CommodityServiceImpl implements CommodityService {
 	 *             抛出异常
 	 */
 	public String addCommodity(String commodityId, String commodityName, String commodityPrice, String commodityMuch,
-			String commodityPeriod, String commodityYiedly, String categoryId, String userId, Date addTime)
+			String commodityPeriod, String commodityYiedly, String category, String loginName, Date entryTime)
 			throws Exception {
-		Map map = new HashMap();
-		map.put("commodityId", commodityId);
-		map.put("commodityName", commodityName);
-		map.put("commodityPrice", commodityPrice);
-		map.put("commodityMuch", commodityMuch);
-		map.put("commodityPeriod", commodityPeriod);
-		map.put("commodityYiedly", commodityYiedly);
-		map.put("categoryId", categoryId);
-		map.put("userId", userId);
-		map.put("addTime", addTime);
-		commodityDao.addCommodity(map);
+		CommodityEntity commodityEntity = new CommodityEntity();
+		commodityEntity.setCategory(category);
+		commodityEntity.setCommodityId(commodityId);
+		commodityEntity.setCommodityMuch(commodityMuch);
+		commodityEntity.setCommodityName(commodityName);
+		commodityEntity.setCommodityPeriod(commodityPeriod);
+		commodityEntity.setCommodityPrice(commodityPrice);
+		commodityEntity.setCommodityYiedly(commodityYiedly);
+		commodityEntity.setEntryTime(entryTime);
+		commodityEntity.setLoginName(loginName);
+		commodityDao.addCommodity(commodityEntity);
 		return "添加";
 	}
 

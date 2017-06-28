@@ -94,7 +94,7 @@
 				<tr>
 					<th width="30%">商品分类</th>
 					<td width="70%">			 
-					<select name="categoryId">
+					<select name="category">
 					<c:forEach items="${re}" var="commodity" > 
 					<option value="${commodity.categoryId}">${commodity.category}</option>
 					</c:forEach> 

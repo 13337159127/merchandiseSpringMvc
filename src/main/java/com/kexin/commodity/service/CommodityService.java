@@ -46,7 +46,7 @@ public interface CommodityService {
 	 *             抛出异常
 	 */
 	public String addCommodity(String commodityId, String commodityName, String commodityPrice, String commodityMuch,
-			String commodityPeriod, String commodityYiedly, String categoryId, String userId, Date addTime)
+			String commodityPeriod, String commodityYiedly, String category, String loginName, Date entryTime)
 			throws Exception;
 
 	/**

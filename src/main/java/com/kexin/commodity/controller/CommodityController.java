@@ -85,18 +85,18 @@ public class CommodityController {
 	 */
 	@RequestMapping("/addCommodity")
 	public ModelAndView addCommodity(String commodityId, String commodityName, String commodityPrice,
-			String commodityMuch, String commodityPeriod, String commodityYiedly, String categoryId,
-			HttpSession session) throws Exception {		 
-		String loginName = (String) session.getAttribute("name");
+			String commodityMuch, String commodityPeriod, String commodityYiedly, String category, HttpSession session)
+			throws Exception {
+		String name = (String) session.getAttribute("name");
 		// 返回用户ID
-		String userId = userService.getUserId(loginName);
-		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH：mm：ss");	
+		String loginName = userService.getUserId(name);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH：mm：ss");
 		Date date = new Date();
-	    String sdr = sdf.format(date);
-	    Date addTime = sdf.parse(sdr);
+		String sdr = sdf.format(date);
+		Date entryTime = sdf.parse(sdr);
 		// 实列化类 创建对象 添加商品
 		commodityService.addCommodity(commodityId, commodityName, commodityPrice, commodityMuch, commodityPeriod,
-				commodityYiedly, categoryId, userId, addTime);
+				commodityYiedly, category, loginName, entryTime);
 		// controller间的跳转 需要重定向
 		return new ModelAndView("redirect:/commodity/findCommodity.kexin");
 	}

@@ -3,28 +3,24 @@ package com.kexin.classify.service;
 import java.util.List;
 import java.util.Map;
 
-import com.kexin.classify.entity.ClassifyEntity;
-
 public interface ClassifyService {
 	/**
 	 * 查询商品的分类 （添加，修改商品使用）
 	 * 
-	 * @return
-	 *             查询商品的分类，返回商品分类的信息（添加，修改商品使用）
+	 * @return 查询商品的分类，返回商品分类的信息（添加，修改商品使用）
 	 * @throws Exception
 	 *             抛出异常
 	 */
-	public List<Map<String, String>> selectClassify() throws Exception;
+	public List<Map> selectClassify() throws Exception;
 
 	/**
 	 * 查询商品分类
 	 * 
-	 * @return
-	 *             查询商品的分类信息，返回商品的分类信息表
+	 * @return 查询商品的分类信息，返回商品的分类信息表
 	 * @throws Exception
 	 *             抛出异常
 	 */
-	public List<ClassifyEntity> findClassify() throws Exception;
+	public List<Map> findClassify() throws Exception;
 
 	/**
 	 * 添加商品分类
@@ -33,10 +29,9 @@ public interface ClassifyService {
 	 *            分类类别
 	 * @param categoryId
 	 *            分类ID
-	 * @return
-	 *            添加商品分类，返回商品分类ID和商品分类
+	 * @return 添加商品分类，返回商品分类ID和商品分类
 	 * @throws Exception
-	 *            抛出异常
+	 *             抛出异常
 	 */
 	public String addClassify(String category, String categoryId) throws Exception;
 
@@ -45,12 +40,11 @@ public interface ClassifyService {
 	 * 
 	 * @param categoryid
 	 *            商品的ID
-	 * @return
-	 *            根据ID查询商品分类，返回分类的信息
+	 * @return 根据ID查询商品分类，返回分类的信息
 	 * @throws Exception
-	 *            抛出异常
+	 *             抛出异常
 	 */
-	public List<Map<String, String>> getClassifybyId(String categoryid) throws Exception;
+	public List<Map> getClassifybyId(String categoryid) throws Exception;
 
 	/**
 	 * 修改商品的分类
@@ -59,10 +53,9 @@ public interface ClassifyService {
 	 *            商品类别
 	 * @param categoryId
 	 *            商品ID
-	 * @return
-	 *            修改商品的分类，返回修改商品分类的信息
+	 * @return 修改商品的分类，返回修改商品分类的信息
 	 * @throws Exception
-	 *            抛出异常
+	 *             抛出异常
 	 */
 	public String updateClassify(String category, String categoryId) throws Exception;
 
@@ -71,10 +64,9 @@ public interface ClassifyService {
 	 * 
 	 * @param categoryId
 	 *            商品分类ID
-	 * @return
-	 *            根据分类ID删除商品分类，返回删除商品分类的信息
+	 * @return 根据分类ID删除商品分类，返回删除商品分类的信息
 	 * @throws Exception
-	 *            抛出异常
+	 *             抛出异常
 	 */
 	public String deleteClassify(String categoryId) throws Exception;
 }

@@ -1,5 +1,7 @@
 package com.kexin.commodity.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -11,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kexin.classify.service.ClassifyService;
-import com.kexin.commodity.entity.CommodityEntity;
 import com.kexin.commodity.service.CommodityService;
 import com.kexin.user.service.UserService;
 
@@ -46,7 +47,7 @@ public class CommodityController {
 		// session接收用户名
 		String loginname = (String) session.getAttribute("name");
 		// 变量名调用方法
-		List<CommodityEntity> list = commodityService.findCommodity(loginname, classify, designation, sort);
+		List<Map> list = commodityService.findCommodity(loginname, classify, designation, sort);
 		ModelAndView mv = new ModelAndView();
 		// 封装要显示到视图的数据
 		mv.addObject("re", list);
@@ -65,7 +66,7 @@ public class CommodityController {
 	 */
 	@RequestMapping("/selectClassify")
 	public ModelAndView selectClassify() throws Exception {
-		List<Map<String, String>> list = classifyService.selectClassify();
+		List<Map> list = classifyService.selectClassify();
 		ModelAndView mv = new ModelAndView();
 		// 封装要显示到视图的数据
 		mv.addObject("re", list);
@@ -85,13 +86,17 @@ public class CommodityController {
 	@RequestMapping("/addCommodity")
 	public ModelAndView addCommodity(String commodityId, String commodityName, String commodityPrice,
 			String commodityMuch, String commodityPeriod, String commodityYiedly, String categoryId,
-			HttpSession session) throws Exception {
-		 String loginName = (String) session.getAttribute("name");
-		 // 返回用户ID
-		 String userId = userService.getUserId(loginName);
+			HttpSession session) throws Exception {		 
+		String loginName = (String) session.getAttribute("name");
+		// 返回用户ID
+		String userId = userService.getUserId(loginName);
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH：mm：ss");	
+		Date date = new Date();
+	    String sdr = sdf.format(date);
+	    Date addTime = sdf.parse(sdr);
 		// 实列化类 创建对象 添加商品
 		commodityService.addCommodity(commodityId, commodityName, commodityPrice, commodityMuch, commodityPeriod,
-				commodityYiedly, categoryId, userId);
+				commodityYiedly, categoryId, userId, addTime);
 		// controller间的跳转 需要重定向
 		return new ModelAndView("redirect:/commodity/findCommodity.kexin");
 	}
@@ -107,11 +112,11 @@ public class CommodityController {
 	@RequestMapping("/getCommoditybyId")
 	public ModelAndView getCommoditybyId(String commodityId) throws Exception {
 		// 根据ID查询商品的信息
-		List<Map<String, String>> list1 = commodityService.getCommoditybyId(commodityId);
+		List<Map> list1 = commodityService.getCommoditybyId(commodityId);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("list", list1);
 		// 实列化查询分类的的类 获取分类
-		List<Map<String, String>> list = classifyService.selectClassify();
+		List<Map> list = classifyService.selectClassify();
 		// 封装要显示到视图的数据
 		mv.addObject("re", list);
 		// 视图名
@@ -160,7 +165,7 @@ public class CommodityController {
 	@RequestMapping("/commoditySum")
 	public ModelAndView commoditySum(HttpSession session) throws Exception {
 		String username = (String) session.getAttribute("name");
-		List<Map<String, String>> list = commodityService.commoditySum(username);
+		List<Map> list = commodityService.commoditySum(username);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("list", list);
 		mv.setViewName("show/sum");
@@ -177,7 +182,7 @@ public class CommodityController {
 	 */
 	@RequestMapping("/daySumCommodity")
 	public ModelAndView daySumCommodity() throws Exception {
-		List<Map<String, String>> list = commodityService.daySumCommodity();
+		List<Map> list = commodityService.daySumCommodity();
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("list", list);
 		mv.setViewName("show/daysum");
@@ -194,7 +199,7 @@ public class CommodityController {
 	 */
 	@RequestMapping("/classifySumCommodity")
 	public ModelAndView classifySumCommodity() throws Exception {
-		List<Map<String, String>> list = commodityService.classifySumCommodity();
+		List<Map> list = commodityService.classifySumCommodity();
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("list", list);
 		mv.setViewName("show/classifysum");

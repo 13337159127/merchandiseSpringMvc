@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.kexin.classify.entity.ClassifyEntity;
 import com.kexin.classify.service.ClassifyService;
 
 @Controller
@@ -29,7 +28,7 @@ public class ClassifyController {
 	 */
 	@RequestMapping("/findClassify")
 	public ModelAndView findClassify() throws Exception {
-		List<ClassifyEntity> list = classifyService.findClassify();
+		List<Map> list = classifyService.findClassify();
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("list", list);
 		mv.setViewName("classify/index");
@@ -46,7 +45,7 @@ public class ClassifyController {
 	 */
 	@RequestMapping("/getClassifybyId")
 	public ModelAndView getClassifybyId(@RequestParam(value = "categoryId") String categoryid) throws Exception {
-		List<Map<String, String>> list = classifyService.getClassifybyId(categoryid);
+		List<Map> list = classifyService.getClassifybyId(categoryid);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("list", list);
 		mv.setViewName("classify/update");

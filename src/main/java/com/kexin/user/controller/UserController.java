@@ -10,11 +10,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.kexin.user.entity.UserEntity;
 import com.kexin.user.service.UserService;
 
 @Controller
-@RequestMapping("/user")
+@RequestMapping("user")
 public class UserController {
 	// 声明变量 为变量赋值
 	@Autowired
@@ -29,9 +28,8 @@ public class UserController {
 	 *             抛出异常
 	 */
 	@RequestMapping("/registerUser")
-	public ModelAndView registerUser(String username, String password,HttpSession session)
-			throws Exception {
-		List<Map<String, String>> list = userService.findUserName(username, password);
+	public ModelAndView registerUser(String username, String password, HttpSession session) throws Exception {
+		List<Map> list = userService.findUserName(username, password);
 		ModelAndView mv = new ModelAndView();
 		// 返回list的值，在servlet里面接收list的值。如果查询的值与数据库匹配，则list.size()>0，登录成功，否则登录失败
 		if (list.size() > 0) {
@@ -54,8 +52,7 @@ public class UserController {
 	 *             抛出异常
 	 */
 	@RequestMapping("/addUserName")
-	public ModelAndView addUserName(String userId, String loginName, String passWord)
-			throws Exception {
+	public ModelAndView addUserName(String userId, String loginName, String passWord) throws Exception {
 		userService.addUserName(userId, loginName, passWord);
 		return new ModelAndView("redirect:/user/findUser.kexin");
 	}
@@ -70,7 +67,7 @@ public class UserController {
 	 */
 	@RequestMapping("/getUserbyId")
 	public ModelAndView getUserbyId(String userId) throws Exception {
-		List<Map<String, String>> list = userService.getUserbyId(userId);
+		List<Map> list = userService.getUserbyId(userId);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("list", list);
 		mv.setViewName("username/updateuser");
@@ -86,8 +83,7 @@ public class UserController {
 	 *             抛出异常
 	 */
 	@RequestMapping("/updateUserName")
-	public  ModelAndView updateUserName(String userId, String loginName, String passWord)
-			throws Exception {
+	public ModelAndView updateUserName(String userId, String loginName, String passWord) throws Exception {
 		userService.updateUserName(userId, loginName, passWord);
 		return new ModelAndView("redirect:/user/findUser.kexin");
 	}
@@ -102,11 +98,11 @@ public class UserController {
 	 */
 	@RequestMapping("/findUser")
 	public ModelAndView findUser() throws Exception {
-		List<UserEntity> list = userService.findUser();
+		List<Map> list = userService.findUser();
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("list", list);
 		mv.setViewName("username/userindex");
-		return  mv;
+		return mv;
 	}
 
 	/**
@@ -134,6 +130,6 @@ public class UserController {
 	public ModelAndView returnAddUserJsp() throws Exception {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("username/add");
-		return  mv;
+		return mv;
 	}
 }

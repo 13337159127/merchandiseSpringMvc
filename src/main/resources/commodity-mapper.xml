@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kexin.commodity.dao.CommodityDao">
+	<!-- 查询商品信息 -->
+	<select id="findCommodity" parameterType="String" resultType="java.util.Map">
+		select
+		commodityId,commodityName,commodityPrice,commodityMuch,commodityPeriod,commodityYiedly,category,loginName,entryTime
+		FROM commodity,user,classify WHERE
+		commodity.categoryId=classify.categoryId AND
+		commodity.userId=user.userId and loginName=#{loginname}
+		<if test="classify != null and classify !='' ">
+			and category=#{classify}
+		</if>
+		<if test="designation != null and designation !='' ">
+			and commodityName=#{designation}
+		</if>
+		<if test="sort != null and sort !='' ">
+			order by #{sort} asc
+		</if>
+	</select>
+	<!-- 根据ID查询商品分类 -->
+	<select id="getCommoditybyId" parameterType="String" resultType="java.util.Map">
+		select * from commodity where commodityId=#{commodityId}
+	</select>
+	<!-- 添加商品信息 -->
+	<insert id="addCommodity" parameterType="java.util.Map">
+		insert into
+		commodity(commodityId,commodityName,commodityPrice,commodityMuch,commodityPeriod,commodityYiedly,categoryId,userId,entryTime)
+		values(#{commodityId},#{commodityName},#{commodityPrice},#{commodityMuch},#{commodityPeriod},#{commodityYiedly},#{categoryId},#{userId},#{addTime})
+	</insert>
+	<!-- 修改商品信息 -->
+	<update id="updateCommodity" parameterType="String">
+		update commodity set
+		commodityName=#{commodityName},commodityPrice=#{commodityPrice},commodityMuch=#{commodityMuch},commodityPeriod=#{commodityPeriod},commodityYiedly=#{commodityYiedly},categoryId=#{categoryId}
+		where commodityId=#{commodityId}
+	</update>
+	<!-- 删除商品信息 -->
+	<delete id="deleteCommodity" parameterType="String">
+		delete from commodity
+		where commodityId=#{commodityId}
+	</delete>
+	<!-- 每个用户商品总数 -->
+	<select id="commoditySum" parameterType="String" resultType="java.util.Map">
+		select count(*) as sum from commodity,user where
+		commodity.userId=user.userId and loginName=#{username}
+	</select>
+	<!-- 每天录入商品总数 -->
+	<select id="daySumCommodity" parameterType="String" resultType="java.util.Map">
+		select DATE_FORMAT(entryTime,'%Y-%m-%d') as date,count(*) as num from
+		commodity GROUP BY DATE_FORMAT(entryTime,'%Y-%m-%d')
+	</select>
+	<!-- 每天个分类商品总数 -->
+	<select id="classifySumCommodity" parameterType="String"
+		resultType="java.util.Map">
+		select category as sort,COUNT(*) as sum from
+		commodity,classify WHERE commodity.categoryId=classify.categoryId
+		GROUP BY category
+	</select>
+</mapper>

@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.kexin.supplier.entity.SupplierEntity;
 import com.kexin.supplier.service.SupplierService;
 
 /**
@@ -36,7 +35,7 @@ public class SupplierController {
 	 */
 	@RequestMapping("/findSupplier")
 	public ModelAndView findSupplier() throws Exception {
-		List<SupplierEntity> list = supplierService.findSupplier();
+		List<Map> list = supplierService.findSupplier();
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("list", list);
 		mv.setViewName("supplier/supplierindex");
@@ -52,7 +51,7 @@ public class SupplierController {
 	 */
 	@RequestMapping("/getSupplierbyId")
 	public ModelAndView getSupplierbyId(String supplierID) throws Exception {
-		List<Map<String, String>> list = supplierService.getSupplierbyId(supplierID);
+		List<Map> list = supplierService.getSupplierbyId(supplierID);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("list", list);
 		mv.setViewName("supplier/updatesupplier");

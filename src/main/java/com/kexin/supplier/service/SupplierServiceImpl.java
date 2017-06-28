@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kexin.supplier.dao.SupplierDao;
-import com.kexin.supplier.entity.SupplierEntity;
 
 @Service(value = "supplierService")
 public class SupplierServiceImpl implements SupplierService {
@@ -22,9 +21,8 @@ public class SupplierServiceImpl implements SupplierService {
 	 * @throws Exception
 	 *             抛出异常
 	 */
-	public List<SupplierEntity> findSupplier() throws Exception {
-		List<SupplierEntity> list = supplierDao.findSupplier();
-		return list;
+	public List<Map> findSupplier() throws Exception {
+		return supplierDao.findSupplier();
 	}
 
 	/**
@@ -34,9 +32,8 @@ public class SupplierServiceImpl implements SupplierService {
 	 * @throws Exception
 	 *             抛出异常
 	 */
-	public List<Map<String, String>> getSupplierbyId(String supplierID) throws Exception {
-		List<Map<String, String>> list = supplierDao.getSupplierbyId(supplierID);
-		return list;
+	public List<Map> getSupplierbyId(String supplierID) throws Exception {
+		return supplierDao.getSupplierbyId(supplierID);
 	}
 
 	/**
@@ -57,7 +54,7 @@ public class SupplierServiceImpl implements SupplierService {
 	public String updateSupplier(String supplierID, String supplierName, String supplierAddress, String supplierPhone)
 			throws Exception {
 		supplierDao.updateSupplier(supplierID, supplierName, supplierAddress, supplierPhone);
-		return supplierID;
+		return "修改";
 	}
 
 	/**
@@ -78,7 +75,7 @@ public class SupplierServiceImpl implements SupplierService {
 	public String addSupplier(String supplierID, String supplierName, String supplierAddress, String supplierPhone)
 			throws Exception {
 		supplierDao.addSupplier(supplierID, supplierName, supplierAddress, supplierPhone);
-		return supplierID;
+		return "添加";
 	}
 
 	/**
@@ -92,6 +89,6 @@ public class SupplierServiceImpl implements SupplierService {
 	 */
 	public String deleteSupplier(String supplierID) throws Exception {
 		supplierDao.deleteSupplier(supplierID);
-		return supplierID;
+		return "删除";
 	}
 }

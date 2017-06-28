@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kexin.user.dao.UserDao">
+	<!-- 查询用户名和密码 用户登录操作 -->
+	<select id="findUserName" parameterType="String" resultType="java.util.Map">
+		select * from user where loginName=#{username} and passWord=#{password}
+	</select>
+	<!-- 根据ID查询用户信息 -->
+	<select id="getUserbyId" parameterType="String" resultType="java.util.Map">
+		select * from user where userId=#{userId}
+	</select>
+	<!-- 根据用户名查询用户Id 添加商品使用 -->
+	<select id="getUserId" parameterType="String" resultType="java.lang.String">
+		select userId from user where loginName=#{loginName}
+	</select>
+	<!-- 查询用户信息 -->
+	<select id="findUser" resultType="java.util.Map">
+		select * from user
+	</select>
+	<!-- 添加用户信息 -->
+	<insert id="addUserName" parameterType="String">
+		insert into user(userId,loginName,passWord) values(#{userId},#{loginName},#{passWord})
+	</insert>
+	<!-- 修改用户信息 -->
+	<update id="updateUserName" parameterType="String">
+		update user set loginName=#{loginName},passWord=#{passWord} where userId=#{userId}
+	</update>
+	<!-- 删除用户信息 -->
+	<delete id="DeleteUserName" parameterType="String">
+		delete from user where userId=#{userId}
+	</delete>
+</mapper>
